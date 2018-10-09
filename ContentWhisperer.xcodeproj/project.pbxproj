@@ -8,19 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F279216CF08D0077DF97 /* AppDelegate.swift */; };
-		26F0F27C216CF08D0077DF97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F27B216CF08D0077DF97 /* ViewController.swift */; };
+		26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F27B216CF08D0077DF97 /* MainViewController.swift */; };
 		26F0F27E216CF08D0077DF97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F0F27D216CF08D0077DF97 /* Assets.xcassets */; };
 		26F0F281216CF08D0077DF97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F0F27F216CF08D0077DF97 /* Main.storyboard */; };
+		26F0F28A216CF0E90077DF97 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F289216CF0E90077DF97 /* MainWindowController.swift */; };
+		26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F28E216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift */; };
+		26F0F291216CF7B50077DF97 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F290216CF7B50077DF97 /* BundleExtensions.swift */; };
+		26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F292216CFF010077DF97 /* ContentSourceListViewController.swift */; };
+		26F0F296216D14930077DF97 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F295216D14930077DF97 /* Contents.swift */; };
+		26F0F298216D18640077DF97 /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F297216D18640077DF97 /* ImageContent.swift */; };
+		26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F299216D28BE0077DF97 /* ContentProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		26F0F276216CF08D0077DF97 /* ContentWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F0F279216CF08D0077DF97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		26F0F27B216CF08D0077DF97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		26F0F27B216CF08D0077DF97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		26F0F27D216CF08D0077DF97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26F0F280216CF08D0077DF97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26F0F282216CF08D0077DF97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26F0F283216CF08D0077DF97 /* ContentWhisperer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ContentWhisperer.entitlements; sourceTree = "<group>"; };
+		26F0F289216CF0E90077DF97 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		26F0F28E216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWhispererSettingsExtension.swift; sourceTree = "<group>"; };
+		26F0F290216CF7B50077DF97 /* BundleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
+		26F0F292216CFF010077DF97 /* ContentSourceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSourceListViewController.swift; sourceTree = "<group>"; };
+		26F0F295216D14930077DF97 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
+		26F0F297216D18640077DF97 /* ImageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
+		26F0F299216D28BE0077DF97 /* ContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,14 +67,53 @@
 		26F0F278216CF08D0077DF97 /* ContentWhisperer */ = {
 			isa = PBXGroup;
 			children = (
+				26F0F294216D147E0077DF97 /* Model */,
+				26F0F28B216CF0F20077DF97 /* Extensions */,
+				26F0F28D216CF1090077DF97 /* UI Controllers */,
+				26F0F28C216CF1000077DF97 /* UI Elements */,
 				26F0F279216CF08D0077DF97 /* AppDelegate.swift */,
-				26F0F27B216CF08D0077DF97 /* ViewController.swift */,
-				26F0F27D216CF08D0077DF97 /* Assets.xcassets */,
-				26F0F27F216CF08D0077DF97 /* Main.storyboard */,
 				26F0F282216CF08D0077DF97 /* Info.plist */,
 				26F0F283216CF08D0077DF97 /* ContentWhisperer.entitlements */,
 			);
 			path = ContentWhisperer;
+			sourceTree = "<group>";
+		};
+		26F0F28B216CF0F20077DF97 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26F0F28E216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift */,
+				26F0F290216CF7B50077DF97 /* BundleExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26F0F28C216CF1000077DF97 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				26F0F27F216CF08D0077DF97 /* Main.storyboard */,
+				26F0F27D216CF08D0077DF97 /* Assets.xcassets */,
+			);
+			path = "UI Elements";
+			sourceTree = "<group>";
+		};
+		26F0F28D216CF1090077DF97 /* UI Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				26F0F292216CFF010077DF97 /* ContentSourceListViewController.swift */,
+				26F0F27B216CF08D0077DF97 /* MainViewController.swift */,
+				26F0F289216CF0E90077DF97 /* MainWindowController.swift */,
+			);
+			path = "UI Controllers";
+			sourceTree = "<group>";
+		};
+		26F0F294216D147E0077DF97 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				26F0F295216D14930077DF97 /* Contents.swift */,
+				26F0F297216D18640077DF97 /* ImageContent.swift */,
+				26F0F299216D28BE0077DF97 /* ContentProvider.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +148,11 @@
 				TargetAttributes = {
 					26F0F275216CF08D0077DF97 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -133,8 +191,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26F0F27C216CF08D0077DF97 /* ViewController.swift in Sources */,
+				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
+				26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */,
+				26F0F296216D14930077DF97 /* Contents.swift in Sources */,
+				26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */,
+				26F0F298216D18640077DF97 /* ImageContent.swift in Sources */,
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
+				26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */,
+				26F0F28A216CF0E90077DF97 /* MainWindowController.swift in Sources */,
+				26F0F291216CF7B50077DF97 /* BundleExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
