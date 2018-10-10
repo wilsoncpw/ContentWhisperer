@@ -11,30 +11,30 @@ import Foundation
 class ContentProvider {
     static let instance = ContentProvider ()
     
-    var registeredContentClasses = [Content.Type] ()
+    var registeredContentClasses = [ContentClassDetails] ()
     
-    var supportedFileTypes: Set<String> {
+    var fileTypes: Set<String> {
         var rv = Set<String> ()
         
-        for ct in registeredContentClasses {
-            rv.formUnion(ct.supportedFileTypes)
+        for contentClass in registeredContentClasses {
+            rv.formUnion(contentClass.fileTypes)
         }
         return rv
     }
     
     private init () {
-        ContentProvider.registerContentType (s: self, tp: ImageContent.self)
+        ContentProvider.registerContentType (s: self, name: "Photos", contentClassType: ImageContent.self, fileTypes: ["jpg", "jpeg", "png", "tiff", "gif", "heic"])
+        ContentProvider.registerContentType(s: self, name: "Videos", contentClassType: MovieContent.self, fileTypes: ["m4v", "mov", "mp4"])
     }
     
-    static func registerContentType (s: ContentProvider, tp: Content.Type) {
-        s.registeredContentClasses.append(tp)
+    static func registerContentType (s: ContentProvider, name: String, contentClassType: Content.Type, fileTypes: Set<String>) {
+        s.registeredContentClasses.append(ContentClassDetails (name: name, contentClassType: contentClassType, fileTypes: fileTypes))
     }
     
-    
-    func contentThatSupports (url: URL) -> Content? {
-        for ct in registeredContentClasses {
-            if ct.supportedFileTypes.contains(url.pathExtension.lowercased()) {
-                return ct.init (fileName: url.lastPathComponent)
+    func contentThatSupports (url: URL) -> (typeName:String, content:Content)? {
+        for contentClassDetails in registeredContentClasses {
+            if contentClassDetails.fileTypes.contains(url.pathExtension.lowercased()) {
+                return (contentClassDetails.name, contentClassDetails.contentClassType.init (fileName: url.lastPathComponent))
             }
         }
         return nil

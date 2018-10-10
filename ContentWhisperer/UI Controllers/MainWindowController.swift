@@ -14,6 +14,13 @@ class MainWindowController: NSWindowController {
     
     var appDelegate: AppDelegate!
     var mainViewController: MainViewController!
+    var contentsSourceListViewController: ContentSourceListViewController!
+    
+    var sectionController: SectionControllerFromContents? {
+        didSet {
+            contentsSourceListViewController.sectionController = sectionController
+        }
+    }
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -29,6 +36,7 @@ class MainWindowController: NSWindowController {
         // Fail if there's a problem with the view controllers
         let failMsg = "MainWindowController Initialization Failure"
         assert (mainViewController != nil, failMsg)
+        assert (contentsSourceListViewController != nil, failMsg)
         assert (appDelegate != nil, failMsg)
         
         UserDefaults.standard.registerImageWhispererDefaults ()
@@ -49,6 +57,8 @@ class MainWindowController: NSWindowController {
             switch controller {
             case let mv as MainViewController :
                 mainViewController = mv
+            case let cv as ContentSourceListViewController :
+                contentsSourceListViewController = cv
             default: break
             }
             
@@ -72,6 +82,7 @@ class MainWindowController: NSWindowController {
         // open the file to create the image representation - that's done when the image or
         // thumbnail controller creates a CachedThumnbnail or ImageViewImage when required.
         guard let contents = try? Contents (folderURL: url) else { return false }
+        sectionController = SectionControllerFromContents (contents: contents)
         
         
 //        setTitleLabelForImages(images)

@@ -1,5 +1,5 @@
 //
-//  ImageContent.swift
+//  MovieContent.swift
 //  ContentWhisperer
 //
 //  Created by Colin Wilson on 09/10/2018.
@@ -8,5 +8,5 @@
 
 import Foundation
 
-class ImageContent: ContentBase, Content {
+class MovieContent: ContentBase, Content {
 }

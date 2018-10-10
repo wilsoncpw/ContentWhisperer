@@ -8,41 +8,72 @@
 
 import Cocoa
 
-class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
+class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource, SectionControllerDelegate {
 
     @IBOutlet weak var outlineView: NSOutlineView!
+    var sectionController: SectionControllerFromContents? {
+        willSet {
+            sectionController?.delegate = nil
+        }
+        didSet {
+            sectionController?.delegate = self
+            outlineView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        reloadData()
-    }
-    
-    private func reloadData () {
-        outlineView.reloadData()
     }
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if item == nil {
-            return 5
-        } else {
+        switch item ?? sectionController ?? 0 {
+        case _ as Section:
+            return 1
+        case let controller as SectionControllerFromContents:
+            return controller.sectionCount
+        default:
             return 0
         }
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return false
+        return item is Section
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        return "Hello"
+        switch item ?? sectionController ?? 0 {
+        case let section as Section:
+            return section.contentsCount
+        case let controller as SectionControllerFromContents:
+            return controller.getSection (idx: index)
+        default:
+            return "fuck"
+        }
     }
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        if let rv = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "HeaderCell" ), owner: self) as? NSTableCellView {
-            rv.textField?.stringValue = item as? String ?? "grr"
-            return rv
+        if let section = item as? Section {
+            if let rv = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "HeaderCell" ), owner: self) as? NSTableCellView {
+                rv.textField?.stringValue = section.name
+                return rv
+            }
+        } else {
+            if let rv = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "DataCell"), owner: self) as? NSTableCellView {
+                if let i = item as? Int {
+                    rv.textField?.stringValue = String (i)
+                    return rv
+                }
+            }
         }
         return nil
     }
+    
+    func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
+        return item is Section
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        return !(item is Section)
+    }
+    
 }

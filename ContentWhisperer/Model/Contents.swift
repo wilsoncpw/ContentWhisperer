@@ -11,29 +11,64 @@ import Foundation
 protocol Content {
     init (fileName: String)
     var fileName: FileName { get }
-    static var supportedFileTypes: Set<String> { get }
 }
 
 typealias FileName=String
 
+struct Section {
+    private weak var contents: Contents!
+    let name: String
+    private let indices: [Int]
+    
+    init (contents: Contents, name: String, indices: [Int]) {
+        self.contents = contents
+        self.name = name
+        self.indices = indices
+    }
+    
+    var contentsCount: Int {
+        return indices.count
+    }
+    
+    func getContent (idx: Int) -> Content {
+        return contents.contents [indices [idx]]
+    }
+}
+
 class Contents {
     let folderURL : URL
-    private (set) var contents: [Content]
+    fileprivate var contents: [Content]
     private var filenameMap = [FileName:Int] ()
+    private var sections = [Section] ()
 
     init (folderURL: URL) throws{
         self.folderURL = folderURL
         var isDir : ObjCBool = false
-        let cp = ContentProvider.instance
+        let contentProvider = ContentProvider.instance
         if !FileManager.default.fileExists(atPath: folderURL.path, isDirectory: &isDir) {
             contents = [Content] ()
         } else {
-            contents = try Contents.loadFolder(url: folderURL, allowedFileTypes: cp.supportedFileTypes).map {
+            let fileNames = try Contents.loadFolder (url: folderURL, allowedFileTypes: contentProvider.fileTypes)
+            let contentTuples = fileNames.map {
                 fileName in
-                return cp.contentThatSupports(url: folderURL.appendingPathComponent(fileName))!
+                return contentProvider.contentThatSupports(url: folderURL.appendingPathComponent(fileName))
+                }.compactMap { $0 }
+            contents = contentTuples.map {
+                tuple in
+                return tuple.content
             }
+            
             calcFilenameMap()
+            calcSections (tuples: contentTuples)
         }
+    }
+    
+    var sectionCount: Int {
+        return sections.count
+    }
+    
+    func getSection (idx: Int) -> Section {
+        return sections [idx]
     }
     
     //-----------------------------------------------------------------------------------
@@ -49,8 +84,8 @@ class Contents {
             url -> String in
             return url.lastPathComponent
             }.sorted(by: ) {
-                content1, content2 in
-                return content1 < content2
+                fileName1, fileName2 in
+                return fileName1 < fileName2
         }
     }
     
@@ -65,6 +100,28 @@ class Contents {
         for content in contents {
             filenameMap [content.fileName] = c
             c += 1
+        }
+    }
+    
+    private func calcSections (tuples: [(typeName: String, content: Content)]) {
+        var c = 0
+        var contentTypeMap = [String:[Int]] ()
+        for tuple in tuples {
+            
+            if contentTypeMap [tuple.typeName] == nil {
+                contentTypeMap [tuple.typeName] = [Int] ([c])
+            } else {
+                contentTypeMap [tuple.typeName]?.append(c)
+            }
+            
+            c += 1
+        }
+        
+        sections.removeAll()
+        for contentClassDetails in ContentProvider.instance.registeredContentClasses {
+            if let arr = contentTypeMap [contentClassDetails.name] {
+                sections.append(Section (contents: self, name: contentClassDetails.name, indices: arr))
+            }
         }
     }
 }

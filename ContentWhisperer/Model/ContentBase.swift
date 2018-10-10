@@ -1,5 +1,5 @@
 //
-//  ImageContent.swift
+//  ContentBase.swift
 //  ContentWhisperer
 //
 //  Created by Colin Wilson on 09/10/2018.
@@ -8,5 +8,10 @@
 
 import Foundation
 
-class ImageContent: ContentBase, Content {
+    class ContentBase {
+    let fileName: String
+
+    required init (fileName: String) {
+        self.fileName = fileName
+    }
 }

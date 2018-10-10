@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261DAB81216D53CE00518EA2 /* ContentClassDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB80216D53CE00518EA2 /* ContentClassDetails.swift */; };
+		261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB82216D5B6800518EA2 /* MovieContent.swift */; };
+		261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB84216D5BB900518EA2 /* ContentBase.swift */; };
+		261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */; };
 		26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F279216CF08D0077DF97 /* AppDelegate.swift */; };
 		26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F27B216CF08D0077DF97 /* MainViewController.swift */; };
 		26F0F27E216CF08D0077DF97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F0F27D216CF08D0077DF97 /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		261DAB80216D53CE00518EA2 /* ContentClassDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentClassDetails.swift; sourceTree = "<group>"; };
+		261DAB82216D5B6800518EA2 /* MovieContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContent.swift; sourceTree = "<group>"; };
+		261DAB84216D5BB900518EA2 /* ContentBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBase.swift; sourceTree = "<group>"; };
+		261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionControllerFromContents.swift; sourceTree = "<group>"; };
 		26F0F276216CF08D0077DF97 /* ContentWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F0F279216CF08D0077DF97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26F0F27B216CF08D0077DF97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		261DAB86216D70E700518EA2 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
 		26F0F26D216CF08D0077DF97 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				26F0F294216D147E0077DF97 /* Model */,
+				261DAB86216D70E700518EA2 /* ModelControllers */,
 				26F0F28B216CF0F20077DF97 /* Extensions */,
 				26F0F28D216CF1090077DF97 /* UI Controllers */,
 				26F0F28C216CF1000077DF97 /* UI Elements */,
@@ -111,6 +128,9 @@
 			children = (
 				26F0F295216D14930077DF97 /* Contents.swift */,
 				26F0F297216D18640077DF97 /* ImageContent.swift */,
+				261DAB82216D5B6800518EA2 /* MovieContent.swift */,
+				261DAB84216D5BB900518EA2 /* ContentBase.swift */,
+				261DAB80216D53CE00518EA2 /* ContentClassDetails.swift */,
 				26F0F299216D28BE0077DF97 /* ContentProvider.swift */,
 			);
 			path = Model;
@@ -193,12 +213,16 @@
 			files = (
 				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
 				26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */,
+				261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */,
 				26F0F296216D14930077DF97 /* Contents.swift in Sources */,
 				26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */,
 				26F0F298216D18640077DF97 /* ImageContent.swift in Sources */,
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
 				26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */,
+				261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */,
+				261DAB81216D53CE00518EA2 /* ContentClassDetails.swift in Sources */,
 				26F0F28A216CF0E90077DF97 /* MainWindowController.swift in Sources */,
+				261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */,
 				26F0F291216CF7B50077DF97 /* BundleExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
