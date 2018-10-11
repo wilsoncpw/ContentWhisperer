@@ -21,10 +21,10 @@ class SectionControllerFromContents {
     }
     
     var sectionCount: Int {
-        return contents.sectionCount
+        return contents.contentSections.count
     }
     
-    func getSection (idx: Int) -> Section {
-        return contents.getSection(idx:idx)
+    func getSection (idx: Int) -> ContentSection {
+        return contents.contentSections [idx]
     }
 }

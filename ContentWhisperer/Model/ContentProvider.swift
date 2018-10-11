@@ -9,34 +9,35 @@
 import Foundation
 
 class ContentProvider {
-    static let instance = ContentProvider ()
     
-    var registeredContentClasses = [ContentClassDetails] ()
+    private let registeredContentClasses : [ContentClassDetails]
     
-    var fileTypes: Set<String> {
-        var rv = Set<String> ()
+    var supportedFileTypes: Set<String> {
+        return registeredContentClasses.reduce(Set<String> ()) {fileTypesSum,contentClassDetails in
+            fileTypesSum.union(contentClassDetails.fileTypes)
+        }
+    }
+    
+    init (registeredContentClasses: [ContentClassDetails]) {
+        self.registeredContentClasses = registeredContentClasses
+        print (supportedFileTypes)
+    }
+    
+    func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
+        let urls = try FileManager.default.contentsOfDirectory(at: folderUrl, includingPropertiesForKeys: [URLResourceKey(rawValue: URLResourceKey.nameKey.rawValue)], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
         
-        for contentClass in registeredContentClasses {
-            rv.formUnion(contentClass.fileTypes)
-        }
-        return rv
-    }
-    
-    private init () {
-        ContentProvider.registerContentType (s: self, name: "Photos", contentClassType: ImageContent.self, fileTypes: ["jpg", "jpeg", "png", "tiff", "gif", "heic"])
-        ContentProvider.registerContentType(s: self, name: "Videos", contentClassType: MovieContent.self, fileTypes: ["m4v", "mov", "mp4"])
-    }
-    
-    static func registerContentType (s: ContentProvider, name: String, contentClassType: Content.Type, fileTypes: Set<String>) {
-        s.registeredContentClasses.append(ContentClassDetails (name: name, contentClassType: contentClassType, fileTypes: fileTypes))
-    }
-    
-    func contentThatSupports (url: URL) -> (typeName:String, content:Content)? {
-        for contentClassDetails in registeredContentClasses {
-            if contentClassDetails.fileTypes.contains(url.pathExtension.lowercased()) {
-                return (contentClassDetails.name, contentClassDetails.contentClassType.init (fileName: url.lastPathComponent))
+        return registeredContentClasses.reduce([ContentSection]()) {sectionSum, contentClassDetails in
+            
+            var i = 0
+            let sectionMap = urls.reduce([Int]()) {intSum, url in
+                let rv = contentClassDetails.fileTypes.contains(url.pathExtension.lowercased()) ? intSum + [i] : intSum
+                i += 1
+                return rv
             }
+            
+            return sectionMap.count > 0
+                ? sectionSum + [ContentSection (name: contentClassDetails.name, contents: sectionMap.map {idx in contentClassDetails.contentClassType.init (fileName: urls [idx].lastPathComponent)})]
+                : sectionSum
         }
-        return nil
     }
 }

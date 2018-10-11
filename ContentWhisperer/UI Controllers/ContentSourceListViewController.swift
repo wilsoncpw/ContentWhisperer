@@ -27,7 +27,7 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         switch item ?? sectionController ?? 0 {
-        case _ as Section:
+        case _ as ContentSection:
             return 1
         case let controller as SectionControllerFromContents:
             return controller.sectionCount
@@ -37,13 +37,13 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return item is Section
+        return item is ContentSection
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         switch item ?? sectionController ?? 0 {
-        case let section as Section:
-            return section.contentsCount
+        case let section as ContentSection:
+            return section.contents.count
         case let controller as SectionControllerFromContents:
             return controller.getSection (idx: index)
         default:
@@ -52,7 +52,7 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     }
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        if let section = item as? Section {
+        if let section = item as? ContentSection {
             if let rv = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "HeaderCell" ), owner: self) as? NSTableCellView {
                 rv.textField?.stringValue = section.name
                 return rv
@@ -69,11 +69,11 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     }
     
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
-        return item is Section
+        return item is ContentSection
     }
     
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
-        return !(item is Section)
+        return !(item is ContentSection)
     }
     
 }

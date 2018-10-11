@@ -15,6 +15,11 @@ class MainWindowController: NSWindowController {
     var appDelegate: AppDelegate!
     var mainViewController: MainViewController!
     var contentsSourceListViewController: ContentSourceListViewController!
+        
+    let contentProvider = ContentProvider (registeredContentClasses: [
+        ContentClassDetails (name: "Photos", contentClassType: ImageContent.self, fileTypes: ["jpg", "jpeg", "png", "tiff", "gif", "heic"]),
+        ContentClassDetails (name: "Videos", contentClassType: MovieContent.self, fileTypes: ["m4v", "mov", "mp4"])
+        ])
     
     var sectionController: SectionControllerFromContents? {
         didSet {
@@ -81,7 +86,7 @@ class MainWindowController: NSWindowController {
         // Load the images.  Note that this just initialises their file names - it doesn't
         // open the file to create the image representation - that's done when the image or
         // thumbnail controller creates a CachedThumnbnail or ImageViewImage when required.
-        guard let contents = try? Contents (folderURL: url) else { return false }
+        guard let contents = try? Contents (contentProvider: contentProvider, folderURL: url) else { return false }
         sectionController = SectionControllerFromContents (contents: contents)
         
         
