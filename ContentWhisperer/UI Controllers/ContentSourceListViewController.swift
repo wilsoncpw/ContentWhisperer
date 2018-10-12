@@ -27,8 +27,8 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         switch item ?? sectionController ?? 0 {
-        case _ as ContentSection:
-            return 1
+        case let section as ContentSection:
+            return section.bucketMap.count
         case let controller as SectionControllerFromContents:
             return controller.sectionCount
         default:
@@ -43,7 +43,7 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         switch item ?? sectionController ?? 0 {
         case let section as ContentSection:
-            return section.contents.count
+            return section.bucketMap [index]
         case let controller as SectionControllerFromContents:
             return controller.getSection (idx: index)
         default:
@@ -61,6 +61,9 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
             if let rv = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "DataCell"), owner: self) as? NSTableCellView {
                 if let i = item as? Int {
                     rv.textField?.stringValue = String (i)
+                    return rv
+                } else if let b = item as? ContentBucket {
+                    rv.textField?.stringValue = b.name
                     return rv
                 }
             }

@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol Content {
-    init (fileName: String)
-    var fileName: String { get }
-}
 
 class Contents {
     let folderURL : URL

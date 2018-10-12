@@ -17,8 +17,8 @@ class MainWindowController: NSWindowController {
     var contentsSourceListViewController: ContentSourceListViewController!
         
     let contentProvider = ContentProvider (registeredContentClasses: [
-        ContentClassDetails (name: "Photos", contentClassType: ImageContent.self, fileTypes: ["jpg", "jpeg", "png", "tiff", "gif", "heic"]),
-        ContentClassDetails (name: "Videos", contentClassType: MovieContent.self, fileTypes: ["m4v", "mov", "mp4"])
+        ImageContent.self,
+        MovieContent.self
         ])
     
     var sectionController: SectionControllerFromContents? {

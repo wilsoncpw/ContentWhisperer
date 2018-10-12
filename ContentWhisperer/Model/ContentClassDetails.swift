@@ -8,14 +8,12 @@
 
 import Foundation
 
-struct ContentClassDetails {
+private struct ContentClassDetails {
     let contentClassType: Content.Type
     let name: String
-    let fileTypes: Set<String>
     
-    init (name: String, contentClassType: Content.Type, fileTypes: Set<String>) {
+    init (name: String, contentClassType: Content.Type) {
         self.name = name
         self.contentClassType = contentClassType
-        self.fileTypes = fileTypes
     }
 }

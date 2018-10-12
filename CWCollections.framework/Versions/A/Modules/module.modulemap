@@ -1,0 +1,11 @@
+framework module CWCollections {
+  umbrella header "CWCollections.h"
+
+  export *
+  module * { export * }
+}
+
+module CWCollections.Swift {
+    header "CWCollections-Swift.h"
+    requires objc
+}

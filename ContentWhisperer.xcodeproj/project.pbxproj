@@ -12,6 +12,8 @@
 		261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB82216D5B6800518EA2 /* MovieContent.swift */; };
 		261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB84216D5BB900518EA2 /* ContentBase.swift */; };
 		261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */; };
+		26DC7F902170255C00410EF3 /* CWCollections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC7F8F2170255C00410EF3 /* CWCollections.framework */; };
+		26DC7F912170255C00410EF3 /* CWCollections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC7F8F2170255C00410EF3 /* CWCollections.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F279216CF08D0077DF97 /* AppDelegate.swift */; };
 		26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F27B216CF08D0077DF97 /* MainViewController.swift */; };
 		26F0F27E216CF08D0077DF97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F0F27D216CF08D0077DF97 /* Assets.xcassets */; };
@@ -25,12 +27,27 @@
 		26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F299216D28BE0077DF97 /* ContentProvider.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		26DC7F922170255C00410EF3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				26DC7F912170255C00410EF3 /* CWCollections.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		260DE9B2216EAF72002C673F /* ContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSection.swift; sourceTree = "<group>"; };
 		261DAB80216D53CE00518EA2 /* ContentClassDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentClassDetails.swift; sourceTree = "<group>"; };
 		261DAB82216D5B6800518EA2 /* MovieContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContent.swift; sourceTree = "<group>"; };
 		261DAB84216D5BB900518EA2 /* ContentBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBase.swift; sourceTree = "<group>"; };
 		261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionControllerFromContents.swift; sourceTree = "<group>"; };
+		26DC7F8F2170255C00410EF3 /* CWCollections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CWCollections.framework; sourceTree = "<group>"; };
 		26F0F276216CF08D0077DF97 /* ContentWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F0F279216CF08D0077DF97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26F0F27B216CF08D0077DF97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26DC7F902170255C00410EF3 /* CWCollections.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +87,7 @@
 		26F0F26D216CF08D0077DF97 = {
 			isa = PBXGroup;
 			children = (
+				26DC7F8F2170255C00410EF3 /* CWCollections.framework */,
 				26F0F278216CF08D0077DF97 /* ContentWhisperer */,
 				26F0F277216CF08D0077DF97 /* Products */,
 			);
@@ -149,6 +168,7 @@
 				26F0F272216CF08D0077DF97 /* Sources */,
 				26F0F273216CF08D0077DF97 /* Frameworks */,
 				26F0F274216CF08D0077DF97 /* Resources */,
+				26DC7F922170255C00410EF3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -368,6 +388,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3R8CQY2XDV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ContentWhisperer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -387,6 +411,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3R8CQY2XDV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ContentWhisperer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
