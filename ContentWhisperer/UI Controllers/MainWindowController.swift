@@ -12,13 +12,13 @@ class MainWindowController: NSWindowController {
     
     @IBOutlet weak var titleLabel: NSTextField!
     
-    var appDelegate: AppDelegate!
+//    var appDelegate: AppDelegate!
     var mainViewController: MainViewController!
     var contentsSourceListViewController: ContentSourceListViewController!
         
-    let contentProvider = ContentProvider (registeredContentClasses: [
-        ImageContent.self,
-        MovieContent.self
+    let contentProvider = ContentProvider (registeredContentTypes: [
+        ImageContent.contentType,
+        MovieContent.contentType
         ])
     
     var sectionController: SectionControllerFromContents? {
@@ -29,20 +29,23 @@ class MainWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        let failMsg = "MainWindowController Initialization Failure"
+        
+        let appDelegate: AppDelegate! = NSApp.delegate as? AppDelegate
+        precondition(appDelegate != nil, failMsg)
+        appDelegate.mainWindowController = self
         
         // Set modern title style
         window?.titleVisibility = .hidden
+        window?.titlebarAppearsTransparent = true
+        titleLabel.stringValue = Bundle.main.displayName
         
         // Set up links to the view controllers
         linkViewControllers (from: contentViewController)
         
-        appDelegate = NSApplication.shared.delegate as? AppDelegate
-
         // Fail if there's a problem with the view controllers
-        let failMsg = "MainWindowController Initialization Failure"
-        assert (mainViewController != nil, failMsg)
-        assert (contentsSourceListViewController != nil, failMsg)
-        assert (appDelegate != nil, failMsg)
+        precondition (mainViewController != nil, failMsg)
+        precondition (contentsSourceListViewController != nil, failMsg)
         
         UserDefaults.standard.registerImageWhispererDefaults ()
         
@@ -52,24 +55,17 @@ class MainWindowController: NSWindowController {
             }
             UserDefaults.standard.firstRun = false
         }
-        
-        window?.titlebarAppearsTransparent = true
-        titleLabel.stringValue = Bundle.main.displayName
     }
     
     private func linkViewControllers (from controller: NSViewController?) {
         if let controller = controller {
             switch controller {
-            case let mv as MainViewController :
-                mainViewController = mv
-            case let cv as ContentSourceListViewController :
-                contentsSourceListViewController = cv
+            case let mv as MainViewController : mainViewController = mv
+            case let cv as ContentSourceListViewController : contentsSourceListViewController = cv
             default: break
             }
             
-            for child in controller.children {
-                linkViewControllers(from: child)
-            }
+            controller.children.forEach { child in linkViewControllers(from: child) }
         }
     }
     
@@ -82,13 +78,10 @@ class MainWindowController: NSWindowController {
             return false
         }
         
-       
-        // Load the images.  Note that this just initialises their file names - it doesn't
-        // open the file to create the image representation - that's done when the image or
-        // thumbnail controller creates a CachedThumnbnail or ImageViewImage when required.
         guard let contents = try? Contents (contentProvider: contentProvider, folderURL: url) else { return false }
+
+        NSDocumentController.shared.noteNewRecentDocumentURL(url)
         sectionController = SectionControllerFromContents (contents: contents)
-        
         
 //        setTitleLabelForImages(images)
         NSDocumentController.shared.noteNewRecentDocumentURL(url)

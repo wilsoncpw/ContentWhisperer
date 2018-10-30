@@ -9,11 +9,9 @@
 import Foundation
 
 protocol Content {
+    static var contentType: ContentType { get }
     init (fileName: String)
     var fileName: String { get }
-    static var fileTypes:Set<String> { get }
-    static var name: String { get }
-    static var bucketDefinitions: [(name: String, fileTypes: Set<String>)] { get }
 }
 
 class ContentBase {

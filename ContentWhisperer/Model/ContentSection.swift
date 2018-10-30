@@ -61,7 +61,7 @@ class ContentSection {
     }
     
     private static func AddContentToBuckets (bucketMap: BucketDictionary, content: Content) -> ContentBucket? {
-        let bucketName = type (of: content).bucketDefinitions.first(where:) {name, filetypes in
+        let bucketName = type (of: content).contentType.bucketDefinitions.first(where:) {name, filetypes in
             let ext = (content.fileName as NSString).pathExtension
             return filetypes.contains(ext)
         }?.name ?? "~"

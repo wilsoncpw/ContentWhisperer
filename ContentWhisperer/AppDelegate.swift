@@ -14,9 +14,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mainWindowController: MainWindowController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        mainWindowController = NSApplication.shared.mainWindow?.windowController as? MainWindowController
-        
-        assert (mainWindowController != nil, "Init failure")
     }
 
     //----------------------------------------------------------------------
@@ -46,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     //----------------------------------------------------------------------
-    func openFolderAtURL (_ url: URL)-> Bool {
+    func openFolderAtURL (_ url: URL) -> Bool {
         return mainWindowController?.openFolderAtURL(url) ?? false
     }
 

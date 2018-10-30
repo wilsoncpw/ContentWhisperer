@@ -9,9 +9,11 @@
 import Foundation
 
 class ImageContent: ContentBase, Content {
-    static let name = "Images"
-    static let fileTypes = Set<String> (["jpg", "jpeg", "png", "tiff", "gif", "heic"])
-    static let bucketDefinitions = [
-        (name: "Photos", fileTypes: Set<String> (["jpg", "jpeg", "png", "heic"])),
-        (name: "Animated", fileTypes: Set<String> (["gif"]))]
+    static let contentType = ContentType (
+        name: "Images",
+        fileTypes: Set<String> (["jpg", "jpeg", "png", "tiff", "gif", "heic"]),
+        bucketDefinitions: [
+            (name: "Photos", fileTypes: Set<String> (["jpg", "jpeg", "png", "heic"])),
+            (name: "Animated", fileTypes: Set<String> (["gif"]))],
+        contentClass: ImageContent.self)
 }

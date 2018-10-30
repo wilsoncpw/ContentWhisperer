@@ -10,23 +10,23 @@ import Foundation
 
 class ContentProvider {
     
-    private let registeredContentClasses : [Content.Type]
+    private let registeredContentTypes : [ContentType]
     
     var supportedFileTypes: Set<String> {
-        return registeredContentClasses.reduce(Set<String> ()) {fileTypesSum, contentType in
+        return registeredContentTypes.reduce(Set<String> ()) {fileTypesSum, contentType in
             fileTypesSum.union(contentType.fileTypes)
         }
     }
     
-    init (registeredContentClasses: [Content.Type]) {
-        self.registeredContentClasses = registeredContentClasses
+    init (registeredContentTypes: [ContentType]) {
+        self.registeredContentTypes = registeredContentTypes
         print (supportedFileTypes)
     }
     
     func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
         let urls = try FileManager.default.contentsOfDirectory(at: folderUrl, includingPropertiesForKeys: [URLResourceKey(rawValue: URLResourceKey.nameKey.rawValue)], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
         
-        return registeredContentClasses.reduce([ContentSection]()) {sectionSum, contentType in
+        return registeredContentTypes.reduce([ContentSection]()) {sectionSum, contentType in
             
             var i = 0
             let sectionMap = urls.reduce([Int]()) {intSum, url in
@@ -36,7 +36,7 @@ class ContentProvider {
             }
             
             return sectionMap.count > 0
-                ? sectionSum + [ContentSection (name: contentType.name, contents: sectionMap.map {idx in contentType.init (fileName: urls [idx].lastPathComponent)})]
+                ? sectionSum + [ContentSection (name: contentType.name, contents: sectionMap.map {idx in contentType.contentClass.init (fileName: urls [idx].lastPathComponent)})]
                 : sectionSum
         }
     }

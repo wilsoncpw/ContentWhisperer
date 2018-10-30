@@ -12,6 +12,8 @@
 		261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB82216D5B6800518EA2 /* MovieContent.swift */; };
 		261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB84216D5BB900518EA2 /* ContentBase.swift */; };
 		261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */; };
+		26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5D2187C3D000FF4A67 /* Notifications.swift */; };
+		26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5F2187CBDD00FF4A67 /* ContentType.swift */; };
 		26DC7F902170255C00410EF3 /* CWCollections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC7F8F2170255C00410EF3 /* CWCollections.framework */; };
 		26DC7F912170255C00410EF3 /* CWCollections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC7F8F2170255C00410EF3 /* CWCollections.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F279216CF08D0077DF97 /* AppDelegate.swift */; };
@@ -47,6 +49,8 @@
 		261DAB82216D5B6800518EA2 /* MovieContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContent.swift; sourceTree = "<group>"; };
 		261DAB84216D5BB900518EA2 /* ContentBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBase.swift; sourceTree = "<group>"; };
 		261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionControllerFromContents.swift; sourceTree = "<group>"; };
+		26B23F5D2187C3D000FF4A67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		26B23F5F2187CBDD00FF4A67 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		26DC7F8F2170255C00410EF3 /* CWCollections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CWCollections.framework; sourceTree = "<group>"; };
 		26F0F276216CF08D0077DF97 /* ContentWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F0F279216CF08D0077DF97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				26F0F292216CFF010077DF97 /* ContentSourceListViewController.swift */,
 				26F0F27B216CF08D0077DF97 /* MainViewController.swift */,
 				26F0F289216CF0E90077DF97 /* MainWindowController.swift */,
+				26B23F5D2187C3D000FF4A67 /* Notifications.swift */,
 			);
 			path = "UI Controllers";
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				261DAB84216D5BB900518EA2 /* ContentBase.swift */,
 				261DAB80216D53CE00518EA2 /* ContentClassDetails.swift */,
 				26F0F299216D28BE0077DF97 /* ContentProvider.swift */,
+				26B23F5F2187CBDD00FF4A67 /* ContentType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */,
 				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
 				260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */,
 				26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */,
@@ -242,6 +249,7 @@
 				26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */,
 				26F0F298216D18640077DF97 /* ImageContent.swift in Sources */,
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
+				26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */,
 				26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */,
 				261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */,
 				261DAB81216D53CE00518EA2 /* ContentClassDetails.swift in Sources */,
