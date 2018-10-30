@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImageContent: ContentBase, Content {
+final class ImageContent: Content {
     static let contentType = ContentType (
         name: "Images",
         fileTypes: Set<String> (["jpg", "jpeg", "png", "tiff", "gif", "heic"]),
@@ -16,4 +16,10 @@ class ImageContent: ContentBase, Content {
             (name: "Photos", fileTypes: Set<String> (["jpg", "jpeg", "png", "heic"])),
             (name: "Animated", fileTypes: Set<String> (["gif"]))],
         contentClass: ImageContent.self)
+    
+    let fileName: String
+    
+    init (fileName: String) {
+        self.fileName = fileName
+    }
 }

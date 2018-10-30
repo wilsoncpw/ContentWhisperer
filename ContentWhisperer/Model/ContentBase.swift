@@ -14,10 +14,11 @@ protocol Content {
     var fileName: String { get }
 }
 
-class ContentBase {
+/*class ContentBase {
     let fileName: String
 
     required init (fileName: String) {
         self.fileName = fileName
     }
 }
+ */

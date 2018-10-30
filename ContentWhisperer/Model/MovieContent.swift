@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MovieContent: ContentBase, Content {
+final class MovieContent: Content {
     static let contentType = ContentType (
         name: "Videos",
         fileTypes: Set<String> (["m4v", "mov", "mp4"]),
@@ -16,4 +16,10 @@ class MovieContent: ContentBase, Content {
             (name: "Movies", fileTypes: Set<String> (["m4v"])),
             (name: "Clips", fileTypes: Set<String> (["mov", "mp4"]))],
         contentClass: MovieContent.self)
+    
+    let fileName: String
+    
+    init (fileName: String) {
+        self.fileName = fileName
+    }
 }

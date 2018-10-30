@@ -12,15 +12,14 @@ class ContentProvider {
     
     private let registeredContentTypes : [ContentType]
     
-    var supportedFileTypes: Set<String> {
+    init (registeredContentTypes: [ContentType]) {
+        self.registeredContentTypes = registeredContentTypes
+    }
+    
+    private var supportedFileTypes: Set<String> {
         return registeredContentTypes.reduce(Set<String> ()) {fileTypesSum, contentType in
             fileTypesSum.union(contentType.fileTypes)
         }
-    }
-    
-    init (registeredContentTypes: [ContentType]) {
-        self.registeredContentTypes = registeredContentTypes
-        print (supportedFileTypes)
     }
     
     func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
