@@ -7,15 +7,8 @@
 //
 
 import Foundation
-import CWCollections
 
-class ContentBucket : KeyProvider {
-    typealias T = String
-    
-    var key: T {
-        return name
-    }
-    
+class ContentBucket {
     let name: String
     private (set) var contents : [Content]
     
@@ -29,24 +22,7 @@ class ContentBucket : KeyProvider {
     }
 }
 
-typealias BucketDictionary = OrderedDictionary<ContentBucket>
-
-extension OrderedDictionary where Value:ContentBucket {
-    static func + (v1: OrderedDictionary<Value>, v2: Value?) -> OrderedDictionary<Value> {
-        guard let v2 = v2 else {
-            return v1
-        }
-        var rv = OrderedDictionary<Value>()
-        
-        for i in 0..<v1.count {
-            let vx = v1 [i]
-            rv [vx.key] = vx
-        }
-        rv [v2.key] = v2
-    
-        return rv
-    }
-}
+typealias BucketDictionary = OrderedDictionary<String, ContentBucket>
 
 class ContentSection {
     let name: String;
@@ -55,14 +31,16 @@ class ContentSection {
     init (name: String, contents: [Content]) {
         self.name = name
         
-        self.bucketMap = contents.reduce (BucketDictionary ()) {bucketsSum, content in
-            return bucketsSum + ContentSection.AddContentToBuckets(bucketMap: bucketsSum, content: content)
+        self.bucketMap = contents.reduce (into: BucketDictionary ()) {bucketsSum, content in
+            if let newBucket = ContentSection.AddContentToBuckets (bucketMap: bucketsSum, content: content) {
+                bucketsSum [newBucket.name] = newBucket
+            }
         }
     }
     
     private static func AddContentToBuckets (bucketMap: BucketDictionary, content: Content) -> ContentBucket? {
         let bucketName = type (of: content).contentType.bucketDefinitions.first(where:) {name, filetypes in
-            let ext = (content.fileName as NSString).pathExtension
+            let ext = (content.fileName as NSString).pathExtension.lowercased()
             return filetypes.contains(ext)
         }?.name ?? "~"
     

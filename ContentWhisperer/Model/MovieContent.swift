@@ -22,4 +22,7 @@ final class MovieContent: Content {
     init (fileName: String) {
         self.fileName = fileName
     }
+    var thumbnail: CachedThumbnail {
+        return CachedThumbnail ()
+    }
 }

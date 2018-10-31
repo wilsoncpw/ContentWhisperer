@@ -14,8 +14,11 @@
 		261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */; };
 		26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5D2187C3D000FF4A67 /* Notifications.swift */; };
 		26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5F2187CBDD00FF4A67 /* ContentType.swift */; };
-		26DC7F902170255C00410EF3 /* CWCollections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC7F8F2170255C00410EF3 /* CWCollections.framework */; };
-		26DC7F912170255C00410EF3 /* CWCollections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC7F8F2170255C00410EF3 /* CWCollections.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26D92EFF2189F1C70007A829 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */; };
+		26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */; };
+		26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */; };
+		26D92F06218A10660007A829 /* ThumbnailsCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */; };
+		26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */; };
 		26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F279216CF08D0077DF97 /* AppDelegate.swift */; };
 		26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F27B216CF08D0077DF97 /* MainViewController.swift */; };
 		26F0F27E216CF08D0077DF97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F0F27D216CF08D0077DF97 /* Assets.xcassets */; };
@@ -36,7 +39,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				26DC7F912170255C00410EF3 /* CWCollections.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +53,11 @@
 		261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionControllerFromContents.swift; sourceTree = "<group>"; };
 		26B23F5D2187C3D000FF4A67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		26B23F5F2187CBDD00FF4A67 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
-		26DC7F8F2170255C00410EF3 /* CWCollections.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CWCollections.framework; sourceTree = "<group>"; };
+		26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
+		26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewController.swift; sourceTree = "<group>"; };
+		26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewItem.swift; sourceTree = "<group>"; };
+		26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThumbnailsCollectionViewItem.xib; sourceTree = "<group>"; };
+		26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsControllerFromContentBucket.swift; sourceTree = "<group>"; };
 		26F0F276216CF08D0077DF97 /* ContentWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F0F279216CF08D0077DF97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26F0F27B216CF08D0077DF97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26DC7F902170255C00410EF3 /* CWCollections.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,14 +89,22 @@
 			isa = PBXGroup;
 			children = (
 				261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */,
+				26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */,
 			);
 			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		26D92F02218A103B0007A829 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		26F0F26D216CF08D0077DF97 = {
 			isa = PBXGroup;
 			children = (
-				26DC7F8F2170255C00410EF3 /* CWCollections.framework */,
 				26F0F278216CF08D0077DF97 /* ContentWhisperer */,
 				26F0F277216CF08D0077DF97 /* Products */,
 			);
@@ -111,6 +124,7 @@
 				26F0F294216D147E0077DF97 /* Model */,
 				261DAB86216D70E700518EA2 /* ModelControllers */,
 				26F0F28B216CF0F20077DF97 /* Extensions */,
+				26D92F02218A103B0007A829 /* Views */,
 				26F0F28D216CF1090077DF97 /* UI Controllers */,
 				26F0F28C216CF1000077DF97 /* UI Elements */,
 				26F0F279216CF08D0077DF97 /* AppDelegate.swift */,
@@ -133,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				26F0F27F216CF08D0077DF97 /* Main.storyboard */,
+				26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */,
 				26F0F27D216CF08D0077DF97 /* Assets.xcassets */,
 			);
 			path = "UI Elements";
@@ -145,6 +160,7 @@
 				26F0F27B216CF08D0077DF97 /* MainViewController.swift */,
 				26F0F289216CF0E90077DF97 /* MainWindowController.swift */,
 				26B23F5D2187C3D000FF4A67 /* Notifications.swift */,
+				26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */,
 			);
 			path = "UI Controllers";
 			sourceTree = "<group>";
@@ -160,6 +176,7 @@
 				261DAB80216D53CE00518EA2 /* ContentClassDetails.swift */,
 				26F0F299216D28BE0077DF97 /* ContentProvider.swift */,
 				26B23F5F2187CBDD00FF4A67 /* ContentType.swift */,
+				26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D92F06218A10660007A829 /* ThumbnailsCollectionViewItem.xib in Resources */,
 				26F0F27E216CF08D0077DF97 /* Assets.xcassets in Resources */,
 				26F0F281216CF08D0077DF97 /* Main.storyboard in Resources */,
 			);
@@ -247,11 +265,15 @@
 				261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */,
 				26F0F296216D14930077DF97 /* Contents.swift in Sources */,
 				26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */,
+				26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */,
 				26F0F298216D18640077DF97 /* ImageContent.swift in Sources */,
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
 				26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */,
+				26D92EFF2189F1C70007A829 /* OrderedDictionary.swift in Sources */,
 				26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */,
 				261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */,
+				26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */,
+				26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */,
 				261DAB81216D53CE00518EA2 /* ContentClassDetails.swift in Sources */,
 				26F0F28A216CF0E90077DF97 /* MainWindowController.swift in Sources */,
 				261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */,

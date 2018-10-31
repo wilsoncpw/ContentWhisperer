@@ -8,10 +8,15 @@
 
 import Foundation
 
+class CachedThumbnail {
+    
+}
+
 protocol Content {
     static var contentType: ContentType { get }
     init (fileName: String)
     var fileName: String { get }
+    var thumbnail: CachedThumbnail { get }
 }
 
 /*class ContentBase {

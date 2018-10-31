@@ -22,4 +22,8 @@ final class ImageContent: Content {
     init (fileName: String) {
         self.fileName = fileName
     }
+    
+    var thumbnail: CachedThumbnail {
+        return CachedThumbnail ()
+    }
 }

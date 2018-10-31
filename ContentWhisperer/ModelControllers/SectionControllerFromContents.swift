@@ -9,11 +9,18 @@
 import Foundation
 
 protocol SectionControllerDelegate: NSObjectProtocol {
-    
+    func selectedSectionChanged (contents: Contents, section: ContentSection?, bucket: ContentBucket?)
 }
 
-class SectionControllerFromContents {
-    private let contents: Contents
+protocol SectionController {
+    var contents: Contents { get }
+    var delegate: SectionControllerDelegate? { get }
+    var sectionCount: Int { get }
+    func getSection (idx: Int) -> ContentSection
+}
+
+class SectionControllerFromContents: SectionController {
+    let contents: Contents
     weak var delegate: SectionControllerDelegate?
     
     init (contents: Contents) {

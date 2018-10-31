@@ -8,16 +8,13 @@
 
 import Cocoa
 
-class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource, SectionControllerDelegate {
+class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
 
     @IBOutlet weak var outlineView: NSOutlineView!
-    var sectionController: SectionControllerFromContents? {
-        willSet {
-            sectionController?.delegate = nil
-        }
+    var sectionController: SectionController? {
         didSet {
-            sectionController?.delegate = self
             outlineView.reloadData()
+            outlineView.expandItem(nil, expandChildren: true)
         }
     }
     
@@ -29,7 +26,7 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
         switch item ?? sectionController ?? 0 {
         case let section as ContentSection:
             return section.bucketMap.count
-        case let controller as SectionControllerFromContents:
+        case let controller as SectionController:
             return controller.sectionCount
         default:
             return 0
@@ -43,8 +40,8 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         switch item ?? sectionController ?? 0 {
         case let section as ContentSection:
-            return section.bucketMap [index]
-        case let controller as SectionControllerFromContents:
+            return section.bucketMap [index].value
+        case let controller as SectionController:
             return controller.getSection (idx: index)
         default:
             return "fuck"
@@ -78,5 +75,20 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         return !(item is ContentSection)
     }
+    
+    func outlineViewSelectionDidChange(_ notification: Notification) {
+        guard let sectionController = sectionController else {
+            return
+        }
+        let item = outlineView.item(atRow: outlineView.selectedRow)
+        switch item ?? 0 {
+        case let section as ContentSection:
+            sectionController.delegate?.selectedSectionChanged(contents: sectionController.contents, section: section, bucket: nil)
+        case let bucket as ContentBucket:
+            sectionController.delegate?.selectedSectionChanged(contents: sectionController.contents, section: nil, bucket: bucket)
+        default: break
+        }
+    }
+    
     
 }

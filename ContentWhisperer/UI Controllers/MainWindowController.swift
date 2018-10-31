@@ -8,13 +8,14 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController {
+class MainWindowController: NSWindowController, SectionControllerDelegate {
     
     @IBOutlet weak var titleLabel: NSTextField!
     
 //    var appDelegate: AppDelegate!
     var mainViewController: MainViewController!
     var contentsSourceListViewController: ContentSourceListViewController!
+    var thumbnailsCollectionViewController: ThumbnailsCollectionViewController!
         
     let contentProvider = ContentProvider (registeredContentTypes: [
         ImageContent.contentType,
@@ -23,6 +24,7 @@ class MainWindowController: NSWindowController {
     
     var sectionController: SectionControllerFromContents? {
         didSet {
+            sectionController?.delegate = self
             contentsSourceListViewController.sectionController = sectionController
         }
     }
@@ -46,6 +48,7 @@ class MainWindowController: NSWindowController {
         // Fail if there's a problem with the view controllers
         precondition (mainViewController != nil, failMsg)
         precondition (contentsSourceListViewController != nil, failMsg)
+        precondition (thumbnailsCollectionViewController != nil, failMsg)
         
         UserDefaults.standard.registerImageWhispererDefaults ()
         
@@ -62,6 +65,7 @@ class MainWindowController: NSWindowController {
             switch controller {
             case let mv as MainViewController : mainViewController = mv
             case let cv as ContentSourceListViewController : contentsSourceListViewController = cv
+            case let tv as ThumbnailsCollectionViewController: thumbnailsCollectionViewController = tv
             default: break
             }
             
@@ -88,4 +92,10 @@ class MainWindowController: NSWindowController {
         return true
     }
     
+    func selectedSectionChanged (contents: Contents, section: ContentSection?, bucket: ContentBucket?) {
+        
+        if let bucket = bucket {
+            thumbnailsCollectionViewController.thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
+        }
+    }
 }
