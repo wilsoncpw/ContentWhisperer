@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class MovieContent: Content {
+final class MovieContent: ContentBase, Content {
     static let contentType = ContentType (
         name: "Videos",
         fileTypes: Set<String> (["m4v", "mov", "mp4"]),
@@ -17,12 +17,8 @@ final class MovieContent: Content {
             (name: "Clips", fileTypes: Set<String> (["mov", "mp4"]))],
         contentClass: MovieContent.self)
     
-    let fileName: String
-    
-    init (fileName: String) {
-        self.fileName = fileName
+    func getThumbnailCGImage (folderURL: URL) -> CGImage? {
+        return nil
     }
-    var thumbnail: CachedThumbnail {
-        return CachedThumbnail ()
-    }
+
 }

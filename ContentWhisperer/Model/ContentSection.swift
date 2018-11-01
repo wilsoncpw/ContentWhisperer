@@ -8,19 +8,6 @@
 
 import Foundation
 
-class ContentBucket {
-    let name: String
-    private (set) var contents : [Content]
-    
-    init (name: String, initialContent: [Content]) {
-        self.name = name
-        self.contents = initialContent
-    }
-    
-    func addContent (_ content: Content) {
-        contents.append(content)
-    }
-}
 
 typealias BucketDictionary = OrderedDictionary<String, ContentBucket>
 
@@ -35,6 +22,10 @@ class ContentSection {
             if let newBucket = ContentSection.AddContentToBuckets (bucketMap: bucketsSum, content: content) {
                 bucketsSum [newBucket.name] = newBucket
             }
+        }
+        
+        for bucket in bucketMap {
+            bucket.value.calcFileNameMap ()
         }
     }
     

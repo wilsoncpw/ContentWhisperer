@@ -30,6 +30,9 @@
 		26F0F296216D14930077DF97 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F295216D14930077DF97 /* Contents.swift */; };
 		26F0F298216D18640077DF97 /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F297216D18640077DF97 /* ImageContent.swift */; };
 		26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F299216D28BE0077DF97 /* ContentProvider.swift */; };
+		26F48DA0218A74CA00D905DF /* ThumbnailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F48D9F218A74CA00D905DF /* ThumbnailLoader.swift */; };
+		26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F48DA1218A7BBF00D905DF /* ContentBucket.swift */; };
+		26F48DA4218A831300D905DF /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F48DA3218A831300D905DF /* ThumbnailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +75,9 @@
 		26F0F295216D14930077DF97 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		26F0F297216D18640077DF97 /* ImageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
 		26F0F299216D28BE0077DF97 /* ContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
+		26F48D9F218A74CA00D905DF /* ThumbnailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailLoader.swift; sourceTree = "<group>"; };
+		26F48DA1218A7BBF00D905DF /* ContentBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBucket.swift; sourceTree = "<group>"; };
+		26F48DA3218A831300D905DF /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */,
+				26F48DA3218A831300D905DF /* ThumbnailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +177,7 @@
 			children = (
 				26F0F295216D14930077DF97 /* Contents.swift */,
 				260DE9B2216EAF72002C673F /* ContentSection.swift */,
+				26F48DA1218A7BBF00D905DF /* ContentBucket.swift */,
 				26F0F297216D18640077DF97 /* ImageContent.swift */,
 				261DAB82216D5B6800518EA2 /* MovieContent.swift */,
 				261DAB84216D5BB900518EA2 /* ContentBase.swift */,
@@ -177,6 +185,7 @@
 				26F0F299216D28BE0077DF97 /* ContentProvider.swift */,
 				26B23F5F2187CBDD00FF4A67 /* ContentType.swift */,
 				26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */,
+				26F48D9F218A74CA00D905DF /* ThumbnailLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F48DA4218A831300D905DF /* ThumbnailView.swift in Sources */,
 				26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */,
 				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
 				260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */,
+				26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */,
 				26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */,
 				261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */,
 				26F0F296216D14930077DF97 /* Contents.swift in Sources */,
@@ -270,6 +281,7 @@
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
 				26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */,
 				26D92EFF2189F1C70007A829 /* OrderedDictionary.swift in Sources */,
+				26F48DA0218A74CA00D905DF /* ThumbnailLoader.swift in Sources */,
 				26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */,
 				261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */,
 				26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */,

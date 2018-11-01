@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class ImageContent: Content {
+final class ImageContent: ContentBase, Content {
     static let contentType = ContentType (
         name: "Images",
         fileTypes: Set<String> (["jpg", "jpeg", "png", "tiff", "gif", "heic"]),
@@ -17,13 +17,17 @@ final class ImageContent: Content {
             (name: "Animated", fileTypes: Set<String> (["gif"]))],
         contentClass: ImageContent.self)
     
-    let fileName: String
-    
-    init (fileName: String) {
-        self.fileName = fileName
+    func getThumbnailCGImage (folderURL: URL) -> CGImage? {
+        let url = folderURL.appendingPathComponent(fileName)
+        if let source = CGImageSourceCreateWithURL(url as CFURL, nil) {
+            let options: [NSString: AnyObject] = [
+                kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue,
+                kCGImageSourceThumbnailMaxPixelSize: 200 as CFNumber,
+                kCGImageSourceShouldCache: kCFBooleanFalse
+            ]
+            return CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary)
+         }
+        return nil
     }
-    
-    var thumbnail: CachedThumbnail {
-        return CachedThumbnail ()
-    }
+
 }

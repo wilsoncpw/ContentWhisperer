@@ -984,13 +984,14 @@
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="AMS-ut-7Zk">
+                                        <collectionView selectable="YES" id="AMS-ut-7Zk">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="158"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="fpG-53-zED">
-                                                <size key="itemSize" width="50" height="50"/>
+                                                <size key="itemSize" width="100" height="100"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="secondaryBackgroundColor" name="controlAlternatingRowColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="olj-Ul-NSu" id="kJB-f3-8bL"/>
                                                 <outlet property="delegate" destination="olj-Ul-NSu" id="kGO-lE-FAU"/>
