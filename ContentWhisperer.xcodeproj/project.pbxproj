@@ -12,6 +12,7 @@
 		261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB82216D5B6800518EA2 /* MovieContent.swift */; };
 		261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB84216D5BB900518EA2 /* ContentBase.swift */; };
 		261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */; };
+		2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2632E60B218A9EBB00A6EEF6 /* CachedThumbnail.swift */; };
 		26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5D2187C3D000FF4A67 /* Notifications.swift */; };
 		26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5F2187CBDD00FF4A67 /* ContentType.swift */; };
 		26D92EFF2189F1C70007A829 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */; };
@@ -54,6 +55,7 @@
 		261DAB82216D5B6800518EA2 /* MovieContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContent.swift; sourceTree = "<group>"; };
 		261DAB84216D5BB900518EA2 /* ContentBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBase.swift; sourceTree = "<group>"; };
 		261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionControllerFromContents.swift; sourceTree = "<group>"; };
+		2632E60B218A9EBB00A6EEF6 /* CachedThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedThumbnail.swift; sourceTree = "<group>"; };
 		26B23F5D2187C3D000FF4A67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		26B23F5F2187CBDD00FF4A67 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				26F0F297216D18640077DF97 /* ImageContent.swift */,
 				261DAB82216D5B6800518EA2 /* MovieContent.swift */,
 				261DAB84216D5BB900518EA2 /* ContentBase.swift */,
+				2632E60B218A9EBB00A6EEF6 /* CachedThumbnail.swift */,
 				261DAB80216D53CE00518EA2 /* ContentClassDetails.swift */,
 				26F0F299216D28BE0077DF97 /* ContentProvider.swift */,
 				26B23F5F2187CBDD00FF4A67 /* ContentType.swift */,
@@ -271,6 +274,7 @@
 				26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */,
 				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
 				260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */,
+				2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */,
 				26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */,
 				26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */,
 				261DAB85216D5BB900518EA2 /* ContentBase.swift in Sources */,
