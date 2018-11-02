@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVKit
 
 final class MovieContent: ContentBase, Content {
     static let contentType = ContentType (
@@ -18,11 +19,30 @@ final class MovieContent: ContentBase, Content {
         contentClass: MovieContent.self)
     
     func getThumbnailCGImage (folderURL: URL) -> CGImage? {
-        return nil
+        let asset = AVAsset(url: folderURL.appendingPathComponent(fileName))
+        
+        let assetImgGenerate = AVAssetImageGenerator(asset: asset)
+        assetImgGenerate.appliesPreferredTrackTransform = true
+        
+        let time = CMTimeMakeWithSeconds(Float64(1), preferredTimescale: 100)
+        return try? assetImgGenerate.copyCGImage(at: time, actualTime: nil)
     }
     
     func getDisplayLayer (folderURL: URL) -> CALayer? {
-        return nil
+        
+        // initialize the video player with the url
+        let player = AVPlayer(url: folderURL.appendingPathComponent(fileName))
+        let layer: AVPlayerLayer = AVPlayerLayer(player: player)
+        
+        layer.isOpaque = true
+        layer.contentsGravity = .resizeAspect
+        layer.shadowOpacity = 1
+        layer.shadowRadius = 20
+        layer.videoGravity = .resizeAspectFill
+        
+        player.play()
+        
+        return layer
     }
 
 }

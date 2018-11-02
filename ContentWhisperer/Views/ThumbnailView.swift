@@ -66,9 +66,9 @@ class ThumbnailView: NSView {
         var cg = cgImage
         
         if cg == nil {
-//            let blank = #imageLiteral(resourceName: "Placeholder")
-//            var r = CGRect (x: 0, y: 0, width: 300, height: 300)
-//            cg = blank.cgImage(forProposedRect: &r, context: nil, hints: nil)
+            let blank = #imageLiteral(resourceName: "Placeholder")
+            var r = CGRect (x: 0, y: 0, width: 300, height: 300)
+            cg = blank.cgImage(forProposedRect: &r, context: nil, hints: nil)
         }
         
         let sublayer: CALayer
