@@ -929,16 +929,30 @@
                             <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-qt-lOB">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <subviews>
-                                    <customView fixedFrame="YES" id="Vix-G2-Gyv">
-                                        <rect key="frame" x="0.0" y="0.0" width="450" height="212"/>
+                                    <customView id="Vix-G2-Gyv">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="4y3-Ib-kGb">
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="177"/>
+                                                <connections>
+                                                    <segue destination="nR7-fz-JII" kind="embed" id="IoU-vi-r3d"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="4y3-Ib-kGb" firstAttribute="leading" secondItem="Vix-G2-Gyv" secondAttribute="leading" id="0Ab-IY-rCw"/>
+                                            <constraint firstItem="4y3-Ib-kGb" firstAttribute="top" secondItem="Vix-G2-Gyv" secondAttribute="top" id="ZGl-hZ-Oh4"/>
+                                            <constraint firstAttribute="bottom" secondItem="4y3-Ib-kGb" secondAttribute="bottom" id="ZYe-7E-hY2"/>
+                                            <constraint firstAttribute="trailing" secondItem="4y3-Ib-kGb" secondAttribute="trailing" id="vRp-UA-m04"/>
+                                        </constraints>
                                     </customView>
                                     <customView id="rm3-d4-0AG">
-                                        <rect key="frame" x="0.0" y="222" width="450" height="78"/>
+                                        <rect key="frame" x="0.0" y="187" width="450" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aMc-uS-zfW">
-                                                <rect key="frame" x="0.0" y="0.0" width="450" height="78"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="113"/>
                                                 <connections>
                                                     <segue destination="olj-Ul-NSu" kind="embed" id="gph-3g-gaO"/>
                                                 </connections>
@@ -1022,6 +1036,20 @@
                 </viewController>
                 <customObject id="3VC-2A-1np" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="800" y="766"/>
+        </scene>
+        <!--Contents View Controller-->
+        <scene sceneID="bxv-xE-YwD">
+            <objects>
+                <viewController id="nR7-fz-JII" customClass="ContentsViewController" customModule="ContentWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="1Je-1n-Erq" customClass="ContentsView" customModule="ContentWhisperer" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="hc1-K4-oqu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="1131"/>
         </scene>
     </scenes>
     <resources>

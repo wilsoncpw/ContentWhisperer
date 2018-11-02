@@ -6,13 +6,14 @@
 //  Copyright © 2018 Colin Wilson. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 protocol Content {
     static var contentType: ContentType { get }
     init (fileName: String)
     var fileName: String { get }
     func getThumbnailCGImage (folderURL: URL) -> CGImage?
+    func getDisplayLayer (folderURL: URL)->CALayer?
 }
 
 class ContentBase {

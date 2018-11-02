@@ -23,9 +23,16 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         }
     }
     
+    var selectedIdx: Int? {
+        didSet {
+            if selectedIdx != oldValue {
+                NotificationCenter.default.post(name: .onSelectionChanged, object: selectedIdx)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,6 +61,14 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
     
     func collectionView(_ collectionView: NSCollectionView, didEndDisplaying item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
         thumbnailsController?.itemNotRequired(idx: indexPath.item)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        selectedIdx = collectionView.selectionIndexes.first
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
+        selectedIdx = collectionView.selectionIndexes.first
     }
     
 }

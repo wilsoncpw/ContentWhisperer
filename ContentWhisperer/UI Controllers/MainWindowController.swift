@@ -16,6 +16,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
     var mainViewController: MainViewController!
     var contentsSourceListViewController: ContentSourceListViewController!
     var thumbnailsCollectionViewController: ThumbnailsCollectionViewController!
+    var contentsViewController: ContentsViewController!
         
     let contentProvider = ContentProvider (registeredContentTypes: [
         ImageContent.contentType,
@@ -49,6 +50,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         precondition (mainViewController != nil, failMsg)
         precondition (contentsSourceListViewController != nil, failMsg)
         precondition (thumbnailsCollectionViewController != nil, failMsg)
+        precondition (contentsViewController != nil, failMsg)
         
         UserDefaults.standard.registerImageWhispererDefaults ()
         
@@ -66,6 +68,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
             case let mv as MainViewController : mainViewController = mv
             case let cv as ContentSourceListViewController : contentsSourceListViewController = cv
             case let tv as ThumbnailsCollectionViewController: thumbnailsCollectionViewController = tv
+            case let co as ContentsViewController: contentsViewController = co
             default: break
             }
             
@@ -86,6 +89,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
 
         NSDocumentController.shared.noteNewRecentDocumentURL(url)
         sectionController = SectionControllerFromContents (contents: contents)
+        selectedSectionChanged(contents: contents, section: nil, bucket: nil)
         
 //        setTitleLabelForImages(images)
         NSDocumentController.shared.noteNewRecentDocumentURL(url)
@@ -96,6 +100,10 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         
         if let bucket = bucket {
             thumbnailsCollectionViewController.thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
+            contentsViewController.layerController = CALayerControllerFromContentBucket (contents: contents, bucket: bucket)
+        } else {
+            thumbnailsCollectionViewController.thumbnailsController = nil
+            contentsViewController.layerController = nil
         }
     }
 }

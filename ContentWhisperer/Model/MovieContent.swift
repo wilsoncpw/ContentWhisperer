@@ -6,7 +6,7 @@
 //  Copyright © 2018 Colin Wilson. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 final class MovieContent: ContentBase, Content {
     static let contentType = ContentType (
@@ -18,6 +18,10 @@ final class MovieContent: ContentBase, Content {
         contentClass: MovieContent.self)
     
     func getThumbnailCGImage (folderURL: URL) -> CGImage? {
+        return nil
+    }
+    
+    func getDisplayLayer (folderURL: URL) -> CALayer? {
         return nil
     }
 
