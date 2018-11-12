@@ -14,10 +14,21 @@ protocol Content {
     init (fileName: String)
     var fileName: String { get }
     func getThumbnailCGImage (folderURL: URL) -> CGImage?
-    func getDisplayLayer (folderURL: URL)->CALayer?
+    func getPlayer (folderURL: URL) -> ContentPlayer?
+}
+
+protocol ContentPlayerDelegate : NSObjectProtocol {
+    func finished ()
+}
+
+protocol ContentPlayer: AnyObject {
+    var delegate: ContentPlayerDelegate? { get set }
+    var caLayer: CALayer? { get }
     var duration: Double { get }
     var currentPosition: Double { get set }
-    func finished ()
+    
+    func play ()
+    func stop ()
 }
 
 class ContentBase {

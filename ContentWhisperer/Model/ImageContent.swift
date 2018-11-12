@@ -37,10 +37,29 @@ final class ImageContent: ContentBase, Content {
         return nil
     }
     
-    func getDisplayLayer(folderURL: URL) -> CALayer? {
-        guard let source = getImageSource(folderURL: folderURL) else {
-            return nil
+    func getPlayer (folderURL: URL) -> ContentPlayer? {
+        if let source = getImageSource(folderURL: folderURL) {
+            return ImageContentPlayer (source: source)
         }
+        return nil
+    }
+}
+
+class ImageContentPlayer: ContentPlayer {
+    
+    var delegate: ContentPlayerDelegate?
+    let duration = Double (0)
+    var currentPosition = Double (0)
+    
+    let source: CGImageSource
+    
+    init (source: CGImageSource) {
+        self.source = source
+    }
+    
+    lazy var caLayer = getCALayer ()
+    
+    private func getCALayer () -> CALayer? {
         
         typealias CGImageProperties = NSDictionary
         
@@ -93,8 +112,8 @@ final class ImageContent: ContentBase, Content {
         
         return rv
     }
-    func finished () {
-        
-    }
-
+    
+    func play() {}
+    
+    func stop () {}
 }
