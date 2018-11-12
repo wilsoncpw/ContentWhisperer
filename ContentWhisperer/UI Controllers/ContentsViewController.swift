@@ -10,8 +10,12 @@ import Cocoa
 
 class ContentsViewController: NSViewController, ContentPlayerDelegate {
     
+
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var contentsView: ContentsView!
+    
+    var contentPlayer: ContentPlayer?
+    var timer: Timer?
     
     var layerController: CALayerControllerFromContentBucket? {
         didSet {
@@ -26,9 +30,6 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
             self.selectionChanged(idx: notification.object as? Int)
         }
     }
-    
-    var contentPlayer: ContentPlayer?
-    var timer: Timer?
     
     private func stopTimer () {
         timer?.invalidate()
@@ -46,37 +47,25 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         }
     
         self.contentPlayer = contentPlayer
-        self.contentPlayer!.delegate = self
+        contentPlayer.delegate = self
         contentsView.setContentLayer(contentLayer: contentPlayer.caLayer)
-        contentPlayer.play()
         
-        var duration = contentPlayer.duration
-        
-        guard duration != 0 else {
-            slider.isHidden = true
-            
-            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {timer in
-                let v = contentPlayer.currentPosition
-                print (contentPlayer.duration)
-            }
+        if contentPlayer.duration == 0 {
             return
         }
         
-        slider.isHidden = false
-        slider.maxValue = duration
+        slider.maxValue = contentPlayer.duration
         slider.doubleValue = 0
+        slider.isHidden = false
+
         contentPlayer.play()
             
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {timer in
-            let v = contentPlayer.currentPosition
-            
-            if duration != contentPlayer.duration {
-                duration = contentPlayer.duration
-                self.slider.maxValue = duration
-            }
-            self.slider.doubleValue = v
-        }
+            self.slider.doubleValue = contentPlayer.currentPosition
+         }
     }
+    
+    func finished(sender: Any) {}
     
     @IBAction func sliderSlid(_ sender: Any) {
         guard let contentPlayer = contentPlayer else {
@@ -84,10 +73,5 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         }
         
         contentPlayer.currentPosition = slider.doubleValue
-    }
-    
-    func finished () {
-//        timer?.invalidate()
-//        timer = nil
     }
 }
