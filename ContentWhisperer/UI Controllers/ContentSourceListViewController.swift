@@ -89,6 +89,4 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
         default: break
         }
     }
-    
-    
 }

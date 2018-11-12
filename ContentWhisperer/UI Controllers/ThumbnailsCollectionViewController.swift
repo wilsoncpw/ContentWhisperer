@@ -19,6 +19,7 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         }
         didSet {
             thumbnailsController?.delegate = self
+            selectedIdx = nil
             collectionView.reloadData()
         }
     }

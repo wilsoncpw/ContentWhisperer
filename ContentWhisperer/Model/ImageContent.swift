@@ -9,6 +9,10 @@
 import Cocoa
 
 final class ImageContent: ContentBase, Content {
+    let duration = Double (0)
+    
+    var currentPosition = Double (0)
+    
     static let contentType = ContentType (
         name: "Images",
         fileTypes: Set<String> (["jpg", "jpeg", "png", "tiff", "gif", "heic"]),
@@ -88,6 +92,9 @@ final class ImageContent: ContentBase, Content {
         }
         
         return rv
+    }
+    func finished () {
+        
     }
 
 }

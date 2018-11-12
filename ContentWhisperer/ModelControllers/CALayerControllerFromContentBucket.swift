@@ -26,4 +26,24 @@ class CALayerControllerFromContentBucket {
         
         return content.getDisplayLayer(folderURL: contents.folderURL)
     }
+    
+    func getDuration (idx: Int) -> Double {
+        let content = bucket.contents [idx]
+        return content.duration
+    }
+    
+    func getCurrentPosition (idx: Int) -> Double {
+        let content = bucket.contents [idx]
+        return content.currentPosition
+    }
+    
+    func setCurrentPosition (idx: Int, value: Double) {
+        var content = bucket.contents [idx]
+        content.currentPosition = value
+    }
+    
+    func finished (idx: Int) {
+        let content = bucket.contents [idx]
+        content.finished()
+    }
 }

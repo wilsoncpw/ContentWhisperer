@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVKit
 
 protocol Content {
     static var contentType: ContentType { get }
@@ -14,6 +15,9 @@ protocol Content {
     var fileName: String { get }
     func getThumbnailCGImage (folderURL: URL) -> CGImage?
     func getDisplayLayer (folderURL: URL)->CALayer?
+    var duration: Double { get }
+    var currentPosition: Double { get set }
+    func finished ()
 }
 
 class ContentBase {

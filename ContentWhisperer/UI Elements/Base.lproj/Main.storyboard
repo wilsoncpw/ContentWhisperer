@@ -1042,10 +1042,35 @@
         <scene sceneID="bxv-xE-YwD">
             <objects>
                 <viewController id="nR7-fz-JII" customClass="ContentsViewController" customModule="ContentWhisperer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="1Je-1n-Erq" customClass="ContentsView" customModule="ContentWhisperer" customModuleProvider="target">
+                    <view key="view" id="1Je-1n-Erq">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <slider hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dk1-A6-HbU">
+                                <rect key="frame" x="-2" y="-2" width="454" height="19"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="DFJ-Xr-VfW"/>
+                                <connections>
+                                    <action selector="sliderSlid:" target="nR7-fz-JII" id="HO8-tZ-HWe"/>
+                                </connections>
+                            </slider>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="9ad-je-reo" customClass="ContentsView" customModule="ContentWhisperer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="15" width="450" height="285"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="dk1-A6-HbU" secondAttribute="bottom" id="D2k-Qg-RVv"/>
+                            <constraint firstAttribute="trailing" secondItem="dk1-A6-HbU" secondAttribute="trailing" id="Gsk-PM-iSe"/>
+                            <constraint firstItem="dk1-A6-HbU" firstAttribute="leading" secondItem="1Je-1n-Erq" secondAttribute="leading" id="NuL-3x-TRh"/>
+                            <constraint firstAttribute="trailing" secondItem="9ad-je-reo" secondAttribute="trailing" id="XHI-Oq-ab9"/>
+                            <constraint firstItem="9ad-je-reo" firstAttribute="top" secondItem="1Je-1n-Erq" secondAttribute="top" id="cL1-me-mZa"/>
+                            <constraint firstItem="dk1-A6-HbU" firstAttribute="top" secondItem="9ad-je-reo" secondAttribute="bottom" id="mgr-JE-Mbd"/>
+                            <constraint firstItem="9ad-je-reo" firstAttribute="leading" secondItem="1Je-1n-Erq" secondAttribute="leading" id="pam-Xx-40G"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsView" destination="9ad-je-reo" id="TwK-V1-L4a"/>
+                        <outlet property="slider" destination="dk1-A6-HbU" id="Rb9-gw-X4D"/>
+                    </connections>
                 </viewController>
                 <customObject id="hc1-K4-oqu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
