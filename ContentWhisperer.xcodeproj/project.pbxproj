@@ -197,8 +197,8 @@
 				26F86AD3219A3D2F0045DD6B /* Content Classes */,
 				26F86AD4219A3D8B0045DD6B /* Content Players */,
 				2632E60B218A9EBB00A6EEF6 /* CachedThumbnail.swift */,
-				26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */,
 				26F48D9F218A74CA00D905DF /* ThumbnailLoader.swift */,
+				26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

@@ -8,8 +8,15 @@
 
 import Cocoa
 
+enum ContentPlayerStatus {
+    case readyToPlay
+    case failed
+    case unknown
+    case finished
+}
+
 protocol ContentPlayerDelegate : NSObjectProtocol {
-    func finished (sender: Any)
+    func statusChanged (sender: Any, status : ContentPlayerStatus)
 }
 
 protocol ContentPlayer: AnyObject {
@@ -17,6 +24,7 @@ protocol ContentPlayer: AnyObject {
     var caLayer: CALayer? { get }
     var duration: Double { get }
     var currentPosition: Double { get set }
+    var isPlaying: Bool { get }
     
     func play ()
     func stop ()

@@ -10,19 +10,41 @@ import Foundation
 import AVKit
 
 class MovieContentPlayer: NSObject, ContentPlayer {
-    var delegate: ContentPlayerDelegate?
-    let duration: Double
+    weak var delegate: ContentPlayerDelegate?
+    lazy var duration: Double = asset.duration.seconds
+    var statusObserver: NSKeyValueObservation?
     
-    let player: AVPlayer
+    let asset: AVAsset
     
-    init (player: AVPlayer, duration: Double) {
-        self.player = player
-        self.duration = duration
+    var player: AVPlayer
+    
+    init (asset: AVAsset) {
+        self.asset = asset
+        let item = AVPlayerItem (asset: asset)
+        player = AVPlayer (playerItem: item)
+        
+        super.init()
+        
+        statusObserver = item.observe(\.status, options: [.new, .old]) {[weak self] item, change in
+            
+            let cps: ContentPlayerStatus
+            switch item.status {
+            case .failed: cps = .failed
+            case.readyToPlay: cps = .readyToPlay
+            case .unknown: cps = .unknown
+            }
+            
+            if let s = self {
+                s.delegate?.statusChanged(sender: s, status: cps)
+            }
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(finishVideo), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
     deinit {
         print ("MoveContentPlayer deinit")
-        player.removeObserver(self, forKeyPath: "status")
+        statusObserver?.invalidate()
     }
     
     lazy var caLayer = getCALayer ()
@@ -37,28 +59,12 @@ class MovieContentPlayer: NSObject, ContentPlayer {
         layer.shadowRadius = 20
         layer.videoGravity = .resizeAspect
         
-        player.addObserver(self, forKeyPath: "status", options:NSKeyValueObservingOptions(), context: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(finishVideo), name: .AVPlayerItemDidPlayToEndTime, object: nil)
-        
         return layer
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "status" {
-            let st = player.status
-            
-            switch st {
-            case .failed: print ("Status: failed")
-            case .readyToPlay: print ("Status: ready to play")
-            case .unknown: print ("Status: Unknown")
-            }
-        }
     }
     
     @objc func finishVideo()
     {
-        delegate?.finished(sender: self)
+        delegate?.statusChanged(sender: self, status: .finished)
     }
     
     func play () {
@@ -78,5 +84,9 @@ class MovieContentPlayer: NSObject, ContentPlayer {
             let time = CMTime (seconds: newValue, preferredTimescale: timescale)
             player.seek(to: time, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
         }
+    }
+    
+    var isPlaying: Bool {
+        return player.rate != 0 && player.error == nil
     }
 }

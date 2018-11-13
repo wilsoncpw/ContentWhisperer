@@ -12,8 +12,6 @@ import AVKit
 final class MovieContent: Content {
     let fileName: String
     
-    var _duration: Double?
-    
     static let contentType = ContentType (
         name: "Videos",
         fileTypes: Set<String> (["m4v", "mov", "mp4"]),
@@ -26,10 +24,8 @@ final class MovieContent: Content {
         self.fileName = fileName
     }
     
-    @discardableResult private func getAsset (folderURL: URL) -> AVAsset {
-        let asset = AVAsset(url: folderURL.appendingPathComponent(fileName))
-        _duration = asset.duration.seconds
-        return asset
+    private func getAsset (folderURL: URL) -> AVAsset {
+        return AVAsset(url: folderURL.appendingPathComponent(fileName))
     }
     
     func getThumbnailCGImage (folderURL: URL) -> CGImage? {
@@ -42,10 +38,8 @@ final class MovieContent: Content {
     }
     
     func getPlayer(folderURL: URL) -> ContentPlayer? {
-        if _duration == nil {
-            getAsset (folderURL: folderURL)
-        }
-        return MovieContentPlayer (player: AVPlayer (url: folderURL.appendingPathComponent(fileName)), duration: _duration!)
+        let asset = getAsset(folderURL: folderURL)
+        return MovieContentPlayer (asset: asset)
     }
 }
 

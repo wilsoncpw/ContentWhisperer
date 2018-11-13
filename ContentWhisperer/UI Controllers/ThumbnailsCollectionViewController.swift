@@ -34,6 +34,7 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,10 +66,17 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        for path in indexPaths {
+            (collectionView.item(at: path) as? ThumbnailsCollectionViewItem)?.setHighlight(selected: true)
+        }
         selectedIdx = collectionView.selectionIndexes.first
     }
     
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
+        indexPaths.forEach() {
+            path in
+            (collectionView.item(at: path) as? ThumbnailsCollectionViewItem)?.setHighlight(selected: false)
+        }
         selectedIdx = collectionView.selectionIndexes.first
     }
     

@@ -16,7 +16,8 @@ class ThumbnailsCollectionViewItem: NSCollectionViewItem {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        view.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
+        view.layer?.cornerRadius = 0
     }
     
     //-----------------------------------------------------------------------------------
@@ -34,12 +35,15 @@ class ThumbnailsCollectionViewItem: NSCollectionViewItem {
             cachedThumbnail = nil
         }
         
-//        setHighlight(selected: selected)
+        setHighlight(selected: selected)
     }
     
     func displayCachedThumbnail () {
         thumbnailView.setCGImage(cgImage: cachedThumbnail?.cgImage)
-
     }
     
+    //-----------------------------------------------------------------------------------
+    func setHighlight (selected: Bool) {
+        view.layer?.borderWidth = selected ? 3.0 : 0.0
+    }
 }

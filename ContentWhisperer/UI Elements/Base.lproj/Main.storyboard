@@ -1047,7 +1047,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <slider hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dk1-A6-HbU">
-                                <rect key="frame" x="-2" y="-2" width="454" height="19"/>
+                                <rect key="frame" x="19" y="-2" width="433" height="19"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="DFJ-Xr-VfW"/>
                                 <connections>
                                     <action selector="sliderSlid:" target="nR7-fz-JII" id="HO8-tZ-HWe"/>
@@ -1056,11 +1056,27 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="9ad-je-reo" customClass="ContentsView" customModule="ContentWhisperer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="15" width="450" height="285"/>
                             </customView>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="xH2-Qm-aRe">
+                                <rect key="frame" x="0.0" y="0.0" width="21" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="1a2-sR-fjb"/>
+                                    <constraint firstAttribute="width" constant="21" id="cA9-d0-ugb"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayPauseTemplate" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="GFB-NS-2sk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pausePlayClicked:" target="nR7-fz-JII" id="bb9-5B-Qkw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xH2-Qm-aRe" secondAttribute="bottom" id="BjG-lD-Yrp"/>
                             <constraint firstAttribute="bottom" secondItem="dk1-A6-HbU" secondAttribute="bottom" id="D2k-Qg-RVv"/>
+                            <constraint firstItem="dk1-A6-HbU" firstAttribute="leading" secondItem="xH2-Qm-aRe" secondAttribute="trailing" id="DZe-00-p8d"/>
                             <constraint firstAttribute="trailing" secondItem="dk1-A6-HbU" secondAttribute="trailing" id="Gsk-PM-iSe"/>
-                            <constraint firstItem="dk1-A6-HbU" firstAttribute="leading" secondItem="1Je-1n-Erq" secondAttribute="leading" id="NuL-3x-TRh"/>
+                            <constraint firstItem="xH2-Qm-aRe" firstAttribute="leading" secondItem="1Je-1n-Erq" secondAttribute="leading" id="QAG-DF-Qhn"/>
                             <constraint firstAttribute="trailing" secondItem="9ad-je-reo" secondAttribute="trailing" id="XHI-Oq-ab9"/>
                             <constraint firstItem="9ad-je-reo" firstAttribute="top" secondItem="1Je-1n-Erq" secondAttribute="top" id="cL1-me-mZa"/>
                             <constraint firstItem="dk1-A6-HbU" firstAttribute="top" secondItem="9ad-je-reo" secondAttribute="bottom" id="mgr-JE-Mbd"/>
@@ -1069,6 +1085,7 @@
                     </view>
                     <connections>
                         <outlet property="contentsView" destination="9ad-je-reo" id="TwK-V1-L4a"/>
+                        <outlet property="pausePlayButton" destination="xH2-Qm-aRe" id="yTa-EG-Xun"/>
                         <outlet property="slider" destination="dk1-A6-HbU" id="Rb9-gw-X4D"/>
                     </connections>
                 </viewController>
@@ -1079,5 +1096,6 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSTouchBarPlayPauseTemplate" width="23" height="30"/>
     </resources>
 </document>

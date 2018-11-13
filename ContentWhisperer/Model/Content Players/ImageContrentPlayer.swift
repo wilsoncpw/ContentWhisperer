@@ -10,9 +10,10 @@ import Cocoa
 
 class ImageContentPlayer: ContentPlayer {
     
-    var delegate: ContentPlayerDelegate?
+    weak var delegate: ContentPlayerDelegate?
     let duration = Double (0)
     var currentPosition = Double (0)
+    let isPlaying = false
     
     let source: CGImageSource
     
