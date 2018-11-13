@@ -8,7 +8,8 @@
 
 import Foundation
 
-
+///=================================================================================
+/// The contents of a folder - sorted into sections and buckets
 class Contents {
     let folderURL : URL
     let contentSections: [ContentSection]
@@ -17,5 +18,4 @@ class Contents {
         self.folderURL = folderURL
         self.contentSections = try contentProvider.loadContentsIntoSections(folderUrl: folderURL)
     }
-
 }

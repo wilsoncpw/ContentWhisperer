@@ -8,20 +8,6 @@
 
 import Foundation
 
-protocol ThumbnailsControllerDelegate: AnyObject {
-    func reloadThumbnail (sender: Any, idx: Int)
-}
-
-protocol ThumbnailsController: AnyObject {
-    var contents: Contents { get }
-    var contentCount: Int { get }
-    func getThumbnail (idx: Int) -> CachedThumbnail
-    func thumbnailChanged (thumbnail: CachedThumbnail)
-    func getThumbnailLabel (idx: Int)->String
-    var delegate: ThumbnailsControllerDelegate? { get set }
-    func itemRequired (idx: Int)
-    func itemNotRequired (idx: Int)
-}
 
 class IntHolder {
     var c = 0

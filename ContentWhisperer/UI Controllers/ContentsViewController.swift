@@ -18,7 +18,7 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
     var contentPlayer: ContentPlayer?
     var timer: Timer?
     
-    var layerController: CALayerControllerFromContentBucket? {
+    var playerController: PlayerController? {
         didSet {
             contentsView?.setContentLayer(contentLayer: nil)
             stopTimer()
@@ -43,7 +43,7 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         contentPlayer = nil
         stopTimer()
         
-        guard let layerController = layerController, let idx = idx, let contentPlayer = layerController.getContentPlayer(idx: idx) else {
+        guard let playerController = playerController, let idx = idx, let contentPlayer = playerController.getContentPlayer(idx: idx) else {
             contentsView.setContentLayer(contentLayer: nil)
             slider.isHidden = true
             return
@@ -71,11 +71,8 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         }
     }
     
-    
     @IBAction func sliderSlid(_ sender: Any) {
-        guard let contentPlayer = contentPlayer else { return }
-        
-        contentPlayer.currentPosition = slider.doubleValue
+        contentPlayer?.currentPosition = slider.doubleValue
     }
     
     @IBAction func pausePlayClicked(_ sender: Any) {

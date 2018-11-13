@@ -11,6 +11,9 @@ import Foundation
 
 typealias BucketDictionary = OrderedDictionary<String, ContentBucket>
 
+
+///=================================================================================
+/// A content section contains a dictionary of buckets - each one containing content
 class ContentSection {
     let name: String;
     private (set) var bucketMap: BucketDictionary
@@ -22,10 +25,6 @@ class ContentSection {
             if let newBucket = ContentSection.AddContentToBuckets (bucketMap: bucketsSum, content: content) {
                 bucketsSum [newBucket.name] = newBucket
             }
-        }
-        
-        for bucket in bucketMap {
-            bucket.value.calcFileNameMap ()
         }
     }
     

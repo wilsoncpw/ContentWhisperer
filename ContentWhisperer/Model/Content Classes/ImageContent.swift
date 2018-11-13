@@ -30,21 +30,18 @@ final class ImageContent: Content {
     }
     
     func getThumbnailCGImage (folderURL: URL) -> CGImage? {
-        if let source = getImageSource(folderURL: folderURL) {
-            let options: [NSString: AnyObject] = [
-                kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue,
-                kCGImageSourceThumbnailMaxPixelSize: 200 as CFNumber,
-                kCGImageSourceShouldCache: kCFBooleanFalse
-            ]
-            return CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary)
-         }
-        return nil
+        guard let source = getImageSource(folderURL: folderURL) else { return nil }
+
+        let options: [NSString: AnyObject] = [
+            kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue,
+            kCGImageSourceThumbnailMaxPixelSize: 200 as CFNumber,
+            kCGImageSourceShouldCache: kCFBooleanFalse
+        ]
+        return CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary)
     }
     
     func getPlayer (folderURL: URL) -> ContentPlayer? {
-        if let source = getImageSource(folderURL: folderURL) {
-            return ImageContentPlayer (source: source)
-        }
-        return nil
+        guard let source = getImageSource(folderURL: folderURL) else { return nil }
+        return ImageContentPlayer (source: source)
     }
 }

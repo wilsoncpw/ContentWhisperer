@@ -12,7 +12,7 @@ import Foundation
 class ContentBucket {
     let name: String
     private (set) var contents : [Content]
-    private var filenameMap = [String:Int] ()
+    private var _filenameMap : [String:Int]?
     
     init (name: String, initialContent: [Content]) {
         self.name = name
@@ -21,15 +21,18 @@ class ContentBucket {
     
     func addContent (_ content: Content) {
         contents.append(content)
+        _filenameMap = nil
     }
     
-    func calcFileNameMap () {
-        var c = 0
-        filenameMap.removeAll()
-        for content in contents {
-            filenameMap [content.fileName] = c
-            c += 1
+    private var filenameMap: [String: Int] {
+        if _filenameMap == nil {
+            var c = 0
+            _filenameMap = contents.reduce(into: [String:Int]()) {accum, content in
+                accum [content.fileName] = c
+                c += 1
+            }
         }
+        return _filenameMap!
     }
     
     func getIndexForFilename (fileName: String) -> Int? {

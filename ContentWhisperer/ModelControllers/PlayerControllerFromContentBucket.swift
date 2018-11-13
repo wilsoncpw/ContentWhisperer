@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class CALayerControllerFromContentBucket {
+
+class PlayerControllerFromContentBucket: PlayerController {
     let contents: Contents
     let bucket: ContentBucket
 

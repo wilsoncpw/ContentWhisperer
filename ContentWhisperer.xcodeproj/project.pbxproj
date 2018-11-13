@@ -12,11 +12,13 @@
 		261DAB85216D5BB900518EA2 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB84216D5BB900518EA2 /* Content.swift */; };
 		261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */; };
 		2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2632E60B218A9EBB00A6EEF6 /* CachedThumbnail.swift */; };
-		268AE8A8218BE3E4008E7EE4 /* CALayerControllerFromContentBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268AE8A7218BE3E4008E7EE4 /* CALayerControllerFromContentBucket.swift */; };
+		268AE8A8218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268AE8A7218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift */; };
 		268AE8AA218BEA55008E7EE4 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268AE8A9218BEA55008E7EE4 /* ContentsViewController.swift */; };
 		268AE8AC218BEADE008E7EE4 /* ContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268AE8AB218BEADE008E7EE4 /* ContentsView.swift */; };
+		26974C69219B2E9200134508 /* ThumbnailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C68219B2E9200134508 /* ThumbnailsController.swift */; };
+		26974C6C219B2EC900134508 /* SectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C6B219B2EC900134508 /* SectionController.swift */; };
+		26974C6E219B301700134508 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C6D219B301700134508 /* PlayerController.swift */; };
 		26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5D2187C3D000FF4A67 /* Notifications.swift */; };
-		26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5F2187CBDD00FF4A67 /* ContentType.swift */; };
 		26BE5C0F2199084400890682 /* ProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE5C0E2199084400890682 /* ProgressSlider.swift */; };
 		26D92EFF2189F1C70007A829 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */; };
 		26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */; };
@@ -61,11 +63,13 @@
 		261DAB84216D5BB900518EA2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionControllerFromContents.swift; sourceTree = "<group>"; };
 		2632E60B218A9EBB00A6EEF6 /* CachedThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedThumbnail.swift; sourceTree = "<group>"; };
-		268AE8A7218BE3E4008E7EE4 /* CALayerControllerFromContentBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerControllerFromContentBucket.swift; sourceTree = "<group>"; };
+		268AE8A7218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControllerFromContentBucket.swift; sourceTree = "<group>"; };
 		268AE8A9218BEA55008E7EE4 /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		268AE8AB218BEADE008E7EE4 /* ContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsView.swift; sourceTree = "<group>"; };
+		26974C68219B2E9200134508 /* ThumbnailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsController.swift; sourceTree = "<group>"; };
+		26974C6B219B2EC900134508 /* SectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionController.swift; sourceTree = "<group>"; };
+		26974C6D219B301700134508 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		26B23F5D2187C3D000FF4A67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		26B23F5F2187CBDD00FF4A67 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		26BE5C0E2199084400890682 /* ProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSlider.swift; sourceTree = "<group>"; };
 		26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -108,11 +112,22 @@
 		261DAB86216D70E700518EA2 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				26974C6A219B2EAA00134508 /* Protocols */,
 				261DAB89216D724C00518EA2 /* SectionControllerFromContents.swift */,
 				26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */,
-				268AE8A7218BE3E4008E7EE4 /* CALayerControllerFromContentBucket.swift */,
+				268AE8A7218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift */,
 			);
 			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		26974C6A219B2EAA00134508 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				26974C68219B2E9200134508 /* ThumbnailsController.swift */,
+				26974C6B219B2EC900134508 /* SectionController.swift */,
+				26974C6D219B301700134508 /* PlayerController.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		26D92F02218A103B0007A829 /* Views */ = {
@@ -218,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				261DAB84216D5BB900518EA2 /* Content.swift */,
-				26B23F5F2187CBDD00FF4A67 /* ContentType.swift */,
 				26F0F297216D18640077DF97 /* ImageContent.swift */,
 				261DAB82216D5B6800518EA2 /* MovieContent.swift */,
 			);
@@ -319,24 +333,26 @@
 				260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */,
 				2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */,
 				26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */,
-				268AE8A8218BE3E4008E7EE4 /* CALayerControllerFromContentBucket.swift in Sources */,
+				268AE8A8218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift in Sources */,
 				26BE5C0F2199084400890682 /* ProgressSlider.swift in Sources */,
 				26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */,
 				261DAB85216D5BB900518EA2 /* Content.swift in Sources */,
+				26974C6C219B2EC900134508 /* SectionController.swift in Sources */,
 				26F0F296216D14930077DF97 /* Contents.swift in Sources */,
 				26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */,
 				26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */,
 				26F0F298216D18640077DF97 /* ImageContent.swift in Sources */,
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
-				26B23F602187CBDD00FF4A67 /* ContentType.swift in Sources */,
 				26D92EFF2189F1C70007A829 /* OrderedDictionary.swift in Sources */,
 				268AE8AA218BEA55008E7EE4 /* ContentsViewController.swift in Sources */,
+				26974C6E219B301700134508 /* PlayerController.swift in Sources */,
 				26F48DA0218A74CA00D905DF /* ThumbnailLoader.swift in Sources */,
 				26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */,
 				261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */,
 				26F86AD6219A3DBE0045DD6B /* ImageContrentPlayer.swift in Sources */,
 				26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */,
 				268AE8AC218BEADE008E7EE4 /* ContentsView.swift in Sources */,
+				26974C69219B2E9200134508 /* ThumbnailsController.swift in Sources */,
 				26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */,
 				26F0F28A216CF0E90077DF97 /* MainWindowController.swift in Sources */,
 				261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */,

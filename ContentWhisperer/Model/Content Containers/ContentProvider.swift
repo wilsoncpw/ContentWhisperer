@@ -23,7 +23,7 @@ class ContentProvider {
     }
     
     func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
-        let urls = try FileManager.default.contentsOfDirectory(at: folderUrl, includingPropertiesForKeys: [URLResourceKey(rawValue: URLResourceKey.nameKey.rawValue)], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+        let urls = try FileManager.default.contentsOfDirectory(at: folderUrl, includingPropertiesForKeys: [.nameKey], options: .skipsHiddenFiles)
         
         return registeredContentTypes.reduce(into: [ContentSection]()) {sectionSum, contentType in
             

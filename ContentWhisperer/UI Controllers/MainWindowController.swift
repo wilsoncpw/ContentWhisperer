@@ -100,10 +100,10 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         
         if let bucket = bucket {
             thumbnailsCollectionViewController.thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
-            contentsViewController.layerController = CALayerControllerFromContentBucket (contents: contents, bucket: bucket)
+            contentsViewController.playerController = PlayerControllerFromContentBucket (contents: contents, bucket: bucket)
         } else {
             thumbnailsCollectionViewController.thumbnailsController = nil
-            contentsViewController.layerController = nil
+            contentsViewController.playerController = nil
         }
     }
 }
