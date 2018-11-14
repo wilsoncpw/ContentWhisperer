@@ -9,6 +9,8 @@
 import Cocoa
 import AVKit
 
+///=================================================================================
+/// ContentType.  Each content class provides a static one of these, which is used to register with the content provider
 struct ContentType {
     let fileTypes:Set<String>
     let name: String
@@ -23,6 +25,8 @@ struct ContentType {
     }
 }
 
+///=================================================================================
+/// Content protocol
 protocol Content {
     static var contentType: ContentType { get }
     init (fileName: String)

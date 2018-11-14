@@ -18,6 +18,12 @@ class ContentSection {
     let name: String;
     private (set) var bucketMap: BucketDictionary
 
+    ///----------------------------------------------------------------------------
+    /// init
+    ///
+    /// - Parameters:
+    ///   - name: The section name = eg. Images, Videos
+    ///   - contents: Array of objects confirming to Content
     init (name: String, contents: [Content]) {
         self.name = name
         
@@ -28,6 +34,13 @@ class ContentSection {
         }
     }
     
+    ///----------------------------------------------------------------------------
+    /// AddContentToBuckes
+    ///
+    /// - Parameters:
+    ///   - bucketMap: The dictionary of existing buckets
+    ///   - content: The content to add
+    /// - Returns: A new bucket containing the content - if the content won't fit in an existing one.
     private static func AddContentToBuckets (bucketMap: BucketDictionary, content: Content) -> ContentBucket? {
         let bucketName = type (of: content).contentType.bucketDefinitions.first(where:) {name, filetypes in
             let ext = (content.fileName as NSString).pathExtension.lowercased()
@@ -35,16 +48,11 @@ class ContentSection {
         }?.name ?? "~"
     
         guard let bucket = bucketMap [bucketName] else {
-            let newBucket = ContentBucket (name: bucketName, initialContent: [content])
+            let newBucket = ContentBucket (name: bucketName)
+            newBucket.addContent (content)
             return newBucket
         }
-        bucket.addContent(content)
+        bucket.addContent (content)
         return nil
-    }
-    
-    func addContent (_ content: Content) {
-        if let newBucket = ContentSection.AddContentToBuckets(bucketMap: bucketMap, content: content) {
-            bucketMap [newBucket.name] = newBucket
-        }
     }
 }

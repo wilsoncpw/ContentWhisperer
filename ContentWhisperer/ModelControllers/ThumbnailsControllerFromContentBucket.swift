@@ -39,7 +39,7 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     }
     
     func thumbnailChanged (thumbnail: CachedThumbnail) {
-        if let idx = bucket.getIndexForFilename(fileName: thumbnail.content.fileName) {
+        if let idx = bucket.getIndexForFilename(thumbnail.content.fileName) {
             delegate?.reloadThumbnail(sender: self, idx: idx)
         }
     }

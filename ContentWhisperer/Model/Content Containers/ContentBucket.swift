@@ -9,21 +9,37 @@
 import Foundation
 
 
+///=================================================================================
+/// A content bucket contains an array of Contents of the same kind
 class ContentBucket {
     let name: String
-    private (set) var contents : [Content]
+    private (set) var contents = [Content] ()
     private var _filenameMap : [String:Int]?
     
-    init (name: String, initialContent: [Content]) {
+    ///----------------------------------------------------------------------------
+    /// init
+    ///
+    /// - Parameters:
+    ///   - name: The bucket name, eg. Photos
+    init (name: String) {
         self.name = name
-        self.contents = initialContent
     }
     
+    ///----------------------------------------------------------------------------
+    /// addContent
+    ///
+    /// - Parameter content: The content to add
     func addContent (_ content: Content) {
         contents.append(content)
-        _filenameMap = nil
+        
+        if _filenameMap != nil {
+            _filenameMap! [content.fileName] = contents.count-1
+        }
     }
     
+    ///----------------------------------------------------------------------------
+    /// filenameMap : Keep a dictionary of filenames and their array index that
+    ///               getIndexForFilename can use.  Recalculate it if required
     private var filenameMap: [String: Int] {
         if _filenameMap == nil {
             var c = 0
@@ -35,7 +51,12 @@ class ContentBucket {
         return _filenameMap!
     }
     
-    func getIndexForFilename (fileName: String) -> Int? {
+    ///----------------------------------------------------------------------------
+    /// getIndexForFilename
+    ///
+    /// - Parameter fileName: The file name
+    /// - Returns: The index of the contents array
+    func getIndexForFilename (_ fileName: String) -> Int? {
         return filenameMap [fileName]
     }
 }
