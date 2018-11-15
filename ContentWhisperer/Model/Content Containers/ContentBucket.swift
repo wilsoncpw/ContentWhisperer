@@ -37,6 +37,14 @@ class ContentBucket {
         }
     }
     
+    func sortContents () {
+        contents.sort(by: ) { content1, content2 in
+            return content1.fileName <= content2.fileName
+        }
+        
+        _filenameMap = nil
+    }
+    
     ///----------------------------------------------------------------------------
     /// filenameMap : Keep a dictionary of filenames and their array index that
     ///               getIndexForFilename can use.  Recalculate it if required

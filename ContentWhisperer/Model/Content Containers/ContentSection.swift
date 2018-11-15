@@ -32,6 +32,10 @@ class ContentSection {
                 bucketsSum [newBucket.name] = newBucket
             }
         }
+        
+        bucketMap.forEach() {key, value in
+            value.sortContents ()
+        }
     }
     
     ///----------------------------------------------------------------------------
