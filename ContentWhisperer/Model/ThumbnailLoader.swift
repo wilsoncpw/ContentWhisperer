@@ -10,7 +10,7 @@ import Foundation
 
 //=======================================================================================
 // class ThumbnailDownloaderOperation
-class ThumbnailDownloaderOperation: Operatio
+class ThumbnailDownloaderOperation: Operation {
     let thumbnail: CachedThumbnail
     
     ///-----------------------------------------------------------------------------------
