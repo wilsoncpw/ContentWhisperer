@@ -11,9 +11,15 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    @IBOutlet weak var deleteMenuItem: NSMenuItem!
+    
     var mainWindowController: MainWindowController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let c = deleteMenuItem.keyEquivalent
+        let d = deleteMenuItem.keyEquivalentModifierMask
+        print (c, " ", d)
+ //       deleteMenuItem.keyEquivalent = String (format: "%c", NSBackspaceCharacter)
     }
 
     //----------------------------------------------------------------------
@@ -46,6 +52,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func openFolderAtURL (_ url: URL) -> Bool {
         return mainWindowController?.openFolderAtURL(url) ?? false
     }
-
 }
 

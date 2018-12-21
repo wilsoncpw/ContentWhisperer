@@ -15,7 +15,8 @@ class ContentBucket {
     let name: String
     private (set) var contents = [Content] ()
     private var _filenameMap : [String:Int]?
-    
+    private let contentQueue = DispatchQueue(label: "ContentQueue")
+
     ///----------------------------------------------------------------------------
     /// init
     ///
@@ -32,17 +33,21 @@ class ContentBucket {
     func addContent (_ content: Content) {
         contents.append(content)
         
-        if _filenameMap != nil {
-            _filenameMap! [content.fileName] = contents.count-1
+        contentQueue.async {
+            if self._filenameMap != nil {
+                self._filenameMap! [content.fileName] = self.contents.count-1
+            }
         }
     }
     
     func sortContents () {
-        contents.sort(by: ) { content1, content2 in
-            return content1.fileName <= content2.fileName
+        contentQueue.async {
+            self.contents.sort(by: ) { content1, content2 in
+                return content1.fileName <= content2.fileName
+            }
+            
+            self._filenameMap = nil
         }
-        
-        _filenameMap = nil
     }
     
     ///----------------------------------------------------------------------------
@@ -65,6 +70,26 @@ class ContentBucket {
     /// - Parameter fileName: The file name
     /// - Returns: The index of the contents array
     func getIndexForFilename (_ fileName: String) -> Int? {
-        return filenameMap [fileName]
+        return contentQueue.sync {
+            filenameMap [fileName]
+        }
+    }
+    
+    func removeContent (_ content: [Content])-> [Content] {
+        
+        return contentQueue.sync {
+            let idxs = content.reduce(into: [Int] ()) {
+                accum, content in
+                if let idx = filenameMap [content.fileName] {
+                    accum.append(idx)
+                }
+            }.sorted().reversed()
+            
+            let removed = idxs.reduce(into: [Content] ()) {accum, idx in contents.remove(at: idx)}
+            
+            _filenameMap = nil
+            
+            return removed
+        }
     }
 }

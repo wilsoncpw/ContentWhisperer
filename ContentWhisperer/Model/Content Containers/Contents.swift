@@ -8,11 +8,12 @@
 
 import Foundation
 
+
 ///=================================================================================
 /// The contents of a folder - sorted into sections and buckets
 class Contents {
     let folderURL : URL
-    let contentSections: [ContentSection]
+    private (set) var contentSections: [ContentSection]
 
     ///----------------------------------------------------------------------------
     /// init
@@ -24,5 +25,20 @@ class Contents {
     init (contentProvider: ContentProvider, folderURL: URL) throws {
         self.folderURL = folderURL
         self.contentSections = try contentProvider.loadContentsIntoSections(folderUrl: folderURL)
+    }
+    
+    func deleteContent (_ content: [Content]) -> [Content] {
+        var deletedSections = [Int] ()
+        defer {
+            for sectionIdx in deletedSections { contentSections.remove(at: sectionIdx) }
+        }
+        var idx = 0
+        return contentSections.reduce(into: [Content] ()) {
+            accum, section in accum.append(contentsOf: section.removeContent(content))
+            if section.buckets.count == 0 {
+                deletedSections.append(idx)
+            }
+            idx += 1
+        }
     }
 }

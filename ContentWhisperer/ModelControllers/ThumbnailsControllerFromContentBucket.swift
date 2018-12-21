@@ -80,4 +80,12 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
         }
     }
     
+    func deleteItems (_ items: Set<Int>) {
+        let contentToDelete = items.map { idx in
+            bucket.contents [idx]
+        }
+        
+        let deletedContents = contents.deleteContent(contentToDelete)
+        delegate?.removeThumbnails (sender: self, idxs: items)
+    }
 }

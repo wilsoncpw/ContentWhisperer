@@ -20,12 +20,16 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(forName: .onThumbnailsRemoved, object: nil, queue: nil) {
+            notification in
+            self.outlineView!.reloadData()
+        }
     }
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         switch item ?? sectionController ?? 0 {
         case let section as ContentSection:
-            return section.bucketMap.count
+            return section.buckets.count
         case let controller as SectionController:
             return controller.sectionCount
         default:
@@ -40,7 +44,7 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         switch item ?? sectionController ?? 0 {
         case let section as ContentSection:
-            return section.bucketMap [index].value
+            return section.buckets [index]
         case let controller as SectionController:
             return controller.getSection (idx: index)
         default:

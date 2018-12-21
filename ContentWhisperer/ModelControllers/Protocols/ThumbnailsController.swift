@@ -10,6 +10,7 @@ import Foundation
 
 protocol ThumbnailsControllerDelegate: NSObjectProtocol {
     func reloadThumbnail (sender: Any, idx: Int)
+    func removeThumbnails (sender: Any, idxs: Set<Int>)
 }
 
 protocol ThumbnailsController: AnyObject {
@@ -21,5 +22,6 @@ protocol ThumbnailsController: AnyObject {
     var delegate: ThumbnailsControllerDelegate? { get set }
     func itemRequired (idx: Int)
     func itemNotRequired (idx: Int)
+    func deleteItems (_ items: Set<Int>)
 }
 

@@ -16,7 +16,8 @@ typealias BucketDictionary = OrderedDictionary<String, ContentBucket>
 /// A content section contains a dictionary of buckets - each one containing content
 class ContentSection {
     let name: String;
-    private (set) var bucketMap: BucketDictionary
+    private (set) var buckets: [ContentBucket]
+
 
     ///----------------------------------------------------------------------------
     /// init
@@ -27,7 +28,7 @@ class ContentSection {
     init (name: String, contents: [Content]) {
         self.name = name
         
-        self.bucketMap = contents.reduce (into: BucketDictionary ()) {bucketsSum, content in
+        let bucketMap = contents.reduce (into: BucketDictionary ()) {bucketsSum, content in
             if let newBucket = ContentSection.AddContentToBuckets (bucketMap: bucketsSum, content: content) {
                 bucketsSum [newBucket.name] = newBucket
             }
@@ -36,6 +37,8 @@ class ContentSection {
         bucketMap.forEach() {key, value in
             value.sortContents ()
         }
+        
+        self.buckets = bucketMap.map { elem in elem.value }
     }
     
     ///----------------------------------------------------------------------------
@@ -58,5 +61,21 @@ class ContentSection {
         }
         bucket.addContent (content)
         return nil
+    }
+    
+    
+    func removeContent (_ content: [Content]) -> [Content] {
+        var emptyBuckets = [Int] ()
+        defer {
+            for bucketIdx in emptyBuckets.reversed() { buckets.remove(at: bucketIdx) }
+        }
+        var idx = 0
+        return buckets.reduce(into: [Content] ()) {accum, bucket in
+            accum.append(contentsOf: bucket.removeContent(content))
+            if bucket.contents.count == 0 {
+                emptyBuckets.append(idx)
+            }
+            idx += 1
+        }
     }
 }

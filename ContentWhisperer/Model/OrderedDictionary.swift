@@ -63,5 +63,16 @@ public struct OrderedDictionary <Key, Value>: Collection where Key: Hashable, Ke
 }
 
 extension OrderedDictionary: MutableCollection {
+    mutating func removeValue(forKey key: Key) -> Value? {
+        guard let rv = dict.removeValue(forKey: key) else {
+            return nil
+        }
+        
+        if let idx = keys.firstIndex(of: key) {
+            keys.remove(at: idx)
+        }
+        
+        return rv
+    }
 }
 

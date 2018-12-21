@@ -19,15 +19,15 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         }
         didSet {
             thumbnailsController?.delegate = self
-            selectedIdx = nil
+            focusedIdx = nil
             collectionView.reloadData()
         }
     }
     
-    var selectedIdx: Int? {
+    var focusedIdx: Int? {
         didSet {
-            if selectedIdx != oldValue {
-                NotificationCenter.default.post(name: .onSelectionChanged, object: selectedIdx)
+            if focusedIdx != oldValue {
+                NotificationCenter.default.post(name: .onSelectionChanged, object: focusedIdx)
             }
         }
     }
@@ -36,7 +36,7 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         super.viewDidLoad()
         
     }
-    
+ 
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return thumbnailsController?.contentCount ?? 0
     }
@@ -55,6 +55,34 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         if let i = collectionView.item(at: idx) as? ThumbnailsCollectionViewItem {
             i.displayCachedThumbnail()
         }
+        
+    }
+    
+    func removeThumbnails (sender: Any, idxs: Set<Int>) {
+        collectionView.deleteItems(at: Set<IndexPath> (idxs.map { idx in return IndexPath (item: idx, section: 0)}))
+        NotificationCenter.default.post(name: .onThumbnailsRemoved, object: nil)
+        
+        guard var newFocus = focusedIdx else {
+            return
+        }
+        
+        while newFocus >= thumbnailsController?.contentCount ?? 0 {
+            newFocus -= 1
+        }
+        
+        if newFocus != focusedIdx {
+            focusedIdx = newFocus == -1 ? nil : newFocus
+        } else {
+            NotificationCenter.default.post(name: .onSelectionChanged, object: focusedIdx)
+        }
+        
+        if let f = focusedIdx {
+            collectionView.selectionIndexes = [f]
+            let item = collectionView.item(at: f) as? ThumbnailsCollectionViewItem
+            item?.setHighlight(selected: true)
+        } else {
+            collectionView.selectionIndexes = []
+        }
     }
     
     func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
@@ -69,7 +97,7 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         for path in indexPaths {
             (collectionView.item(at: path) as? ThumbnailsCollectionViewItem)?.setHighlight(selected: true)
         }
-        selectedIdx = collectionView.selectionIndexes.first
+        focusedIdx = collectionView.selectionIndexes.first
     }
     
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
@@ -77,7 +105,11 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
             path in
             (collectionView.item(at: path) as? ThumbnailsCollectionViewItem)?.setHighlight(selected: false)
         }
-        selectedIdx = collectionView.selectionIndexes.first
+        focusedIdx = collectionView.selectionIndexes.first
     }
     
+    @IBAction func delete(_ sender: AnyObject) {
+        let items = Set<Int> (collectionView.selectionIndexPaths.map { path in path.item})
+        thumbnailsController?.deleteItems(items)
+    }
 }
