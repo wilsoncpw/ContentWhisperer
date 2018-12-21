@@ -537,10 +537,10 @@ CA
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView selectable="YES" id="AMS-ut-7Zk" customClass="ThumbnailCollectionView" customModule="ContentWhisperer" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="158"/>
-                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="fpG-53-zED">
+                                        <collectionView selectable="YES" allowsMultipleSelection="YES" id="AMS-ut-7Zk" customClass="ThumbnailCollectionView" customModule="ContentWhisperer" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="ztu-bj-kvx">
                                                 <size key="itemSize" width="100" height="100"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -575,7 +575,7 @@ CA
                 </viewController>
                 <customObject id="3VC-2A-1np" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="766"/>
+            <point key="canvasLocation" x="693" y="1475"/>
         </scene>
         <!--Contents View Controller-->
         <scene sceneID="bxv-xE-YwD">
@@ -630,7 +630,7 @@ CA
                 </viewController>
                 <customObject id="hc1-K4-oqu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="1131"/>
+            <point key="canvasLocation" x="729" y="1029"/>
         </scene>
     </scenes>
     <resources>

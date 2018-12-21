@@ -17,7 +17,8 @@ class ThumbnailCollectionView: NSCollectionView {
     }
     
     override func keyDown(with event: NSEvent) {
-        if let ascii = event.characters?.first?.unicodeScalars.first?.value, ascii == NSBackspaceCharacter || ascii == NSDeleteCharacter {
+ //       print (NSBackspaceCharacter, " ", NSDeleteCharacter, " ", NSDeleteFunctionKey, " ")
+        if let ascii = event.characters?.first?.unicodeScalars.first?.value, ascii == NSBackspaceCharacter || ascii == NSDeleteCharacter || ascii == NSDeleteFunctionKey {
             nextResponder?.keyDown(with: event)
         } else {
             super.keyDown(with: event)

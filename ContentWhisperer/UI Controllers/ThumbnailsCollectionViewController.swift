@@ -112,4 +112,12 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         let items = Set<Int> (collectionView.selectionIndexPaths.map { path in path.item})
         thumbnailsController?.deleteItems(items)
     }
+
+    override func keyDown(with event: NSEvent) {
+        if let ascii = event.characters?.first?.unicodeScalars.first?.value, ascii == NSDeleteFunctionKey {
+            delete (self)
+        } else {
+            super.keyDown(with: event)
+        }
+    }
 }
