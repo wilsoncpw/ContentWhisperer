@@ -8,11 +8,18 @@
 
 import Cocoa
 
-class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, ThumbnailsControllerDelegate {
+//=============================================================================
+/// Controller for the NSCollectionView used to display thumbnails
+class ThumbnailsCollectionViewController: NSViewController {
    
-    
     @IBOutlet weak var collectionView: NSCollectionView!
     
+    var contentCount : Int { return thumbnailsController?.contentCount ?? 0 }
+
+    //-----------------------------------------------------------------------
+    /// The thumbnailsController
+    ///
+    /// Set by the main window controller whenever the user selects a content bucket
     var thumbnailsController: ThumbnailsController? {
         willSet {
             thumbnailsController?.delegate = nil
@@ -21,9 +28,14 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
             thumbnailsController?.delegate = self
             focusedIdx = nil
             collectionView.reloadData()
+            setFocusedIdx (idx: contentCount > 0 ? 0 : nil)
         }
     }
     
+    //-----------------------------------------------------------------------
+    /// The index of the focused thumbnail.
+    ///
+    /// For simplicity we always treat the first selected thumbnail as the focused one
     var focusedIdx: Int? {
         didSet {
             if focusedIdx != oldValue {
@@ -32,13 +44,47 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func setFocusedIdx (idx: Int?) {
+        if let f = idx {
+            collectionView.selectionIndexes = [f]
+            let item = collectionView.item(at: f) as? ThumbnailsCollectionViewItem
+            item?.setHighlight(selected: true)
+            collectionView.becomeFirstResponder()
+        } else {
+            collectionView.selectionIndexes = []
+        }
+        focusedIdx = idx
     }
- 
+    
+    //-----------------------------------------------------------------------
+    /// func delete
+    ///
+    /// Handler for the 'delete' action sent by the main menu or its key equivalent - which
+    /// is set in IB to the '<--' delete key.
+    @IBAction func delete(_ sender: AnyObject) {
+        let items = Set<Int> (collectionView.selectionIndexPaths.map { path in path.item})
+        thumbnailsController?.deleteItems(items)
+    }
+    
+    //-----------------------------------------------------------------------
+    /// override func keyDown
+    ///
+    /// In addition to the '<--' delete key above, also treat the 'forward delete' key
+    /// as 'delete'.  This key is labelled 'delete' on extended keyboards
+    override func keyDown(with event: NSEvent) {
+        if let ascii = event.characters?.first?.unicodeScalars.first?.value, ascii == NSDeleteFunctionKey {
+            delete (self)
+        } else {
+            super.keyDown(with: event)
+        }
+    }
+}
+
+//============================================================================
+// MARK: - Data Source for thumbnails collection view
+extension ThumbnailsCollectionViewController: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return thumbnailsController?.contentCount ?? 0
+        return contentCount
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -50,40 +96,38 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
         
         return collectionViewItem
     }
-    
+}
+
+// MARK: - Delegate for thumbnails controller
+extension ThumbnailsCollectionViewController : ThumbnailsControllerDelegate {
     func reloadThumbnail(sender: Any, idx: Int) {
         if let i = collectionView.item(at: idx) as? ThumbnailsCollectionViewItem {
             i.displayCachedThumbnail()
         }
-        
     }
     
     func removeThumbnails (sender: Any, idxs: Set<Int>) {
         collectionView.deleteItems(at: Set<IndexPath> (idxs.map { idx in return IndexPath (item: idx, section: 0)}))
         NotificationCenter.default.post(name: .onThumbnailsRemoved, object: nil)
         
-        guard var newFocus = focusedIdx else {
+        guard var newFocus = focusedIdx, contentCount > 0 else {
+            focusedIdx = nil
             return
         }
         
-        while newFocus >= thumbnailsController?.contentCount ?? 0 {
-            newFocus -= 1
-        }
+        newFocus = newFocus >= contentCount ? contentCount - 1 : newFocus
         
         if newFocus != focusedIdx {
-            focusedIdx = newFocus == -1 ? nil : newFocus
+            setFocusedIdx (idx: newFocus == -1 ? nil : newFocus)
         } else {
+            setFocusedIdx (idx: newFocus == -1 ? nil : newFocus)
             NotificationCenter.default.post(name: .onSelectionChanged, object: focusedIdx)
         }
-        
-        if let f = focusedIdx {
-            collectionView.selectionIndexes = [f]
-            let item = collectionView.item(at: f) as? ThumbnailsCollectionViewItem
-            item?.setHighlight(selected: true)
-        } else {
-            collectionView.selectionIndexes = []
-        }
     }
+}
+
+// MARK: - Delegate for thumbnails collection view
+extension ThumbnailsCollectionViewController: NSCollectionViewDelegate {
     
     func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
         thumbnailsController?.itemRequired(idx: indexPath.item)
@@ -106,10 +150,5 @@ class ThumbnailsCollectionViewController: NSViewController, NSCollectionViewDele
             (collectionView.item(at: path) as? ThumbnailsCollectionViewItem)?.setHighlight(selected: false)
         }
         focusedIdx = collectionView.selectionIndexes.first
-    }
-    
-    @IBAction func delete(_ sender: AnyObject) {
-        let items = Set<Int> (collectionView.selectionIndexPaths.map { path in path.item})
-        thumbnailsController?.deleteItems(items)
     }
 }

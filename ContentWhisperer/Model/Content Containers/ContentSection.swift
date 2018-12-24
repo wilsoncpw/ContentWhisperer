@@ -67,7 +67,7 @@ class ContentSection {
     func removeContent (_ content: [Content]) -> [Content] {
         var emptyBuckets = [Int] ()
         defer {
-            for bucketIdx in emptyBuckets.reversed() { buckets.remove(at: bucketIdx) }
+            emptyBuckets.reversed().forEach { bucketIdx in buckets.remove(at: bucketIdx) }
         }
         var idx = 0
         return buckets.reduce(into: [Content] ()) {accum, bucket in

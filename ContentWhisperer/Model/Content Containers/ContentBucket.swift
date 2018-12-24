@@ -85,7 +85,9 @@ class ContentBucket {
                 }
             }.sorted().reversed()
             
-            let removed = idxs.reduce(into: [Content] ()) {accum, idx in contents.remove(at: idx)}
+            let removed = idxs.reduce(into: [Content] ()) {accum, idx in
+                accum.append(contents.remove(at: idx))
+            }
             
             _filenameMap = nil
             

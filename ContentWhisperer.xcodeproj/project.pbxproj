@@ -26,6 +26,7 @@
 		26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */; };
 		26D92F06218A10660007A829 /* ThumbnailsCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */; };
 		26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */; };
+		26E80BB621D11CAC00DB5CA8 /* ContentDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E80BB521D11CAC00DB5CA8 /* ContentDeleter.swift */; };
 		26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F279216CF08D0077DF97 /* AppDelegate.swift */; };
 		26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F27B216CF08D0077DF97 /* MainViewController.swift */; };
 		26F0F27E216CF08D0077DF97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F0F27D216CF08D0077DF97 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewItem.swift; sourceTree = "<group>"; };
 		26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThumbnailsCollectionViewItem.xib; sourceTree = "<group>"; };
 		26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsControllerFromContentBucket.swift; sourceTree = "<group>"; };
+		26E80BB521D11CAC00DB5CA8 /* ContentDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDeleter.swift; sourceTree = "<group>"; };
 		26F0F276216CF08D0077DF97 /* ContentWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F0F279216CF08D0077DF97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26F0F27B216CF08D0077DF97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				2632E60B218A9EBB00A6EEF6 /* CachedThumbnail.swift */,
 				26F48D9F218A74CA00D905DF /* ThumbnailLoader.swift */,
 				26D92EFE2189F1C70007A829 /* OrderedDictionary.swift */,
+				26E80BB521D11CAC00DB5CA8 /* ContentDeleter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */,
 				26F0F298216D18640077DF97 /* ImageContent.swift in Sources */,
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
+				26E80BB621D11CAC00DB5CA8 /* ContentDeleter.swift in Sources */,
 				26D92EFF2189F1C70007A829 /* OrderedDictionary.swift in Sources */,
 				268AE8AA218BEA55008E7EE4 /* ContentsViewController.swift in Sources */,
 				26974C6E219B301700134508 /* PlayerController.swift in Sources */,

@@ -99,8 +99,8 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
     func selectedSectionChanged (contents: Contents, section: ContentSection?, bucket: ContentBucket?) {
         
         if let bucket = bucket {
-            thumbnailsCollectionViewController.thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
             contentsViewController.playerController = PlayerControllerFromContentBucket (contents: contents, bucket: bucket)
+            thumbnailsCollectionViewController.thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
         } else {
             thumbnailsCollectionViewController.thumbnailsController = nil
             contentsViewController.playerController = nil

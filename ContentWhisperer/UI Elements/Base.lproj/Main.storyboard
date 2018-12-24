@@ -537,7 +537,7 @@ CA
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView selectable="YES" id="AMS-ut-7Zk" customClass="ThumbnailCollectionView" customModule="ContentWhisperer" customModuleProvider="target">
+                                        <collectionView selectable="YES" allowsMultipleSelection="YES" id="AMS-ut-7Zk" customClass="ThumbnailCollectionView" customModule="ContentWhisperer" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="158"/>
                                             <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="fpG-53-zED">
