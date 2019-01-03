@@ -87,9 +87,9 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
         let item = outlineView.item(atRow: outlineView.selectedRow)
         switch item ?? 0 {
         case let section as ContentSection:
-            sectionController.delegate?.selectedSectionChanged(contents: sectionController.contents, section: section, bucket: nil)
+            sectionController.sectionSelected(section: section)
         case let bucket as ContentBucket:
-            sectionController.delegate?.selectedSectionChanged(contents: sectionController.contents, section: nil, bucket: bucket)
+            sectionController.bucketSelected(bucket: bucket)
         default: break
         }
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SectionControllerDelegate: NSObjectProtocol {
-    func selectedSectionChanged (contents: Contents, section: ContentSection?, bucket: ContentBucket?)
+    func selectedSectionChanged (sender: Any, section: ContentSection?, bucket: ContentBucket?)
 }
 
 protocol SectionController: AnyObject {
@@ -17,5 +17,7 @@ protocol SectionController: AnyObject {
     var delegate: SectionControllerDelegate? { get }
     var sectionCount: Int { get }
     func getSection (idx: Int) -> ContentSection
+    func sectionSelected (section: ContentSection)
+    func bucketSelected (bucket: ContentBucket)
 }
 

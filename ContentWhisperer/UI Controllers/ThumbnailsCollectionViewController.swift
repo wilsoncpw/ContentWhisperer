@@ -12,7 +12,7 @@ import Cocoa
 /// Controller for the NSCollectionView used to display thumbnails
 class ThumbnailsCollectionViewController: NSViewController {
    
-    @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var collectionView: ThumbnailCollectionView!
     
     var contentCount : Int { return thumbnailsController?.contentCount ?? 0 }
 
@@ -46,10 +46,9 @@ class ThumbnailsCollectionViewController: NSViewController {
     
     func setFocusedIdx (idx: Int?) {
         if let f = idx {
-            collectionView.selectionIndexes = [f]
             let item = collectionView.item(at: f) as? ThumbnailsCollectionViewItem
             item?.setHighlight(selected: true)
-            collectionView.becomeFirstResponder()
+            collectionView.selectionIndexes = [f]            
         } else {
             collectionView.selectionIndexes = []
         }

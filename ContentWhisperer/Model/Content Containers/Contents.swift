@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 ///=================================================================================
 /// The contents of a folder - sorted into sections and buckets
 class Contents {

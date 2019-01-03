@@ -27,6 +27,8 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         didSet {
             sectionController?.delegate = self
             contentsSourceListViewController.sectionController = sectionController
+            thumbnailsCollectionViewController.thumbnailsController = nil
+            contentsViewController.playerController = nil
         }
     }
 
@@ -77,30 +79,31 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
     }
     
     private func reset () -> Bool {
+        sectionController = nil
         return true
     }
     
     func openFolderAtURL (_ url: URL)->Bool {
-        if !reset () {
-            return false
-        }
+        if !reset () { return false }
         
         guard let contents = try? Contents (contentProvider: contentProvider, folderURL: url) else { return false }
 
         NSDocumentController.shared.noteNewRecentDocumentURL(url)
         sectionController = SectionControllerFromContents (contents: contents)
-        selectedSectionChanged(contents: contents, section: nil, bucket: nil)
         
 //        setTitleLabelForImages(images)
         NSDocumentController.shared.noteNewRecentDocumentURL(url)
         return true
     }
     
-    func selectedSectionChanged (contents: Contents, section: ContentSection?, bucket: ContentBucket?) {
+    func selectedSectionChanged (sender: Any, section: ContentSection?, bucket: ContentBucket?) {
+        
+        guard let contents = sectionController?.contents else { return }
         
         if let bucket = bucket {
             contentsViewController.playerController = PlayerControllerFromContentBucket (contents: contents, bucket: bucket)
             thumbnailsCollectionViewController.thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
+            window?.makeFirstResponder(thumbnailsCollectionViewController.collectionView)
         } else {
             thumbnailsCollectionViewController.thumbnailsController = nil
             contentsViewController.playerController = nil

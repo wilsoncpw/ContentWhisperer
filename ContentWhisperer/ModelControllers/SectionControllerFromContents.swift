@@ -24,4 +24,12 @@ class SectionControllerFromContents: SectionController {
     func getSection (idx: Int) -> ContentSection {
         return contents.contentSections [idx]
     }
+    
+    func sectionSelected (section: ContentSection) {
+        delegate?.selectedSectionChanged(sender: self, section: section, bucket: nil)
+    }
+    
+    func bucketSelected (bucket: ContentBucket) {
+        delegate?.selectedSectionChanged(sender: self, section: nil, bucket: bucket)
+    }
 }
