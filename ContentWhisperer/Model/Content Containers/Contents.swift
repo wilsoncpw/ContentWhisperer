@@ -8,13 +8,13 @@
 
 import Foundation
 
-///=================================================================================
+//==================================================================================
 /// The contents of a folder - sorted into sections and buckets
 class Contents {
     let folderURL : URL
     private (set) var contentSections: [ContentSection]
 
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// init
     ///
     /// - Parameters:
@@ -26,7 +26,7 @@ class Contents {
         self.contentSections = try contentProvider.loadContentsIntoSections(folderUrl: folderURL)
     }
     
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// Delete the given content from the contentBuckets in our contentSections
     ///
     /// Returns an array containing the content that was actually deleted.  Hopefully

@@ -12,9 +12,13 @@ final class ImageContent: Content {
     let fileName: String
     let duration = Double (0)
     var currentPosition = Double (0)
+    let isRelativePath: Bool
+    
+    lazy var displayName: String = getDisplayName ()
     
     init(fileName: String) {
         self.fileName = fileName
+        self.isRelativePath = !fileName.starts(with: "/")
     }
     
     static let contentType = ContentType (
@@ -26,7 +30,13 @@ final class ImageContent: Content {
         contentClass: ImageContent.self)
     
     private func getImageSource (folderURL: URL) -> CGImageSource? {
-        return CGImageSourceCreateWithURL(folderURL.appendingPathComponent(fileName) as CFURL, nil)
+        let url = (isRelativePath) ? folderURL.appendingPathComponent(fileName) : URL (fileURLWithPath: fileName)
+        return CGImageSourceCreateWithURL(url as CFURL, nil)
+    }
+    
+    private func getDisplayName () -> String {
+        let s = fileName as NSString
+        return s.lastPathComponent
     }
     
     func getThumbnailCGImage (folderURL: URL) -> CGImage? {

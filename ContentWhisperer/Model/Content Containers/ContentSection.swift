@@ -12,14 +12,13 @@ import Foundation
 typealias BucketDictionary = OrderedDictionary<String, ContentBucket>
 
 
-///=================================================================================
+//=================================================================================
 /// A content section contains a dictionary of buckets - each one containing content
 class ContentSection {
     let name: String;
     private (set) var buckets: [ContentBucket]
 
-
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// init
     ///
     /// - Parameters:
@@ -41,7 +40,7 @@ class ContentSection {
         self.buckets = bucketMap.map { elem in elem.value }
     }
     
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// AddContentToBuckes
     ///
     /// - Parameters:

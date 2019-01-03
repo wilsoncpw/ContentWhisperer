@@ -8,48 +8,35 @@
 
 import Foundation
 
-
-class ContentDeleterInitialCheckOp: Operation {
-    let contentDeleter: ContentDeleter
-    var error: Error?
-    init (contentDeleter: ContentDeleter) {
-        self.contentDeleter = contentDeleter
-    }
-    override func main() {
-        do {
-            try FileManager.default.createDirectory(at: contentDeleter.deletedFolderURL, withIntermediateDirectories: true, attributes: nil)
-        } catch let err {
-            error = err
-        }
-    }
-}
-
+//======================================================================================================
+/// class ContentDeleter
+///
+/// The class provides the 'deleteContents' function which deletes contents in the background
+///
 class ContentDeleter {
     
     let contentFolderURL: URL
     let deletedFolderURL: URL
-    let deletedQueue = OperationQueue ()
     
-  
+    private let deletedQueue = OperationQueue ()
+    private var lastDeletedPathURL: URL?
+    
     init (contentFolderURL: URL) {
         self.contentFolderURL = contentFolderURL
         self.deletedFolderURL = contentFolderURL.appendingPathComponent("Deleted", isDirectory: true)
         self.deletedQueue.maxConcurrentOperationCount = 1
     }
     
-    func deleteContents (contents: [Content], callback: @escaping (Error?) -> Void) {
-        let checkOp = ContentDeleterInitialCheckOp (contentDeleter: self)
-        checkOp.completionBlock = {
-            if checkOp.error != nil {
-                DispatchQueue.main.async {
-                    callback (checkOp.error)
-                }
-                self.deletedQueue.cancelAllOperations()
-            }
-        }
-        deletedQueue.addOperation (checkOp)
-        
-        contents.forEach { content in deletedQueue.addOperation { self.deleteContent(content: content) } }
+    //--------------------------------------------------------------------------------------------------
+    /// func deleteContents
+    ///
+    /// 'Deletes' content by moving it into a sub-tree under contentFolderURL/Deleted
+    ///
+    /// - Parameters:
+    ///   - contents: Array of Content to delete
+    ///   - callback: Callback called when the background processing has finished
+    func deleteContents (_ contents: [Content], callback: @escaping (Error?) -> Void) {
+        contents.forEach { content in deletedQueue.addOperation { try? self.deleteContent(content) } }
         
         let finishedOp = Operation ()
         finishedOp.completionBlock = {
@@ -58,11 +45,24 @@ class ContentDeleter {
         deletedQueue.addOperation(finishedOp)
     }
     
-    private func deleteContent (content: Content) {
-        try? FileManager.default.moveItem(at: contentFolderURL.appendingPathComponent(content.fileName), to: deletedFolderURL.appendingPathComponent(content.fileName))
+    //--------------------------------------------------------------------------------------------------
+    /// func deleteContent
+    ///
+    /// - Parameter content: The content to delete
+    /// - Throws: Exceptions from FileManager
+    private func deleteContent (_ content: Content) throws {
+        
+        let deletedContentURL = deletedFolderURL.appendingPathComponent(content.fileName)
+        
+        // Note that the fileName may be a sub-folder - "test/pic.jpg" - so we want to create this structure in the Deleted folder URL
+        let deletedPathURL = deletedContentURL.deletingLastPathComponent()
+        
+        // As a refinement, cache the last 'Deleted' sub folder, and only attempt to create it if it changes.
+        if lastDeletedPathURL != deletedPathURL {
+            try FileManager.default.createDirectory(at: deletedPathURL, withIntermediateDirectories: true, attributes: nil)
+            lastDeletedPathURL = deletedPathURL
+        }
+        
+        try FileManager.default.moveItem(at: contentFolderURL.appendingPathComponent(content.fileName), to: deletedContentURL)
     }
-    
-    private func ensureDeletedFolderExists () throws {
-    }
-
 }

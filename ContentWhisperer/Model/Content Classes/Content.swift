@@ -33,5 +33,6 @@ protocol Content {
     var fileName: String { get }
     func getThumbnailCGImage (folderURL: URL) -> CGImage?
     func getPlayer (folderURL: URL) -> ContentPlayer?
+    var displayName: String { get }
 }
 

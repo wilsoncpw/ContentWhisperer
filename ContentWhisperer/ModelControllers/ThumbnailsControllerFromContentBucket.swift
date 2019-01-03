@@ -48,7 +48,7 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
     //-----------------------------------------------------------------------------------
     func getThumbnailLabel (idx: Int)->String {
-        return bucket.contents [idx].fileName
+        return bucket.contents [idx].displayName
     }
     
     func itemRequired (idx: Int) {
@@ -89,7 +89,7 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
         
         let deletedContents = contents.deleteContent(contentToDelete)
         delegate?.removeThumbnails (sender: self, idxs: items)
-        deleter.deleteContents(contents: deletedContents) { error in
+        deleter.deleteContents(deletedContents) { error in
             
         }
     }

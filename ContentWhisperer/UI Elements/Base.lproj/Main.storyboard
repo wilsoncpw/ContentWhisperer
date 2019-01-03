@@ -465,7 +465,7 @@ CA
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-qt-lOB">
+                            <splitView arrangesAllSubviews="NO" autosaveName="ThumbnailsSplitView" dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-qt-lOB">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <subviews>
                                     <customView id="Vix-G2-Gyv">
