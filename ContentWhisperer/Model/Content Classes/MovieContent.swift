@@ -12,8 +12,8 @@ import AVKit
 final class MovieContent: Content {
     let fileName: String
     let isRelativePath: Bool
-    lazy var displayName = getDisplayName ()
-    
+    lazy var displayName: String = {return (fileName as NSString).lastPathComponent} ()
+
     static let contentType = ContentType (
         name: "Videos",
         fileTypes: Set<String> (["m4v", "mov", "mp4"]),
@@ -30,11 +30,6 @@ final class MovieContent: Content {
     private func getAsset (folderURL: URL) -> AVAsset {
         let url = (isRelativePath) ? folderURL.appendingPathComponent(fileName) : URL (fileURLWithPath: fileName)
         return AVAsset(url: url)
-    }
-    
-    private func getDisplayName () -> String {
-        let s = fileName as NSString
-        return s.lastPathComponent
     }
     
     func getThumbnailCGImage (folderURL: URL) -> CGImage? {

@@ -9,7 +9,7 @@
 import Foundation
 
 
-///=================================================================================
+//=================================================================================
 /// A content bucket contains an array of Contents of the same kind
 class ContentBucket {
     let name: String
@@ -17,7 +17,7 @@ class ContentBucket {
     private var _filenameMap : [String:Int]?
     private let contentQueue = DispatchQueue(label: "ContentQueue")
 
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// init
     ///
     /// - Parameters:
@@ -26,7 +26,7 @@ class ContentBucket {
         self.name = name
     }
     
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// addContent
     ///
     /// - Parameter content: The content to add
@@ -50,7 +50,7 @@ class ContentBucket {
         }
     }
     
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// filenameMap : Keep a dictionary of filenames and their array index that
     ///               getIndexForFilename can use.  Recalculate it if required
     private var filenameMap: [String: Int] {
@@ -64,7 +64,7 @@ class ContentBucket {
         return _filenameMap!
     }
     
-    ///----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
     /// getIndexForFilename
     ///
     /// - Parameter fileName: The file name
