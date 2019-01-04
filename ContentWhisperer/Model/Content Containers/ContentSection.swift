@@ -9,7 +9,7 @@
 import Foundation
 
 
-typealias BucketDictionary = OrderedDictionary<String, ContentBucket>
+typealias BucketDictionary = Dictionary<String, ContentBucket>
 
 
 //=================================================================================
@@ -27,17 +27,22 @@ class ContentSection {
     init (name: String, contents: [Content]) {
         self.name = name
         
+        let definitions = type (of: contents [0]).contentType.bucketDefinitions
+        
         let bucketMap = contents.reduce (into: BucketDictionary ()) {bucketsSum, content in
-            if let newBucket = ContentSection.AddContentToBuckets (bucketMap: bucketsSum, content: content) {
+            if let newBucket = ContentSection.AddContentToBuckets (bucketMap: bucketsSum, content: content, definitions: definitions) {
                 bucketsSum [newBucket.name] = newBucket
             }
         }
         
-        bucketMap.forEach() {key, value in
-            value.sortContents ()
+        self.buckets = definitions.reduce(into: [ContentBucket] ()) {
+            accum, definition in
+            
+            if let bucket = bucketMap [definition.name] {
+                bucket.sortContents()
+                accum.append(bucket)
+            }
         }
-        
-        self.buckets = bucketMap.map { elem in elem.value }
     }
     
     //----------------------------------------------------------------------------
@@ -47,11 +52,13 @@ class ContentSection {
     ///   - bucketMap: The dictionary of existing buckets
     ///   - content: The content to add
     /// - Returns: A new bucket containing the content - if the content won't fit in an existing one.
-    private static func AddContentToBuckets (bucketMap: BucketDictionary, content: Content) -> ContentBucket? {
-        let bucketName = type (of: content).contentType.bucketDefinitions.first(where:) {name, filetypes in
+    private static func AddContentToBuckets (bucketMap: BucketDictionary, content: Content, definitions: [BucketDefinition]) -> ContentBucket? {
+        guard let bucketName = definitions.first(where:) ({name, filetypes in
             let ext = (content.fileName as NSString).pathExtension.lowercased()
             return filetypes.contains(ext)
-        }?.name ?? "~"
+        })?.name else {
+            return nil
+        }
     
         guard let bucket = bucketMap [bucketName] else {
             let newBucket = ContentBucket (name: bucketName)

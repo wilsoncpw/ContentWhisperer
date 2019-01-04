@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            timestampString = "568253704.813827"
+            timestampString = "568258835.496201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "loadContentsIntoSections(folderUrl:)"
             landmarkType = "7">
             <Locations>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            timestampString = "568253704.81414"
+            timestampString = "568258835.4962569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "ContentProvider"
             landmarkType = "3">
          </BreakpointContent>
@@ -218,7 +218,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            timestampString = "568253704.814334"
+            timestampString = "568258835.496298"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "getRelativeFilePath(url:folderURL:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
+            timestampString = "568258835.496336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -230,47 +246,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ContentWhisperer/Model/Content Classes/ImageContent.swift"
-            timestampString = "568231771.3320251"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "init(fileName:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            timestampString = "568253704.814539"
+            timestampString = "568258835.496372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "getRelativeFilePath(url:folderURL:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            timestampString = "568253704.814724"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "getRelativeFilePath(url:folderURL:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            timestampString = "568253704.814907"
+            timestampString = "568258835.496407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "loadContentsIntoSections(folderUrl:)"
             landmarkType = "7">
             <Locations>
@@ -330,12 +314,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            timestampString = "568253704.8150899"
+            timestampString = "568258835.496446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "getFolderURLs(url:into:ignore:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
+            timestampString = "568258835.496482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "loadContentsIntoSections(folderUrl:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (inout Swift.Array&lt;ContentWhisperer.ContentSection&gt;, ContentWhisperer.ContentType) throws -&gt; () in ContentWhisperer.ContentProvider.loadContentsIntoSections(folderUrl: Foundation.URL) throws -&gt; Swift.Array&lt;ContentWhisperer.ContentSection&gt;"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wilsoncpw/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Model/Content%20Containers/ContentProvider.swift"
+                  timestampString = "568254029.477721"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (inout Swift.Array&lt;Swift.Int&gt;, Foundation.URL) -&gt; () in closure #1 (inout Swift.Array&lt;ContentWhisperer.ContentSection&gt;, ContentWhisperer.ContentType) throws -&gt; () in ContentWhisperer.ContentProvider.loadContentsIntoSections(folderUrl: Foundation.URL) throws -&gt; Swift.Array&lt;ContentWhisperer.ContentSection&gt;"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wilsoncpw/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Model/Content%20Containers/ContentProvider.swift"
+                  timestampString = "568254029.480224"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "61">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
+            timestampString = "568258835.496516"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "loadContentsIntoSections(folderUrl:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

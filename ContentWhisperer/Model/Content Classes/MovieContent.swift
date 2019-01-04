@@ -9,10 +9,10 @@
 import Foundation
 import AVKit
 
-final class MovieContent: Content {
-    let fileName: String
-    let isRelativePath: Bool
-    lazy var displayName: String = {return (fileName as NSString).lastPathComponent} ()
+final class MovieContent: ContentBase, Content {
+//    let fileName: String
+//    let isRelativePath: Bool
+//    lazy var displayName: String = {return (fileName as NSString).lastPathComponent} ()
 
     static let contentType = ContentType (
         name: "Videos",
@@ -22,10 +22,10 @@ final class MovieContent: Content {
             (name: "Clips", fileTypes: Set<String> (["mov", "mp4"]))],
         contentClass: MovieContent.self)
     
-    init(fileName: String) {
-        self.fileName = fileName
-        self.isRelativePath = !fileName.starts(with: "/")
-    }
+//    init(fileName: String) {
+//        self.fileName = fileName
+//        self.isRelativePath = !fileName.starts(with: "/")
+//    }
     
     private func getAsset (folderURL: URL) -> AVAsset {
         let url = (isRelativePath) ? folderURL.appendingPathComponent(fileName) : URL (fileURLWithPath: fileName)

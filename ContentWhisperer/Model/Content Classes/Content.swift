@@ -9,12 +9,14 @@
 import Cocoa
 import AVKit
 
+typealias BucketDefinition = (name: String, fileTypes: Set<String>)
+
 //=================================================================================
 /// ContentType.  Each content class provides a static one of these, which is used to register with the content provider
 struct ContentType {
     let fileTypes:Set<String>
     let name: String
-    let bucketDefinitions: [(name: String, fileTypes: Set<String>)]
+    let bucketDefinitions: [BucketDefinition]
     let contentClass: Content.Type
     
     init (name: String, fileTypes: Set<String>, bucketDefinitions: [(name: String, fileTypes: Set<String>)], contentClass: Content.Type) {
@@ -25,14 +27,29 @@ struct ContentType {
     }
 }
 
-//=================================================================================
-/// Content protocol
-protocol Content {
-    static var contentType: ContentType { get }
+protocol ContentBaseProtocol: AnyObject {
     init (fileName: String)
     var fileName: String { get }
-    func getThumbnailCGImage (folderURL: URL) -> CGImage?
-    func getPlayer (folderURL: URL) -> ContentPlayer?
     var displayName: String { get }
 }
+
+//=================================================================================
+/// Content protocol
+protocol Content : ContentBaseProtocol {
+    static var contentType: ContentType { get }
+    func getThumbnailCGImage (folderURL: URL) -> CGImage?
+    func getPlayer (folderURL: URL) -> ContentPlayer?
+}
+
+class ContentBase: ContentBaseProtocol {
+    let fileName: String
+    let isRelativePath: Bool
+    lazy var displayName: String = {return (fileName as NSString).lastPathComponent} ()
+    
+    required init(fileName: String) {
+        self.fileName = fileName
+        self.isRelativePath = !fileName.starts(with: "/")
+    }
+}
+
 

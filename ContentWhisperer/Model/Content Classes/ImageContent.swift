@@ -8,18 +8,7 @@
 
 import Foundation
 
-final class ImageContent: Content {
-    let fileName: String
-    let duration = Double (0)
-    var currentPosition = Double (0)
-    let isRelativePath: Bool
-    
-    lazy var displayName: String = {return (fileName as NSString).lastPathComponent} ()
-    
-    init(fileName: String) {
-        self.fileName = fileName
-        self.isRelativePath = !fileName.starts(with: "/")
-    }
+final class ImageContent: ContentBase, Content {
     
     static let contentType = ContentType (
         name: "Images",
