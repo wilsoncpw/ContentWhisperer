@@ -28,6 +28,27 @@ class ContentProvider {
         self.registeredContentTypes = registeredContentTypes
     }
     
+    private func getFolderURLs (url: URL, into urls: inout [URL], ignore deletedURL: URL) throws {
+        let theseURLs = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        let directoryURLs = theseURLs.filter {
+            url in
+            return url.hasDirectoryPath
+        }
+        
+        let fileURLs = theseURLs.filter {
+            url in
+            
+            return !url.hasDirectoryPath
+        }
+        urls.append(contentsOf: fileURLs)
+        
+        for url in directoryURLs {
+            if (url != deletedURL) {
+                try getFolderURLs(url: url, into: &urls, ignore: deletedURL)
+            }
+        }
+    }
+    
     //----------------------------------------------------------------------------
     /// loadContentsIntoSections
     ///
@@ -36,12 +57,8 @@ class ContentProvider {
     /// - Throws: Propagates errors from File Manager
     func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
         
-        let enumerator = FileManager.default.enumerator(at: folderUrl, includingPropertiesForKeys: [.nameKey], options: .skipsHiddenFiles)
-
-        // Get all the content urls
-        guard let urls = enumerator?.allObjects as? [URL] else {
-            return [ContentSection] ()
-        }
+        var urls = [URL] ()
+        try getFolderURLs (url: folderUrl, into: &urls, ignore: folderUrl.appendingPathComponent("Deleted"))
         
         // Create a content section for each registered content type where at least one content url exists for it.
         return try registeredContentTypes.reduce(into: [ContentSection]()) {sectionSum, contentType in
