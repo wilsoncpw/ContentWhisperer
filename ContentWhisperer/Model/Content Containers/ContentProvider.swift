@@ -49,13 +49,47 @@ class ContentProvider {
         }
     }
     
+    func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
+        let files = FastDirectoryEnumerator (path: folderUrl.path).getFiles(recurse: true, ignoringSubdirs: ["deleted"])
+ 
+        // Create a content section for each registered content type where at least one content url exists for it.
+        return registeredContentTypes.reduce(into: [ContentSection]()) {sectionSum, contentType in
+
+            var i = 0
+
+            // Create sectionMap - an array of indexes into urls with content support by contentType
+            let sectionMap = files.reduce(into: [Int]()) {intSum, filename in
+                
+
+                let ns = NSString (string: filename).pathExtension.lowercased()
+
+                if contentType.fileTypes.contains(ns) {
+                    intSum.append(i)
+                }
+                i += 1
+            }
+
+            if sectionMap.count > 0 {
+
+                // If there are any contents availabel for this content type, create an array of the contents
+                let contents = sectionMap.map {idx -> Content in
+                    let relativeFileName = files [idx]
+                    return contentType.contentClass.init (fileName: relativeFileName)
+                }
+
+                sectionSum.append (ContentSection (name: contentType.name, contents: contents))
+            }
+        }
+    }
+
+    
     //----------------------------------------------------------------------------
     /// loadContentsIntoSections
     ///
     /// - Parameter folderUrl: The URL to load contents from
     /// - Returns: An array of content sections with buckets of supported content.
     /// - Throws: Propagates errors from File Manager
-    func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
+    func loadContentsIntoSectionsx (folderUrl: URL) throws -> [ContentSection] {
         
         var urls = [URL] ()
         try getFolderURLs (url: folderUrl, into: &urls, ignore: folderUrl.appendingPathComponent("Deleted"))
@@ -108,4 +142,11 @@ class ContentProvider {
             throw ContentProviderError.invalid
         }
     }
+    
+    func countFiles (url: URL) -> Int {
+        
+        let cx = FastDirectoryEnumerator (url: url).deepCount  (ignoringSubdirs: ["deleted"])
+        return cx
+    }
+    
 }

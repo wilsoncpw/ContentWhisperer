@@ -32,6 +32,7 @@ class MovieContentPlayer: NSObject, ContentPlayer {
             case .failed: cps = .failed
             case.readyToPlay: cps = .readyToPlay
             case .unknown: cps = .unknown
+            @unknown default: fatalError()
             }
             
             if let s = self {
@@ -43,7 +44,6 @@ class MovieContentPlayer: NSObject, ContentPlayer {
     }
     
     deinit {
-        print ("MoveContentPlayer deinit")
         statusObserver?.invalidate()
     }
     

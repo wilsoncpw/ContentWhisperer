@@ -14,6 +14,7 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var contentsView: ContentsView!
     @IBOutlet weak var pausePlayButton: NSButton!
+    @IBOutlet weak var progressBar: NSProgressIndicator!
     
     var contentPlayer: ContentPlayer?
     var timer: Timer?
@@ -30,6 +31,19 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         NotificationCenter.default.addObserver(forName: .onSelectionChanged, object: nil, queue: nil) { notification in
             self.selectionChanged(idx: notification.object as? Int)
         }
+        NotificationCenter.default.addObserver(forName: .onLoading, object: nil, queue: nil) { notification in
+            if let b = notification.object as? Bool {
+                self.progressBar.isHidden = !b
+                if b {
+                    self.progressBar.startAnimation(self)
+                } else {
+                    self.progressBar.stopAnimation(self)
+                }
+            }
+        }
+        
+        pausePlayButton.isHidden = true
+        progressBar.isHidden = true
     }
     
     private func stopTimer () {

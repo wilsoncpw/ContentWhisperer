@@ -11,4 +11,5 @@ import Foundation
 extension Notification.Name {
     static let onSelectionChanged = Notification.Name ("selectionChanged")      // ThumbnalisViewController   -> ContentViewController
     static let onThumbnailsRemoved = Notification.Name ("thumbnailsRemoved")    //            "               -> ContentsSourceListViewController
+    static let onLoading = Notification.Name ("loading")                        // MainWIndowController       -> ContentViewController
 }

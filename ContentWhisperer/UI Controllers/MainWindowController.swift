@@ -86,13 +86,26 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
     func openFolderAtURL (_ url: URL)->Bool {
         if !reset () { return false }
         
-        guard let contents = try? Contents (contentProvider: contentProvider, folderURL: url) else { return false }
+//        guard let contents = try? Contents (contentProvider: contentProvider, folderURL: url) else { return false }
+        
+        NotificationCenter.default.post(name: .onLoading, object: true)
+        let loader = ContentLoader (folderURL: url, contentProvider: contentProvider)
+        loader.load { result in
+            NotificationCenter.default.post(name: .onLoading, object: false)
 
+            switch result {
+            case .failure(let error) :
+                print (error)
+            case .success(let contents) :
+                self.sectionController = SectionControllerFromContents (contents: contents)
+            }
+        }
+    
+        
         NSDocumentController.shared.noteNewRecentDocumentURL(url)
-        sectionController = SectionControllerFromContents (contents: contents)
+//        sectionController = SectionControllerFromContents (contents: contents)
         
 //        setTitleLabelForImages(images)
-        NSDocumentController.shared.noteNewRecentDocumentURL(url)
         return true
     }
     

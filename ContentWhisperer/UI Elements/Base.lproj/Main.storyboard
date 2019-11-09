@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -154,7 +155,7 @@ CA
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -242,7 +243,7 @@ CA
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K9h-wH-EIs">
-                                                <rect key="frame" x="63" y="18" width="37" height="17"/>
+                                                <rect key="frame" x="63" y="18" width="37" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="hht-BR-le6">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -361,14 +362,14 @@ CA
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="b85-bH-YUs" id="Gyn-Ac-rKf">
                                             <rect key="frame" x="0.0" y="0.0" width="308" height="298"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn width="305" minWidth="16" maxWidth="1000" id="b85-bH-YUs">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -414,7 +415,7 @@ CA
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSActionTemplate" id="6Zx-t0-79v"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kvy-vA-Uf2">
-                                                                    <rect key="frame" x="25" y="0.0" width="280" height="17"/>
+                                                                    <rect key="frame" x="25" y="1" width="280" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wbP-mk-Lna">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -598,46 +599,49 @@ CA
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <slider hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dk1-A6-HbU">
-                                <rect key="frame" x="19" y="-1" width="433" height="19"/>
+                            <slider hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dk1-A6-HbU" customClass="CollapsingSLider" customModule="ContentWhisperer" customModuleProvider="target">
+                                <rect key="frame" x="29" y="6" width="415" height="19"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="DFJ-Xr-VfW"/>
                                 <connections>
                                     <action selector="sliderSlid:" target="nR7-fz-JII" id="HO8-tZ-HWe"/>
                                 </connections>
                             </slider>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="9ad-je-reo" customClass="ContentsView" customModule="ContentWhisperer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="17" width="450" height="283"/>
+                                <rect key="frame" x="0.0" y="48" width="450" height="252"/>
                             </customView>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="xH2-Qm-aRe">
-                                <rect key="frame" x="0.0" y="0.0" width="21" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="YpF-C1-P5a"/>
-                                    <constraint firstAttribute="width" constant="21" id="iIc-lT-eQ1"/>
-                                </constraints>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="xH2-Qm-aRe" customClass="CollapsingButton" customModule="ContentWhisperer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="23" height="30"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayPauseTemplate" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="GFB-NS-2sk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="miniSystem"/>
+                                    <font key="font" metaFont="label" size="9"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="pausePlayClicked:" target="nR7-fz-JII" id="bb9-5B-Qkw"/>
                                 </connections>
                             </button>
+                            <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="yCf-QC-Ysy" customClass="CollapsingProgressIndicator" customModule="ContentWhisperer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="29" width="450" height="20"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="dk1-A6-HbU" firstAttribute="leading" secondItem="xH2-Qm-aRe" secondAttribute="trailing" id="4ai-nX-dRJ"/>
+                            <constraint firstItem="dk1-A6-HbU" firstAttribute="leading" secondItem="xH2-Qm-aRe" secondAttribute="trailing" constant="8" id="4ai-nX-dRJ"/>
                             <constraint firstAttribute="bottom" secondItem="xH2-Qm-aRe" secondAttribute="bottom" id="5hV-41-sgS"/>
-                            <constraint firstAttribute="bottom" secondItem="dk1-A6-HbU" secondAttribute="bottom" constant="1" id="D2k-Qg-RVv"/>
-                            <constraint firstAttribute="trailing" secondItem="dk1-A6-HbU" secondAttribute="trailing" id="Gsk-PM-iSe"/>
+                            <constraint firstAttribute="trailing" secondItem="dk1-A6-HbU" secondAttribute="trailing" constant="8" id="Gsk-PM-iSe"/>
+                            <constraint firstItem="dk1-A6-HbU" firstAttribute="centerY" secondItem="xH2-Qm-aRe" secondAttribute="centerY" id="UAL-y5-fah"/>
                             <constraint firstAttribute="trailing" secondItem="9ad-je-reo" secondAttribute="trailing" id="XHI-Oq-ab9"/>
-                            <constraint firstItem="xH2-Qm-aRe" firstAttribute="top" secondItem="9ad-je-reo" secondAttribute="bottom" constant="2" id="Z9S-19-AdJ"/>
+                            <constraint firstItem="9ad-je-reo" firstAttribute="bottom" secondItem="yCf-QC-Ysy" secondAttribute="top" id="Yth-Qt-4nL"/>
+                            <constraint firstAttribute="trailing" secondItem="yCf-QC-Ysy" secondAttribute="trailing" id="aB3-HK-b9b"/>
                             <constraint firstItem="9ad-je-reo" firstAttribute="top" secondItem="1Je-1n-Erq" secondAttribute="top" id="cL1-me-mZa"/>
+                            <constraint firstItem="yCf-QC-Ysy" firstAttribute="leading" secondItem="1Je-1n-Erq" secondAttribute="leading" id="k3R-M3-qrM"/>
                             <constraint firstItem="9ad-je-reo" firstAttribute="leading" secondItem="1Je-1n-Erq" secondAttribute="leading" id="pam-Xx-40G"/>
                             <constraint firstItem="xH2-Qm-aRe" firstAttribute="leading" secondItem="9ad-je-reo" secondAttribute="leading" id="tEI-ax-Vxh"/>
+                            <constraint firstItem="xH2-Qm-aRe" firstAttribute="top" secondItem="yCf-QC-Ysy" secondAttribute="bottom" id="zTi-xQ-vOC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentsView" destination="9ad-je-reo" id="TwK-V1-L4a"/>
                         <outlet property="pausePlayButton" destination="xH2-Qm-aRe" id="yTa-EG-Xun"/>
+                        <outlet property="progressBar" destination="yCf-QC-Ysy" id="XZ6-vj-wQa"/>
                         <outlet property="slider" destination="dk1-A6-HbU" id="Rb9-gw-X4D"/>
                     </connections>
                 </viewController>
