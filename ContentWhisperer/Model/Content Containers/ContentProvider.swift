@@ -49,6 +49,12 @@ class ContentProvider {
         }
     }
     
+    //----------------------------------------------------------------------------
+    /// loadContentsIntoSections
+    ///
+    /// - Parameter folderUrl: The URL to load contents from
+    /// - Returns: An array of content sections with buckets of supported content.
+    /// - Throws: Propagates errors from File Manager
     func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
         let files = FastDirectoryEnumerator (path: folderUrl.path).getFiles(recurse: true, ignoringSubdirs: ["deleted"])
  
@@ -83,12 +89,7 @@ class ContentProvider {
     }
 
     
-    //----------------------------------------------------------------------------
-    /// loadContentsIntoSections
-    ///
-    /// - Parameter folderUrl: The URL to load contents from
-    /// - Returns: An array of content sections with buckets of supported content.
-    /// - Throws: Propagates errors from File Manager
+
     func loadContentsIntoSectionsx (folderUrl: URL) throws -> [ContentSection] {
         
         var urls = [URL] ()
