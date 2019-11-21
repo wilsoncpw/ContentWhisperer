@@ -20,7 +20,8 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         
     let contentProvider = ContentProvider (registeredContentTypes: [
         ImageContent.contentType,
-        MovieContent.contentType
+        MovieContent.contentType,
+        PDFContent.contentType
         ])
     
     var sectionController: SectionControllerFromContents? {

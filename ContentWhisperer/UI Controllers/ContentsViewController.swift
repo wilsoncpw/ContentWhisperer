@@ -46,6 +46,7 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         progressBar.isHidden = true
     }
     
+
     private func stopTimer () {
         timer?.invalidate()
         timer = nil

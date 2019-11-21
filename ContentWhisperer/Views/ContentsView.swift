@@ -47,5 +47,4 @@ class ContentsView: NSView {
 
         // Drawing code here.
     }
-    
 }

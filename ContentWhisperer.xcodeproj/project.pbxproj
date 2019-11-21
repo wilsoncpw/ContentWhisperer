@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2606C9D52386D5380072EBEC /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606C9D42386D5380072EBEC /* PDFContent.swift */; };
+		2606C9D72386D8BC0072EBEC /* PDFContentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606C9D62386D8BC0072EBEC /* PDFContentPlayer.swift */; };
+		2606C9D92386DC790072EBEC /* fpp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2606C9D82386DC790072EBEC /* fpp.m */; };
 		260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DE9B2216EAF72002C673F /* ContentSection.swift */; };
 		261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB82216D5B6800518EA2 /* MovieContent.swift */; };
 		261DAB85216D5BB900518EA2 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB84216D5BB900518EA2 /* Content.swift */; };
@@ -45,7 +48,7 @@
 		26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F48DA1218A7BBF00D905DF /* ContentBucket.swift */; };
 		26F48DA4218A831300D905DF /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F48DA3218A831300D905DF /* ThumbnailView.swift */; };
 		26F86AD1219A3B3F0045DD6B /* ContentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F86AD0219A3B3F0045DD6B /* ContentPlayer.swift */; };
-		26F86AD6219A3DBE0045DD6B /* ImageContrentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F86AD5219A3DBE0045DD6B /* ImageContrentPlayer.swift */; };
+		26F86AD6219A3DBE0045DD6B /* ImageContentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F86AD5219A3DBE0045DD6B /* ImageContentPlayer.swift */; };
 		26F86AD8219A3DD10045DD6B /* MovieContentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F86AD7219A3DD10045DD6B /* MovieContentPlayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2606C9D42386D5380072EBEC /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
+		2606C9D62386D8BC0072EBEC /* PDFContentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContentPlayer.swift; sourceTree = "<group>"; };
+		2606C9D82386DC790072EBEC /* fpp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fpp.m; sourceTree = "<group>"; };
 		260DE9B2216EAF72002C673F /* ContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSection.swift; sourceTree = "<group>"; };
 		261DAB82216D5B6800518EA2 /* MovieContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContent.swift; sourceTree = "<group>"; };
 		261DAB84216D5BB900518EA2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
@@ -104,7 +110,7 @@
 		26F48DA1218A7BBF00D905DF /* ContentBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBucket.swift; sourceTree = "<group>"; };
 		26F48DA3218A831300D905DF /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
 		26F86AD0219A3B3F0045DD6B /* ContentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPlayer.swift; sourceTree = "<group>"; };
-		26F86AD5219A3DBE0045DD6B /* ImageContrentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContrentPlayer.swift; sourceTree = "<group>"; };
+		26F86AD5219A3DBE0045DD6B /* ImageContentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContentPlayer.swift; sourceTree = "<group>"; };
 		26F86AD7219A3DD10045DD6B /* MovieContentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContentPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +263,7 @@
 			children = (
 				261DAB84216D5BB900518EA2 /* Content.swift */,
 				26F0F297216D18640077DF97 /* ImageContent.swift */,
+				2606C9D42386D5380072EBEC /* PDFContent.swift */,
 				261DAB82216D5B6800518EA2 /* MovieContent.swift */,
 			);
 			path = "Content Classes";
@@ -266,7 +273,9 @@
 			isa = PBXGroup;
 			children = (
 				26F86AD0219A3B3F0045DD6B /* ContentPlayer.swift */,
-				26F86AD5219A3DBE0045DD6B /* ImageContrentPlayer.swift */,
+				26F86AD5219A3DBE0045DD6B /* ImageContentPlayer.swift */,
+				2606C9D62386D8BC0072EBEC /* PDFContentPlayer.swift */,
+				2606C9D82386DC790072EBEC /* fpp.m */,
 				26F86AD7219A3DD10045DD6B /* MovieContentPlayer.swift */,
 			);
 			path = "Content Players";
@@ -356,6 +365,7 @@
 				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
 				260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */,
 				2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */,
+				2606C9D92386DC790072EBEC /* fpp.m in Sources */,
 				26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */,
 				268AE8A8218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift in Sources */,
 				26BE5C0F2199084400890682 /* ProgressSlider.swift in Sources */,
@@ -366,6 +376,7 @@
 				26F0F29A216D28BE0077DF97 /* ContentProvider.swift in Sources */,
 				26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */,
 				26F0F298216D18640077DF97 /* ImageContent.swift in Sources */,
+				2606C9D52386D5380072EBEC /* PDFContent.swift in Sources */,
 				26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */,
 				26EDC4C22373B1EE006A4D34 /* FastDirectoryEnumerator.swift in Sources */,
 				2690E7C323763E07003BF173 /* CollapsingProgressIndicator.swift in Sources */,
@@ -373,9 +384,10 @@
 				268AE8AA218BEA55008E7EE4 /* ContentsViewController.swift in Sources */,
 				26974C6E219B301700134508 /* PlayerController.swift in Sources */,
 				26F48DA0218A74CA00D905DF /* ThumbnailLoader.swift in Sources */,
+				2606C9D72386D8BC0072EBEC /* PDFContentPlayer.swift in Sources */,
 				26F0F293216CFF010077DF97 /* ContentSourceListViewController.swift in Sources */,
 				261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */,
-				26F86AD6219A3DBE0045DD6B /* ImageContrentPlayer.swift in Sources */,
+				26F86AD6219A3DBE0045DD6B /* ImageContentPlayer.swift in Sources */,
 				26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */,
 				268AE8AC218BEADE008E7EE4 /* ContentsView.swift in Sources */,
 				26974C69219B2E9200134508 /* ThumbnailsController.swift in Sources */,
@@ -523,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ContentWhisperer/ContentWhisperer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -540,6 +553,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinwilson.ContentWhisperer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -548,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ContentWhisperer/ContentWhisperer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
