@@ -19,6 +19,7 @@ protocol ThumbnailsController: AnyObject {
     func getThumbnail (idx: Int) -> CachedThumbnail
     func thumbnailChanged (thumbnail: CachedThumbnail)
     func getThumbnailLabel (idx: Int)->String
+    func getThumbnailPath (idx: Int)->String
     var delegate: ThumbnailsControllerDelegate? { get set }
     func itemRequired (idx: Int)
     func itemNotRequired (idx: Int)

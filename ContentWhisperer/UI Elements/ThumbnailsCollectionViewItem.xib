@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,8 +22,8 @@
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="naU-e3-EG6" customClass="ThumbnailView" customModule="ContentWhisperer" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="30" width="287" height="134"/>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B0E-84-HEL">
-                    <rect key="frame" x="8" y="5" width="37" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0E-84-HEL">
+                    <rect key="frame" x="8" y="5" width="37" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="F4A-Fp-I0s">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -36,6 +37,7 @@
                 <constraint firstItem="B0E-84-HEL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="aVE-Rn-dOm"/>
                 <constraint firstAttribute="trailing" secondItem="naU-e3-EG6" secondAttribute="trailing" id="c6B-em-mbV"/>
                 <constraint firstAttribute="bottom" secondItem="B0E-84-HEL" secondAttribute="bottom" constant="5" id="fxc-hP-ktN"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="B0E-84-HEL" secondAttribute="trailing" constant="10" id="h4Z-gm-4zU"/>
                 <constraint firstAttribute="bottom" secondItem="naU-e3-EG6" secondAttribute="bottom" constant="30" id="mtR-m4-uoK"/>
             </constraints>
             <point key="canvasLocation" x="-105.5" y="100"/>

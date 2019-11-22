@@ -288,15 +288,15 @@ CA
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView autosaveName="MainSplitView" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INS-32-Qeg">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <splitView autosaveName="MainSplitView" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INS-32-Qeg">
+                                <rect key="frame" x="0.0" y="24" width="480" height="246"/>
                                 <subviews>
-                                    <customView id="YUI-4W-EYn">
-                                        <rect key="frame" x="0.0" y="0.0" width="236" height="270"/>
+                                    <customView misplaced="YES" id="YUI-4W-EYn">
+                                        <rect key="frame" x="0.0" y="0.0" width="236" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Xb3-ax-7SG">
-                                                <rect key="frame" x="0.0" y="0.0" width="236" height="270"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="241" height="246"/>
                                                 <connections>
                                                     <segue destination="Emh-hs-Iij" kind="embed" id="vwP-np-g4K"/>
                                                 </connections>
@@ -309,12 +309,12 @@ CA
                                             <constraint firstAttribute="trailing" secondItem="Xb3-ax-7SG" secondAttribute="trailing" id="mlK-yJ-gmf"/>
                                         </constraints>
                                     </customView>
-                                    <customView id="q5M-LV-VZk">
-                                        <rect key="frame" x="246" y="0.0" width="234" height="270"/>
+                                    <customView misplaced="YES" id="q5M-LV-VZk">
+                                        <rect key="frame" x="237" y="0.0" width="243" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ebg-FO-Ce8">
-                                                <rect key="frame" x="0.0" y="0.0" width="234" height="270"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="238" height="246"/>
                                                 <connections>
                                                     <segue destination="BKw-Jq-9oM" kind="embed" id="eIq-fz-kGA"/>
                                                 </connections>
@@ -333,14 +333,29 @@ CA
                                     <real value="249"/>
                                 </holdingPriorities>
                             </splitView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0p1-Pm-ijI">
+                                <rect key="frame" x="8" y="4" width="37" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Mt0-ex-nvd">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="0p1-Pm-ijI" secondAttribute="bottom" constant="4" id="NRQ-k5-oxM"/>
+                            <constraint firstItem="0p1-Pm-ijI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="PkO-XK-gqJ"/>
                             <constraint firstItem="INS-32-Qeg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="PvO-kt-lkb"/>
-                            <constraint firstAttribute="bottom" secondItem="INS-32-Qeg" secondAttribute="bottom" id="bSx-uj-ze3"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0p1-Pm-ijI" secondAttribute="trailing" constant="10" id="UUf-wx-cwR"/>
+                            <constraint firstAttribute="bottom" secondItem="INS-32-Qeg" secondAttribute="bottom" constant="24" id="bSx-uj-ze3"/>
                             <constraint firstAttribute="trailing" secondItem="INS-32-Qeg" secondAttribute="trailing" id="cBI-Np-GBJ"/>
                             <constraint firstItem="INS-32-Qeg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="hOE-e1-1hZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statusBarConstraint" destination="bSx-uj-ze3" id="h32-1Q-pU1"/>
+                        <outlet property="statusBarLabel" destination="0p1-Pm-ijI" id="71H-BK-fup"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -369,7 +384,7 @@ CA
                                             <tableColumns>
                                                 <tableColumn width="305" minWidth="16" maxWidth="1000" id="b85-bH-YUs">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -479,15 +494,15 @@ CA
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView arrangesAllSubviews="NO" autosaveName="ThumbnailsSplitView" dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-qt-lOB">
+                            <splitView arrangesAllSubviews="NO" autosaveName="ThumbnailsSplitView" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-qt-lOB">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <subviews>
-                                    <customView id="Vix-G2-Gyv">
-                                        <rect key="frame" x="0.0" y="0.0" width="450" height="177"/>
+                                    <customView misplaced="YES" id="Vix-G2-Gyv">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="186"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="4y3-Ib-kGb">
-                                                <rect key="frame" x="0.0" y="0.0" width="450" height="177"/>
+                                                <rect key="frame" x="0.0" y="9" width="450" height="182"/>
                                                 <connections>
                                                     <segue destination="nR7-fz-JII" kind="embed" id="IoU-vi-r3d"/>
                                                 </connections>
@@ -500,12 +515,12 @@ CA
                                             <constraint firstAttribute="trailing" secondItem="4y3-Ib-kGb" secondAttribute="trailing" id="vRp-UA-m04"/>
                                         </constraints>
                                     </customView>
-                                    <customView id="rm3-d4-0AG">
+                                    <customView misplaced="YES" id="rm3-d4-0AG">
                                         <rect key="frame" x="0.0" y="187" width="450" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aMc-uS-zfW">
-                                                <rect key="frame" x="0.0" y="0.0" width="450" height="113"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="117"/>
                                                 <connections>
                                                     <segue destination="olj-Ul-NSu" kind="embed" id="gph-3g-gaO"/>
                                                 </connections>

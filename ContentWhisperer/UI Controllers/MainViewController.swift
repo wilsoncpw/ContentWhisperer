@@ -9,11 +9,15 @@
 import Cocoa
 
 class MainViewController: NSViewController {
-
+    @IBOutlet weak var statusBarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var statusBarLabel: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let _ = statusBarNotify.observe { message in
+            self.statusBarLabel.stringValue = message
+        }
     }
 
     override var representedObject: Any? {

@@ -20,8 +20,8 @@ class ContentSourceListViewController: NSViewController, NSOutlineViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(forName: .onThumbnailsRemoved, object: nil, queue: nil) {
-            notification in
+        
+        let _ = thumbnailsRemovedNotify.observe {
             self.outlineView!.reloadData()
         }
     }

@@ -89,10 +89,10 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         
 //        guard let contents = try? Contents (contentProvider: contentProvider, folderURL: url) else { return false }
         
-        NotificationCenter.default.post(name: .onLoading, object: true)
+        loadingNotify(playable: true).post()
         let loader = ContentLoader (folderURL: url, contentProvider: contentProvider)
         loader.load { result in
-            NotificationCenter.default.post(name: .onLoading, object: false)
+            loadingNotify(playable: false).post()
 
             switch result {
             case .failure(let error) :

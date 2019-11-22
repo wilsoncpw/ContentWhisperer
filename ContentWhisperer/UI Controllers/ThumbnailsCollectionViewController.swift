@@ -39,7 +39,12 @@ class ThumbnailsCollectionViewController: NSViewController {
     var focusedIdx: Int? {
         didSet {
             if focusedIdx != oldValue {
-                NotificationCenter.default.post(name: .onSelectionChanged, object: focusedIdx)
+                selectionChangedNotify (idx: focusedIdx).post()
+                if let idx = focusedIdx, let statusMessage = thumbnailsController?.getThumbnailPath(idx: idx) {
+                    statusBarNotify (message: statusMessage).post()
+                } else {
+                    statusBarNotify (message: "").post()
+                }
             }
         }
     }
@@ -48,7 +53,7 @@ class ThumbnailsCollectionViewController: NSViewController {
         if let f = idx {
             let item = collectionView.item(at: f) as? ThumbnailsCollectionViewItem
             item?.setHighlight(selected: true)
-            collectionView.selectionIndexes = [f]            
+            collectionView.selectionIndexes = [f]
         } else {
             collectionView.selectionIndexes = []
         }
@@ -83,6 +88,7 @@ class ThumbnailsCollectionViewController: NSViewController {
 // MARK: - Data Source for thumbnails collection view
 extension ThumbnailsCollectionViewController: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        print ("Content count=", contentCount)
         return contentCount
     }
     
@@ -107,7 +113,7 @@ extension ThumbnailsCollectionViewController : ThumbnailsControllerDelegate {
     
     func removeThumbnails (sender: Any, idxs: Set<Int>) {
         collectionView.deleteItems(at: Set<IndexPath> (idxs.map { idx in return IndexPath (item: idx, section: 0)}))
-        NotificationCenter.default.post(name: .onThumbnailsRemoved, object: nil)
+        thumbnailsRemovedNotify ().post()
         
         guard var newFocus = focusedIdx, contentCount > 0 else {
             focusedIdx = nil
@@ -120,7 +126,7 @@ extension ThumbnailsCollectionViewController : ThumbnailsControllerDelegate {
             setFocusedIdx (idx: newFocus == -1 ? nil : newFocus)
         } else {
             setFocusedIdx (idx: newFocus == -1 ? nil : newFocus)
-            NotificationCenter.default.post(name: .onSelectionChanged, object: focusedIdx)
+            selectionChangedNotify (idx: focusedIdx).post()
         }
     }
 }

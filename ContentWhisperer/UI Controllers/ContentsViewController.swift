@@ -28,17 +28,13 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(forName: .onSelectionChanged, object: nil, queue: nil) { notification in
-            self.selectionChanged(idx: notification.object as? Int)
-        }
-        NotificationCenter.default.addObserver(forName: .onLoading, object: nil, queue: nil) { notification in
-            if let b = notification.object as? Bool {
-                self.progressBar.isHidden = !b
-                if b {
-                    self.progressBar.startAnimation(self)
-                } else {
-                    self.progressBar.stopAnimation(self)
-                }
+        let _ = selectionChangedNotify.observe { idx in self.selectionChanged(idx: idx) }
+        let _ = loadingNotify.observe { playable in
+            self.progressBar.isHidden = !playable
+            if playable {
+                self.progressBar.startAnimation(self)
+            } else {
+                self.progressBar.stopAnimation(self)
             }
         }
         
