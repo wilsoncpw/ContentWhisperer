@@ -23,4 +23,31 @@ class ThumbnailCollectionView: NSCollectionView {
             super.keyDown(with: event)
         }
     }
+    
+    override func layout() {
+        super.layout()
+        
+        if let layout = collectionViewLayout as? NSCollectionViewFlowLayout {
+            let height = frame.height
+            
+            
+            let adjustedHeight = height-26
+            
+            layout.itemSize.width = adjustedHeight
+            layout.itemSize.height = adjustedHeight
+            
+            
+        }
+    }
+    
+    override func viewDidEndLiveResize() {
+        let sel = selectionIndexes.min()
+        if let sel = sel {
+            let p = IndexPath (item: sel, section: 0)
+
+            scrollToItems(at: [p], scrollPosition: .centeredHorizontally)
+//            let selFrame = frameForItem(at: sel)
+//            scrollToVisible(selFrame)
+        }
+    }
 }

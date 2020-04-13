@@ -54,6 +54,8 @@ class ThumbnailsCollectionViewController: NSViewController {
             let item = collectionView.item(at: f) as? ThumbnailsCollectionViewItem
             item?.setHighlight(selected: true)
             collectionView.selectionIndexes = [f]
+            let p = IndexPath (item: f, section: 0)
+            collectionView.scrollToItems(at: [p], scrollPosition: .left)
         } else {
             collectionView.selectionIndexes = []
         }

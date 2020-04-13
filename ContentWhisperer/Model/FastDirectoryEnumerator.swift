@@ -56,7 +56,6 @@ class FastDirectoryEnumerator {
         var rv = [String] ()
         rv.reserveCapacity(10000)
         
-        let px = path + (subPath.count == 0 ? "" : "/" + subPath)
         let py = (subPath.count == 0 ? "" : subPath + "/")
         let pz = path + "/" + py
         let p = pz.cString(using: .utf8)
@@ -92,11 +91,6 @@ class FastDirectoryEnumerator {
             
             let rv = URL (fileURLWithPath: String (st.dropFirst()), relativeTo: rootURL)
             return rv
-//            if st.hasSuffix("/") {
-//                return URL (fileURLWithPath: st, isDirectory: true)
-//            } else {
-//                return URL (fileURLWithPath: st, isDirectory: false)
-//            }
         }
     }
 }

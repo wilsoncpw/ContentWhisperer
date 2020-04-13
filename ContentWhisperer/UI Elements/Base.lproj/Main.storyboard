@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -291,12 +291,12 @@ CA
                             <splitView autosaveName="MainSplitView" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INS-32-Qeg">
                                 <rect key="frame" x="0.0" y="24" width="480" height="246"/>
                                 <subviews>
-                                    <customView misplaced="YES" id="YUI-4W-EYn">
+                                    <customView id="YUI-4W-EYn">
                                         <rect key="frame" x="0.0" y="0.0" width="236" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Xb3-ax-7SG">
-                                                <rect key="frame" x="0.0" y="0.0" width="241" height="246"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="236" height="246"/>
                                                 <connections>
                                                     <segue destination="Emh-hs-Iij" kind="embed" id="vwP-np-g4K"/>
                                                 </connections>
@@ -309,12 +309,12 @@ CA
                                             <constraint firstAttribute="trailing" secondItem="Xb3-ax-7SG" secondAttribute="trailing" id="mlK-yJ-gmf"/>
                                         </constraints>
                                     </customView>
-                                    <customView misplaced="YES" id="q5M-LV-VZk">
+                                    <customView id="q5M-LV-VZk">
                                         <rect key="frame" x="237" y="0.0" width="243" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ebg-FO-Ce8">
-                                                <rect key="frame" x="0.0" y="0.0" width="238" height="246"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="246"/>
                                                 <connections>
                                                     <segue destination="BKw-Jq-9oM" kind="embed" id="eIq-fz-kGA"/>
                                                 </connections>
@@ -384,7 +384,6 @@ CA
                                             <tableColumns>
                                                 <tableColumn width="305" minWidth="16" maxWidth="1000" id="b85-bH-YUs">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -497,12 +496,12 @@ CA
                             <splitView arrangesAllSubviews="NO" autosaveName="ThumbnailsSplitView" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-qt-lOB">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <subviews>
-                                    <customView misplaced="YES" id="Vix-G2-Gyv">
+                                    <customView id="Vix-G2-Gyv">
                                         <rect key="frame" x="0.0" y="0.0" width="450" height="186"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="4y3-Ib-kGb">
-                                                <rect key="frame" x="0.0" y="9" width="450" height="182"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="186"/>
                                                 <connections>
                                                     <segue destination="nR7-fz-JII" kind="embed" id="IoU-vi-r3d"/>
                                                 </connections>
@@ -515,12 +514,12 @@ CA
                                             <constraint firstAttribute="trailing" secondItem="4y3-Ib-kGb" secondAttribute="trailing" id="vRp-UA-m04"/>
                                         </constraints>
                                     </customView>
-                                    <customView misplaced="YES" id="rm3-d4-0AG">
+                                    <customView id="rm3-d4-0AG">
                                         <rect key="frame" x="0.0" y="187" width="450" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aMc-uS-zfW">
-                                                <rect key="frame" x="0.0" y="0.0" width="450" height="117"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="113"/>
                                                 <connections>
                                                     <segue destination="olj-Ul-NSu" kind="embed" id="gph-3g-gaO"/>
                                                 </connections>
@@ -566,7 +565,7 @@ CA
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView selectable="YES" allowsMultipleSelection="YES" id="AMS-ut-7Zk" customClass="ThumbnailCollectionView" customModule="ContentWhisperer" customModuleProvider="target">
+                                        <collectionView selectable="YES" allowsEmptySelection="NO" allowsMultipleSelection="YES" id="AMS-ut-7Zk" customClass="ThumbnailCollectionView" customModule="ContentWhisperer" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="158"/>
                                             <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="fpG-53-zED">

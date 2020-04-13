@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2606C9D52386D5380072EBEC /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606C9D42386D5380072EBEC /* PDFContent.swift */; };
 		2606C9D72386D8BC0072EBEC /* PDFContentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606C9D62386D8BC0072EBEC /* PDFContentPlayer.swift */; };
-		2606C9D92386DC790072EBEC /* fpp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2606C9D82386DC790072EBEC /* fpp.m */; };
 		260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DE9B2216EAF72002C673F /* ContentSection.swift */; };
 		261DAB83216D5B6800518EA2 /* MovieContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB82216D5B6800518EA2 /* MovieContent.swift */; };
 		261DAB85216D5BB900518EA2 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261DAB84216D5BB900518EA2 /* Content.swift */; };
@@ -68,7 +67,6 @@
 /* Begin PBXFileReference section */
 		2606C9D42386D5380072EBEC /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
 		2606C9D62386D8BC0072EBEC /* PDFContentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContentPlayer.swift; sourceTree = "<group>"; };
-		2606C9D82386DC790072EBEC /* fpp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fpp.m; sourceTree = "<group>"; };
 		260DE9B2216EAF72002C673F /* ContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSection.swift; sourceTree = "<group>"; };
 		261DAB82216D5B6800518EA2 /* MovieContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContent.swift; sourceTree = "<group>"; };
 		261DAB84216D5BB900518EA2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 				26F86AD0219A3B3F0045DD6B /* ContentPlayer.swift */,
 				26F86AD5219A3DBE0045DD6B /* ImageContentPlayer.swift */,
 				2606C9D62386D8BC0072EBEC /* PDFContentPlayer.swift */,
-				2606C9D82386DC790072EBEC /* fpp.m */,
 				26F86AD7219A3DD10045DD6B /* MovieContentPlayer.swift */,
 			);
 			path = "Content Players";
@@ -365,7 +362,6 @@
 				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
 				260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */,
 				2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */,
-				2606C9D92386DC790072EBEC /* fpp.m in Sources */,
 				26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */,
 				268AE8A8218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift in Sources */,
 				26BE5C0F2199084400890682 /* ProgressSlider.swift in Sources */,
