@@ -51,8 +51,8 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
         return bucket.contents [idx].displayName
     }
     
-    func getThumbnailPath (idx: Int) -> String {
-        return contents.folderURL.path + "/" + bucket.contents [idx].fileName
+    func getThumbnailPathForDisplay (idx: Int) -> String {
+        return bucket.contents [idx].fileName
     }
     
     func itemRequired (idx: Int) {

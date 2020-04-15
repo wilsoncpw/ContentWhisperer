@@ -14,7 +14,6 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var contentsView: ContentsView!
     @IBOutlet weak var pausePlayButton: NSButton!
-    @IBOutlet weak var progressBar: NSProgressIndicator!
     
     var contentPlayer: ContentPlayer?
     var timer: Timer?
@@ -29,17 +28,8 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let _ = selectionChangedNotify.observe { idx in self.selectionChanged(idx: idx) }
-        let _ = loadingNotify.observe { playable in
-            self.progressBar.isHidden = !playable
-            if playable {
-                self.progressBar.startAnimation(self)
-            } else {
-                self.progressBar.stopAnimation(self)
-            }
-        }
         
         pausePlayButton.isHidden = true
-        progressBar.isHidden = true
     }
     
 

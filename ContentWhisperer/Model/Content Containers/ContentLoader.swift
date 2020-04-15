@@ -35,7 +35,7 @@ class ContentLoader {
         }
     }
     
-    func asyncLoad () throws -> Contents {
+    private func asyncLoad () throws -> Contents {
 //        contentProvider.countFiles(url: folderURL)
         return try Contents (contentProvider: contentProvider, folderURL: folderURL)
     }

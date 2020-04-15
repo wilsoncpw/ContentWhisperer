@@ -23,22 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8A7741EC-BCA6-45A6-9965-FE378AB19B92"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "loadContentsIntoSectionsx(folderUrl:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "DA4D3CF8-A023-448F-8840-20427E791B1D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -55,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "70887A5C-AEA3-433B-AD41-7A187AC9820F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ContentWhisperer/Model/Content Containers/ContentLoader.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "DFDFEEBE-75D7-4C31-BA0E-D104C8CCB25D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -78,8 +46,8 @@
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "loadContentsIntoSections(folderUrl:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,74 +62,10 @@
             filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "loadContentsIntoSections(folderUrl:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "29C3E794-CC57-4C35-BF58-6D7D30F701D9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "loadContentsIntoSectionsx(folderUrl:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "67A04ED6-80F8-46EF-9CFB-87C18E6D2992"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ContentWhisperer/Model/Content Containers/ContentProvider.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "getFolderURLs(url:into:ignore:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "67A04ED6-80F8-46EF-9CFB-87C18E6D2992 - f87a9b8744922687"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ContentWhisperer.ContentProvider.(getFolderURLs in _7C3C8C59EFB5474340F35BE312E79364)(url: Foundation.URL, into: inout Swift.Array&lt;Foundation.URL&gt;, ignore: Foundation.URL) throws -&gt; ()"
-                  moduleName = "ContentWhisperer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wilsoncpw/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Model/Content%20Containers/ContentProvider.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "760">
-               </Location>
-               <Location
-                  uuid = "67A04ED6-80F8-46EF-9CFB-87C18E6D2992 - a1e6762a2afe41a0"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Foundation.URL) -&gt; Swift.Bool in ContentWhisperer.ContentProvider.(getFolderURLs in _7C3C8C59EFB5474340F35BE312E79364)(url: Foundation.URL, into: inout Swift.Array&lt;Foundation.URL&gt;, ignore: Foundation.URL) throws -&gt; ()"
-                  moduleName = "ContentWhisperer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wilsoncpw/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Model/Content%20Containers/ContentProvider.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "67">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

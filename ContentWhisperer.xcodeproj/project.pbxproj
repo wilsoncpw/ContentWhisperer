@@ -23,7 +23,6 @@
 		26974C6E219B301700134508 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C6D219B301700134508 /* PlayerController.swift */; };
 		26AF855C21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF855B21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift */; };
 		26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5D2187C3D000FF4A67 /* Notifications.swift */; };
-		26BE5C0F2199084400890682 /* ProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE5C0E2199084400890682 /* ProgressSlider.swift */; };
 		26C8626521D13CA100D25F92 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C8626421D13CA000D25F92 /* OrderedDictionary.swift */; };
 		26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */; };
 		26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */; };
@@ -81,7 +80,6 @@
 		26974C6D219B301700134508 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		26AF855B21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCollectionView.swift; sourceTree = "<group>"; };
 		26B23F5D2187C3D000FF4A67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		26BE5C0E2199084400890682 /* ProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSlider.swift; sourceTree = "<group>"; };
 		26C8626421D13CA000D25F92 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewController.swift; sourceTree = "<group>"; };
 		26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */,
 				26F48DA3218A831300D905DF /* ThumbnailView.swift */,
 				268AE8AB218BEADE008E7EE4 /* ContentsView.swift */,
-				26BE5C0E2199084400890682 /* ProgressSlider.swift */,
 				26AF855B21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift */,
 				2690E7C223763E07003BF173 /* CollapsingProgressIndicator.swift */,
 			);
@@ -364,7 +361,6 @@
 				2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */,
 				26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */,
 				268AE8A8218BE3E4008E7EE4 /* PlayerControllerFromContentBucket.swift in Sources */,
-				26BE5C0F2199084400890682 /* ProgressSlider.swift in Sources */,
 				26F0F27C216CF08D0077DF97 /* MainViewController.swift in Sources */,
 				261DAB85216D5BB900518EA2 /* Content.swift in Sources */,
 				26974C6C219B2EC900134508 /* SectionController.swift in Sources */,

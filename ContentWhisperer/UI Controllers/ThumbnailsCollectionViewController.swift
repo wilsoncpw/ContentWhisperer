@@ -40,7 +40,7 @@ class ThumbnailsCollectionViewController: NSViewController {
         didSet {
             if focusedIdx != oldValue {
                 selectionChangedNotify (idx: focusedIdx).post()
-                if let idx = focusedIdx, let statusMessage = thumbnailsController?.getThumbnailPath(idx: idx) {
+                if let idx = focusedIdx, let statusMessage = thumbnailsController?.getThumbnailPathForDisplay(idx: idx) {
                     statusBarNotify (message: statusMessage).post()
                 } else {
                     statusBarNotify (message: "").post()

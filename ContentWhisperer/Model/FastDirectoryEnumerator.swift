@@ -52,7 +52,7 @@ class FastDirectoryEnumerator {
         return count(from: path, recurse: true, ignoringSubdirs: ignoringSubdirs)
     }
     
-    private func getFiles (subPath: String, recurse: Bool, ignoringSubdirs: [String]?) -> [String] {
+    private func getFiles (subPath: String, recurse: Bool, ignoringSubdirs: [String]) -> [String] {
         var rv = [String] ()
         rv.reserveCapacity(10000)
         
@@ -72,7 +72,7 @@ class FastDirectoryEnumerator {
                 }
                 if ent.pointee.d_type != DT_DIR {
                     rv.append(py + lastPathComponent)
-                } else if recurse && ignoringSubdirs == nil || !ignoringSubdirs!.contains(lastPathComponent.lowercased()) {
+                } else if recurse &&  !ignoringSubdirs.contains(lastPathComponent.lowercased ()) {
                     rv.append(contentsOf: getFiles(subPath: py + lastPathComponent, recurse: true, ignoringSubdirs: ignoringSubdirs))
                 }
             }
@@ -80,12 +80,12 @@ class FastDirectoryEnumerator {
         return rv
     }
     
-    func getFiles(recurse: Bool, ignoringSubdirs: [String]?) -> [String] {
+    func getFiles(recurse: Bool, ignoringSubdirs: [String]) -> [String] {
         return getFiles(subPath:"", recurse: recurse, ignoringSubdirs: ignoringSubdirs)
     }
     
     
-    func getURLs (recurse: Bool, ignoringSubdirs: [String]?) -> [URL] {
+    func getURLs (recurse: Bool, ignoringSubdirs: [String]) -> [URL] {
         let rootURL = URL (fileURLWithPath: path, isDirectory: true)
         return getFiles(subPath:"", recurse: recurse, ignoringSubdirs: ignoringSubdirs).map {st in
             

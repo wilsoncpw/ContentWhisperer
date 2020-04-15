@@ -30,6 +30,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
             contentsSourceListViewController.sectionController = sectionController
             thumbnailsCollectionViewController.thumbnailsController = nil
             contentsViewController.playerController = nil
+            titleLabel.stringValue = sectionController?.contents.folderURL.lastPathComponent ?? Bundle.main.displayName
         }
     }
 
@@ -86,27 +87,20 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
     
     func openFolderAtURL (_ url: URL)->Bool {
         if !reset () { return false }
-        
-//        guard let contents = try? Contents (contentProvider: contentProvider, folderURL: url) else { return false }
-        
+                
         loadingNotify(playable: true).post()
         let loader = ContentLoader (folderURL: url, contentProvider: contentProvider)
         loader.load { result in
             loadingNotify(playable: false).post()
 
             switch result {
-            case .failure(let error) :
-                print (error)
-            case .success(let contents) :
-                self.sectionController = SectionControllerFromContents (contents: contents)
+            case .failure(let error) : print (error)
+            case .success(let contents) : self.sectionController = SectionControllerFromContents (contents: contents)
             }
         }
-    
         
         NSDocumentController.shared.noteNewRecentDocumentURL(url)
-//        sectionController = SectionControllerFromContents (contents: contents)
         
-//        setTitleLabelForImages(images)
         return true
     }
     

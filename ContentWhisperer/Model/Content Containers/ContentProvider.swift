@@ -28,27 +28,6 @@ class ContentProvider {
         self.registeredContentTypes = registeredContentTypes
     }
     
-    private func getFolderURLs (url: URL, into urls: inout [URL], ignore deletedURL: URL) throws {
-        let theseURLs = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-        let directoryURLs = theseURLs.filter {
-            url in
-            return url.hasDirectoryPath
-        }
-        
-        let fileURLs = theseURLs.filter {
-            url in
-            
-            return !url.hasDirectoryPath
-        }
-        urls.append(contentsOf: fileURLs)
-        
-        for url in directoryURLs {
-            if (url != deletedURL) {
-                try getFolderURLs(url: url, into: &urls, ignore: deletedURL)
-            }
-        }
-    }
-    
     //----------------------------------------------------------------------------
     /// loadContentsIntoSections
     ///
@@ -56,7 +35,7 @@ class ContentProvider {
     /// - Returns: An array of content sections with buckets of supported content.
     /// - Throws: Propagates errors from File Manager
     func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
-        let files = FastDirectoryEnumerator (path: folderUrl.path).getFiles(recurse: true, ignoringSubdirs: ["deleted"])
+        let files = FastDirectoryEnumerator (path: folderUrl.path).getFiles(recurse: true, ignoringSubdirs: ["deleted", "originals"])
  
         // Create a content section for each registered content type where at least one content url exists for it.
         return registeredContentTypes.reduce(into: [ContentSection]()) {sectionSum, contentType in
@@ -87,40 +66,6 @@ class ContentProvider {
             }
         }
     }
-
-    
-
-    func loadContentsIntoSectionsx (folderUrl: URL) throws -> [ContentSection] {
-        
-        var urls = [URL] ()
-        try getFolderURLs (url: folderUrl, into: &urls, ignore: folderUrl.appendingPathComponent("Deleted"))
-        
-        // Create a content section for each registered content type where at least one content url exists for it.
-        return try registeredContentTypes.reduce(into: [ContentSection]()) {sectionSum, contentType in
-            
-            var i = 0
-            
-            // Create sectionMap - an array of indexes into urls with content support by contentType
-            let sectionMap = urls.reduce(into: [Int]()) {intSum, url in
-                
-                if contentType.fileTypes.contains(url.pathExtension.lowercased()) {
-                    intSum.append(i)
-                }
-                i += 1
-            }
-            
-            if sectionMap.count > 0 {
-                
-                // If there are any contents availabel for this content type, create an array of the contents
-                let contents = try sectionMap.map {idx -> Content in
-                    let relativeFileName = try self.getRelativeFilePath(url: urls [idx], folderURL: folderUrl)
-                    return contentType.contentClass.init (fileName: relativeFileName)
-                }
-                
-                sectionSum.append (ContentSection (name: contentType.name, contents: contents))
-            }
-        }
-    }
     
     //----------------------------------------------------------------------------
     /// func getRelativeFilePath
@@ -146,7 +91,7 @@ class ContentProvider {
     
     func countFiles (url: URL) -> Int {
         
-        let cx = FastDirectoryEnumerator (url: url).deepCount  (ignoringSubdirs: ["deleted"])
+        let cx = FastDirectoryEnumerator (url: url).deepCount  (ignoringSubdirs: ["deleted", "originals"])
         return cx
     }
     
