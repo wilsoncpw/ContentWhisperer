@@ -218,7 +218,7 @@ CA
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="51" y="-93"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -239,11 +239,11 @@ CA
                                 <toolbarItem implicitItemIdentifier="01DC2C09-92EC-4B3F-BF4E-0A2533DD16D3" label="Custom View" paletteLabel="Custom View" tag="-1" sizingBehavior="auto" id="mZR-jN-wcF">
                                     <nil key="toolTip"/>
                                     <customView key="view" id="FIE-64-SHC">
-                                        <rect key="frame" x="0.0" y="14" width="163" height="52"/>
+                                        <rect key="frame" x="0.0" y="14" width="150" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K9h-wH-EIs">
-                                                <rect key="frame" x="63" y="18" width="37" height="16"/>
+                                                <rect key="frame" x="57" y="18" width="37" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="hht-BR-le6">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -273,6 +273,7 @@ CA
                     </window>
                     <connections>
                         <outlet property="titleLabel" destination="K9h-wH-EIs" id="WCi-es-g7d"/>
+                        <outlet property="titleLabelContainer" destination="FIE-64-SHC" id="SD5-ny-MSg"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>

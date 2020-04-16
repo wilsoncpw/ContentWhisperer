@@ -53,13 +53,13 @@ struct thumbnailsRemovedNotify: Notifiable {
     }
 }
 
-struct loadingNotify: Notifiable {
+private struct loadingNotify: Notifiable {
     static let name = Notification.Name ("loading")
     typealias T = Bool
     let payload: T
     
-    init (playable: Bool) {
-        payload = playable
+    init (isBusy: Bool) {
+        payload = isBusy
     }
 }
 

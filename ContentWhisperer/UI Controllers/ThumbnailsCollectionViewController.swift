@@ -90,7 +90,6 @@ class ThumbnailsCollectionViewController: NSViewController {
 // MARK: - Data Source for thumbnails collection view
 extension ThumbnailsCollectionViewController: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        print ("Content count=", contentCount)
         return contentCount
     }
     

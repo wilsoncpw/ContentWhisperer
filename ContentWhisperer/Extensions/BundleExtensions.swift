@@ -16,10 +16,6 @@ extension Bundle {
             rv = object(forInfoDictionaryKey: "CFBundleName") as? String
         }
         
-        //        if rv != nil, let version = object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-        //            rv = rv! + " " + version
-        //        }
-        
         return rv ?? "App"
     }
 }

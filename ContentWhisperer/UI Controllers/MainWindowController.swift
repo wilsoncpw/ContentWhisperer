@@ -11,6 +11,7 @@ import Cocoa
 class MainWindowController: NSWindowController, SectionControllerDelegate {
     
     @IBOutlet weak var titleLabel: NSTextField!
+    @IBOutlet weak var titleLabelContainer: NSView!
     
 //    var appDelegate: AppDelegate!
     var mainViewController: MainViewController!
@@ -30,7 +31,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
             contentsSourceListViewController.sectionController = sectionController
             thumbnailsCollectionViewController.thumbnailsController = nil
             contentsViewController.playerController = nil
-            titleLabel.stringValue = sectionController?.contents.folderURL.lastPathComponent ?? Bundle.main.displayName
+            setTitleLabel (value: sectionController?.contents.folderURL.lastPathComponent ?? Bundle.main.displayName)
         }
     }
 
@@ -45,7 +46,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         // Set modern title style
         window?.titleVisibility = .hidden
         window?.titlebarAppearsTransparent = true
-        titleLabel.stringValue = Bundle.main.displayName
+        setTitleLabel(value: Bundle.main.displayName)
         
         // Set up links to the view controllers
         linkViewControllers (from: contentViewController)
@@ -85,13 +86,24 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         return true
     }
     
+    private func setTitleLabel (value: String) {
+        titleLabel.stringValue = value
+        
+            titleLabel.sizeToFit()
+            let size = titleLabel.frame.size
+            
+            let oldFrame = titleLabelContainer.frame
+            titleLabelContainer.frame = NSRect (origin: oldFrame.origin, size: CGSize (width: size.width, height: oldFrame.height))
+
+    }
+    
     func openFolderAtURL (_ url: URL)->Bool {
         if !reset () { return false }
                 
-        loadingNotify(playable: true).post()
+        statusBarNotify (message: "Loading...").post()
         let loader = ContentLoader (folderURL: url, contentProvider: contentProvider)
         loader.load { result in
-            loadingNotify(playable: false).post()
+            statusBarNotify (message: "").post()
 
             switch result {
             case .failure(let error) : print (error)

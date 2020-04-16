@@ -29,6 +29,7 @@
 		26D92F06218A10660007A829 /* ThumbnailsCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */; };
 		26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */; };
 		26E80BB621D11CAC00DB5CA8 /* ContentDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E80BB521D11CAC00DB5CA8 /* ContentDeleter.swift */; };
+		26EABF76244887310016B4D5 /* cOpen.c in Sources */ = {isa = PBXBuildFile; fileRef = 26EABF75244887310016B4D5 /* cOpen.c */; };
 		26EDC4C023738E72006A4D34 /* ContentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EDC4BF23738E72006A4D34 /* ContentLoader.swift */; };
 		26EDC4C22373B1EE006A4D34 /* FastDirectoryEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EDC4C12373B1EE006A4D34 /* FastDirectoryEnumerator.swift */; };
 		26F0F27A216CF08D0077DF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F279216CF08D0077DF97 /* AppDelegate.swift */; };
@@ -86,6 +87,9 @@
 		26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThumbnailsCollectionViewItem.xib; sourceTree = "<group>"; };
 		26D92F09218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsControllerFromContentBucket.swift; sourceTree = "<group>"; };
 		26E80BB521D11CAC00DB5CA8 /* ContentDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDeleter.swift; sourceTree = "<group>"; };
+		26EABF73244887300016B4D5 /* ContentWhisperer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ContentWhisperer-Bridging-Header.h"; sourceTree = "<group>"; };
+		26EABF74244887310016B4D5 /* cOpen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cOpen.h; sourceTree = "<group>"; };
+		26EABF75244887310016B4D5 /* cOpen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cOpen.c; sourceTree = "<group>"; };
 		26EDC4BF23738E72006A4D34 /* ContentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLoader.swift; sourceTree = "<group>"; };
 		26EDC4C12373B1EE006A4D34 /* FastDirectoryEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastDirectoryEnumerator.swift; sourceTree = "<group>"; };
 		26F0F276216CF08D0077DF97 /* ContentWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +194,9 @@
 				26F0F279216CF08D0077DF97 /* AppDelegate.swift */,
 				26F0F282216CF08D0077DF97 /* Info.plist */,
 				26F0F283216CF08D0077DF97 /* ContentWhisperer.entitlements */,
+				26EABF74244887310016B4D5 /* cOpen.h */,
+				26EABF75244887310016B4D5 /* cOpen.c */,
+				26EABF73244887300016B4D5 /* ContentWhisperer-Bridging-Header.h */,
 			);
 			path = ContentWhisperer;
 			sourceTree = "<group>";
@@ -308,7 +315,7 @@
 				TargetAttributes = {
 					26F0F275216CF08D0077DF97 = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1140;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -374,6 +381,7 @@
 				2690E7C323763E07003BF173 /* CollapsingProgressIndicator.swift in Sources */,
 				26E80BB621D11CAC00DB5CA8 /* ContentDeleter.swift in Sources */,
 				268AE8AA218BEA55008E7EE4 /* ContentsViewController.swift in Sources */,
+				26EABF76244887310016B4D5 /* cOpen.c in Sources */,
 				26974C6E219B301700134508 /* PlayerController.swift in Sources */,
 				26F48DA0218A74CA00D905DF /* ThumbnailLoader.swift in Sources */,
 				2606C9D72386D8BC0072EBEC /* PDFContentPlayer.swift in Sources */,
@@ -545,6 +553,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinwilson.ContentWhisperer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ContentWhisperer/ContentWhisperer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -572,6 +581,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinwilson.ContentWhisperer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ContentWhisperer/ContentWhisperer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

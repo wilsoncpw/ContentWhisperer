@@ -17,18 +17,6 @@ class MainViewController: NSViewController {
         statusBarLabel.stringValue = ""
         
         let _ = statusBarNotify.observe { message in self.statusBarLabel.stringValue = message}
-        let _ = loadingNotify.observe { playable in
-            self.statusBarLabel.stringValue = playable ? "Loading..." : ""
-        }
-
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-
 }
 
