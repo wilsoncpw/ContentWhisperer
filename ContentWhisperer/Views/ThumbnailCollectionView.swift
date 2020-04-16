@@ -46,8 +46,6 @@ class ThumbnailCollectionView: NSCollectionView {
             let p = IndexPath (item: sel, section: 0)
 
             scrollToItems(at: [p], scrollPosition: .centeredHorizontally)
-//            let selFrame = frameForItem(at: sel)
-//            scrollToVisible(selFrame)
         }
     }
 }
