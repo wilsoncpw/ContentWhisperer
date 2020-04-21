@@ -40,28 +40,6 @@ class FastDirectoryEnumerator {
         return cx
     }
     
-    private func countEx (from path: String, recurse: Bool, ignoringSubdirs: [String]?) throws -> Int {
-        let p = path.cString(using: .utf8)
-        
-        let fd = cOpen(p, O_RDONLY | O_DIRECTORY)
-        
-        if fd == -1 {
-            throw POSIXError (POSIXError.Code(rawValue: errno)!)
-        }
-        
-        let bufLen = 8192
-        var buffer = [Int8] (repeating: 0, count: bufLen)
-        
-        var offset = 0
-        
-        while getdirentries(fd, &buffer, Int32 (bufLen), &offset) > 0 {
-            
-        }
-                
-        return 0
-
-    }
-    
     var count: Int {
         return count(from: path, recurse: false, ignoringSubdirs: nil)
     }
@@ -106,11 +84,6 @@ class FastDirectoryEnumerator {
     }
     
     func getFiles(recurse: Bool, ignoringSubdirs: [String]) -> [String] {
-        do {
-            let _ = try countEx(from: path, recurse: recurse, ignoringSubdirs: ignoringSubdirs)
-        } catch let e {
-            print (e.localizedDescription)
-        }
         return getFiles(subPath:"", recurse: recurse, ignoringSubdirs: ignoringSubdirs)
     }
     

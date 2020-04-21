@@ -13,6 +13,7 @@ class ImageContentPlayer: ContentPlayer {
     weak var delegate: ContentPlayerDelegate?
     let duration = Double (0)
     var currentPosition = Double (0)
+    var suggestedSize: NSSize?
     let isPlaying = false
     
     let source: CGImageSource
@@ -80,5 +81,9 @@ class ImageContentPlayer: ContentPlayer {
     func play() {}
     
     func stop () {}
+    
+    func nextPage() {}
+    
+    func prevPage () {}
 }
 

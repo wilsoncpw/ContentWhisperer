@@ -9,22 +9,51 @@
 import Cocoa
 
 extension CGPDFDocument {
-    func getNSImage (suggestedSize: NSSize?, page: Int) -> NSImage? {
-        guard let page = self.page(at: page) else { return nil }
+    func getNSImage1 (suggestedSize: NSSize?, page: Int) -> NSImage? {
+        guard let page = self.page(at: page), let suggestedSize = suggestedSize else { return nil }
         let mediaBox = page.getBoxRect(.mediaBox)
+        let sz: NSSize
+        if suggestedSize.height < mediaBox.height {
+            sz = suggestedSize
+        } else {
+            sz = mediaBox.size
+        }
         
-        let sz = suggestedSize ?? mediaBox.size
-        
+                
         let rv = NSImage (size: sz)
         rv.lockFocus()
         defer { rv.unlockFocus() }
         guard let context = NSGraphicsContext.current?.cgContext else { return nil }
         
-        if let suggestedSize = suggestedSize {
-            let pageTransform = page.getDrawingTransform(.mediaBox, rect: CGRect (origin: .zero, size: suggestedSize), rotate: 0, preserveAspectRatio: true)
+        context.setFillColor(NSColor.white.cgColor)
+        context.fill(CGRect (origin: .zero, size: sz))
+        
+        if true || suggestedSize != mediaBox.size {
+            let pageTransform = page.getDrawingTransform(.mediaBox, rect: CGRect (origin: .zero, size: sz), rotate: 0, preserveAspectRatio: true)
             context.concatenate(pageTransform)
         }
-         
+
+        context.drawPDFPage(page)
+        return rv
+    }
+    
+    func getNSImage (suggestedSize: NSSize?, page: Int) -> NSImage? {
+        guard let page = self.page(at: page) else { return nil }
+        let mediaBox = page.getBoxRect(.mediaBox)
+                
+        let rv = NSImage (size: mediaBox.size)
+        rv.lockFocus()
+        defer { rv.unlockFocus() }
+        guard let context = NSGraphicsContext.current?.cgContext else { return nil }
+        
+        context.setFillColor(NSColor.white.cgColor)
+        context.fill(CGRect (origin: .zero, size: mediaBox.size))
+        
+        if true {
+            let pageTransform = page.getDrawingTransform(.mediaBox, rect: mediaBox, rotate: 0, preserveAspectRatio: true)
+            context.concatenate(pageTransform)
+        }
+
         context.drawPDFPage(page)
         return rv
     }

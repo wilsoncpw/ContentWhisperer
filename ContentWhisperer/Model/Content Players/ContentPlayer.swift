@@ -25,7 +25,10 @@ protocol ContentPlayer: AnyObject {
     var duration: Double { get }
     var currentPosition: Double { get set }
     var isPlaying: Bool { get }
+    var suggestedSize: NSSize? { get set }
     
     func play ()
     func stop ()
+    func nextPage ()
+    func prevPage ()
 }

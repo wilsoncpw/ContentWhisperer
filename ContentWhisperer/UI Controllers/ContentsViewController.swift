@@ -28,6 +28,7 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let _ = selectionChangedNotify.observe { idx in self.selectionChanged(idx: idx) }
+        let _ = turnPageNotify.observe { direction in self.turnPage (direction: direction) }
         
         pausePlayButton.isHidden = true
     }
@@ -40,7 +41,7 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         pausePlayButton.isHidden = true
     }
     
-    func selectionChanged (idx: Int?) {
+    private func selectionChanged (idx: Int?) {
         contentPlayer = nil
         stopTimer()
         
@@ -52,6 +53,22 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
     
         self.contentPlayer = contentPlayer
         contentPlayer.delegate = self
+        contentPlayer.suggestedSize = view.frame.size
+        contentsView.setContentLayer(contentLayer: contentPlayer.caLayer)
+    }
+    
+    private func turnPage (direction: TurnPageDirection) {
+        
+        guard let contentPlayer = contentPlayer else {
+            return
+        }
+        
+        switch direction {
+        case .next: contentPlayer.nextPage()
+        case .prev: contentPlayer.prevPage()
+        }
+        
+        contentPlayer.suggestedSize = view.frame.size
         contentsView.setContentLayer(contentLayer: contentPlayer.caLayer)
     }
     

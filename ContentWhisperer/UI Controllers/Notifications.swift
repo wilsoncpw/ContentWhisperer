@@ -39,7 +39,7 @@ struct selectionChangedNotify: Notifiable {
     static let name = Notification.Name ("selectionChanged")
     typealias T = Int?
     let payload: T
-    init (idx: T) {
+    init (idx: Int?) {
         payload = idx
     }
 }
@@ -67,7 +67,21 @@ struct statusBarNotify: Notifiable {
     static let name = Notification.Name ("setStatusBar")
     typealias T = String
     let payload: T
-    init (message: T) {
+    init (message: String) {
         payload = message
+    }
+}
+
+enum TurnPageDirection {
+    case prev
+    case next
+}
+
+struct turnPageNotify: Notifiable {
+    static let name = Notification.Name ("turnPage")
+    typealias T = TurnPageDirection
+    let payload: T
+    init (direction: TurnPageDirection) {
+        payload = direction
     }
 }

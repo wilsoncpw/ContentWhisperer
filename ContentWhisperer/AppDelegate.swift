@@ -13,14 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var deleteMenuItem: NSMenuItem!
     
-    var mainWindowController: MainWindowController!
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let c = deleteMenuItem.keyEquivalent
-        let d = deleteMenuItem.keyEquivalentModifierMask
-        print (c, " ", d)
- //       deleteMenuItem.keyEquivalent = String (format: "%c", NSBackspaceCharacter)
-    }
+    var mainWindowController: MainWindowController?
 
     //----------------------------------------------------------------------
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

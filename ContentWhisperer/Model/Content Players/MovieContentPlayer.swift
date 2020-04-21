@@ -13,6 +13,7 @@ class MovieContentPlayer: NSObject, ContentPlayer {
     weak var delegate: ContentPlayerDelegate?
     lazy var duration: Double = asset.duration.seconds
     var statusObserver: NSKeyValueObservation?
+    var suggestedSize: NSSize?
     
     let asset: AVAsset
     
@@ -102,5 +103,11 @@ class MovieContentPlayer: NSObject, ContentPlayer {
     var isPlaying: Bool {
         guard let player = player else { return false }
         return player.rate != 0 && player.error == nil
+    }
+    
+    func nextPage() {
+    }
+    
+    func prevPage() {
     }
 }

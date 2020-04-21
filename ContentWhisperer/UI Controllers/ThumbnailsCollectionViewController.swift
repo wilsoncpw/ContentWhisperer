@@ -62,6 +62,10 @@ class ThumbnailsCollectionViewController: NSViewController {
         focusedIdx = idx
     }
     
+    private func turnPage (direction: TurnPageDirection) {
+        turnPageNotify (direction: direction).post()
+    }
+    
     //-----------------------------------------------------------------------
     /// func delete
     ///
@@ -78,8 +82,13 @@ class ThumbnailsCollectionViewController: NSViewController {
     /// In addition to the '<--' delete key above, also treat the 'forward delete' key
     /// as 'delete'.  This key is labelled 'delete' on extended keyboards
     override func keyDown(with event: NSEvent) {
-        if let ascii = event.characters?.first?.unicodeScalars.first?.value, ascii == NSDeleteFunctionKey {
-            delete (self)
+        if let ascii = event.characters?.first?.unicodeScalars.first?.value {
+            switch Int (ascii) {
+            case NSDeleteFunctionKey: delete (self)
+            case NSDownArrowFunctionKey: turnPage(direction: .next)
+            case NSUpArrowFunctionKey: turnPage(direction: .prev)
+            default: super.keyDown(with: event)
+            }
         } else {
             super.keyDown(with: event)
         }
