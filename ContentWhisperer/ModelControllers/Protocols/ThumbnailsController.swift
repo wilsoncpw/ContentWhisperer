@@ -11,11 +11,12 @@ import Foundation
 protocol ThumbnailsControllerDelegate: NSObjectProtocol {
     func reloadThumbnail (sender: Any, idx: Int)
     func removeThumbnails (sender: Any, idxs: Set<Int>)
+    func reloadThumbnails ()
 }
 
 protocol ThumbnailsController: AnyObject {
-    var contents: Contents { get }
     var contentCount: Int { get }
+    var shuffled: Bool { get }
     func getThumbnail (idx: Int) -> CachedThumbnail
     func thumbnailChanged (thumbnail: CachedThumbnail)
     func getThumbnailLabel (idx: Int)->String
@@ -24,5 +25,7 @@ protocol ThumbnailsController: AnyObject {
     func itemRequired (idx: Int)
     func itemNotRequired (idx: Int)
     func deleteItems (_ items: Set<Int>)
+    func sortContents ()
+    func shuffleContents ()
 }
 

@@ -13,10 +13,10 @@ final class MovieContent: ContentBase, Content {
 
     static let contentType = ContentType (
         name: "Videos",
-        fileTypes: Set<String> (["m4v", "mov", "mp4"]),
+        fileTypes: Set<String> (["m4v", "mov", "mp4", "dv"]),
         bucketDefinitions: [
             (name: "Movies", fileTypes: Set<String> (["m4v"])),
-            (name: "Clips", fileTypes: Set<String> (["mov", "mp4"]))],
+            (name: "Clips", fileTypes: Set<String> (["mov", "mp4", "dv"]))],
         contentClass: MovieContent.self)
       
     private func getAsset (folderURL: URL) -> AVAsset {

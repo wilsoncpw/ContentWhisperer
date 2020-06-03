@@ -16,6 +16,7 @@ class ContentBucket {
     private (set) var contents = [Content] ()
     private var _filenameMap : [String:Int]?
     private let contentQueue = DispatchQueue(label: "ContentQueue")
+    private (set) var shuffled = false
 
     //----------------------------------------------------------------------------
     /// init
@@ -47,6 +48,27 @@ class ContentBucket {
             }
             
             self._filenameMap = nil
+        }
+    }
+    
+    func sortContents (callback: @escaping ()->Void) {
+        contentQueue.async {
+            self.contents.sort(by: ) { content1, content2 in
+                return content1.fileName <= content2.fileName
+            }
+            
+            self._filenameMap = nil
+            self.shuffled = false
+            callback ()
+        }
+    }
+    
+    func shuffleContents (callback: @escaping ()->Void) {
+        contentQueue.async {
+            self.contents.shuffle()
+            self._filenameMap = nil
+            self.shuffled = true
+            callback ()
         }
     }
     

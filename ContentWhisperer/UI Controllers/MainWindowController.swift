@@ -18,6 +18,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
     var contentsSourceListViewController: ContentSourceListViewController!
     var thumbnailsCollectionViewController: ThumbnailsCollectionViewController!
     var contentsViewController: ContentsViewController!
+    var infoViewController: InfoViewController!
         
     let contentProvider = ContentProvider (registeredContentTypes: [
         ImageContent.contentType,
@@ -30,6 +31,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
             sectionController?.delegate = self
             contentsSourceListViewController.sectionController = sectionController
             thumbnailsCollectionViewController.thumbnailsController = nil
+            infoViewController.thumbnailsController = nil
             contentsViewController.playerController = nil
             setTitleLabel (value: sectionController?.contents.folderURL.lastPathComponent ?? Bundle.main.displayName)
         }
@@ -56,7 +58,8 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         precondition (contentsSourceListViewController != nil, failMsg)
         precondition (thumbnailsCollectionViewController != nil, failMsg)
         precondition (contentsViewController != nil, failMsg)
-        
+        precondition (infoViewController != nil, failMsg)
+
         UserDefaults.standard.registerImageWhispererDefaults ()
         
         if UserDefaults.standard.firstRun {
@@ -74,6 +77,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
             case let cv as ContentSourceListViewController : contentsSourceListViewController = cv
             case let tv as ThumbnailsCollectionViewController: thumbnailsCollectionViewController = tv
             case let co as ContentsViewController: contentsViewController = co
+            case let iv as InfoViewController: infoViewController = iv
             default: break
             }
             
@@ -122,11 +126,14 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
         
         if let bucket = bucket {
             contentsViewController.playerController = PlayerControllerFromContentBucket (contents: contents, bucket: bucket)
-            thumbnailsCollectionViewController.thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
+            let thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
+            thumbnailsCollectionViewController.thumbnailsController = thumbnailsController
+            infoViewController.thumbnailsController = thumbnailsController
             window?.makeFirstResponder(thumbnailsCollectionViewController.collectionView)
         } else {
             thumbnailsCollectionViewController.thumbnailsController = nil
             contentsViewController.playerController = nil
+            infoViewController.thumbnailsController = nil
         }
     }
 }

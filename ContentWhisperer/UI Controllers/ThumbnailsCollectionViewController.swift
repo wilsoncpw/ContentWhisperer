@@ -115,6 +115,12 @@ extension ThumbnailsCollectionViewController: NSCollectionViewDataSource {
 
 // MARK: - Delegate for thumbnails controller
 extension ThumbnailsCollectionViewController : ThumbnailsControllerDelegate {
+    func reloadThumbnails() {
+        focusedIdx = nil
+        collectionView.reloadData()
+        setFocusedIdx (idx: contentCount > 0 ? 0 : nil)
+    }
+    
     func reloadThumbnail(sender: Any, idx: Int) {
         if let i = collectionView.item(at: idx) as? ThumbnailsCollectionViewItem {
             i.displayCachedThumbnail()

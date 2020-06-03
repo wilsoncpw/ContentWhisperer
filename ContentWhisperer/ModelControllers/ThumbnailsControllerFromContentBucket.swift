@@ -15,7 +15,7 @@ class IntHolder {
 
 class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
-    let contents: Contents
+    private let contents: Contents
     let bucket: ContentBucket
     let deleter: ContentDeleter
     lazy var thumbnailLoader = ThumbnailLoader (controller: self)
@@ -31,6 +31,10 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
     var contentCount: Int {
         return bucket.contents.count
+    }
+    
+    var shuffled: Bool {
+        return bucket.shuffled
     }
     
     func getThumbnail (idx: Int) -> CachedThumbnail {
@@ -95,6 +99,22 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
         delegate?.removeThumbnails (sender: self, idxs: items)
         deleter.deleteContents(deletedContents) { error in
             
+        }
+    }
+    
+    func sortContents () {
+        bucket.sortContents {
+            DispatchQueue.main.async {
+                self.delegate?.reloadThumbnails()
+            }
+        }
+    }
+    
+    func shuffleContents () {
+        bucket.shuffleContents {
+            DispatchQueue.main.async {
+                self.delegate?.reloadThumbnails()
+            }
         }
     }
 }

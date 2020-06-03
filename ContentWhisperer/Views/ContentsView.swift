@@ -20,6 +20,8 @@ class ContentsView: NSView {
         let layer = CALayer ()
         layer.layoutManager = QuietLayoutManager.instance
         layer.backgroundColor = CGColor (red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
+        layer.borderColor = NSColor.separatorColor.cgColor
+        layer.borderWidth = 1
         
         self.layer = layer
     }
