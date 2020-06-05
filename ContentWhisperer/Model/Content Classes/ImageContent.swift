@@ -6,7 +6,7 @@
 //  Copyright © 2018 Colin Wilson. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 final class ImageContent: ContentBase, Content {
     

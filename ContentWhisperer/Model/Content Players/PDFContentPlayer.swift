@@ -76,7 +76,12 @@ class PDFContentPlayer: ContentPlayer {
         }
     }
     
-    
+    func takeSnaphot () -> CGImage? {
+        guard let image = doc.getNSImage(suggestedSize: suggestedSize, page: currentPage) else { return nil }
+        
+        let cg = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
+        return cg
+    }
 }
 
 

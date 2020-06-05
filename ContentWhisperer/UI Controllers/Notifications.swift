@@ -37,9 +37,9 @@ extension Notifiable {
 
 struct selectionChangedNotify: Notifiable {
     static let name = Notification.Name ("selectionChanged")
-    typealias T = Int?
+    typealias T = Int
     let payload: T
-    init (idx: Int?) {
+    init (idx: Int) {
         payload = idx
     }
 }

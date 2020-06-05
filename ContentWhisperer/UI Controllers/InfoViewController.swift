@@ -14,33 +14,9 @@ class InfoViewController: NSViewController {
     
     var thumbnailsController: ThumbnailsController? {
         didSet {
-            if let value = thumbnailsController {
-                
-//                detailsLabel.stringValue = "\(value.contentCount) items"
-//                shuffleButton.isHidden = false
-//                shuffleButton.state = .off
-                
-            } else {
-//                detailsLabel.stringValue = ""
-//                shuffleButton.isHidden = true
-            }
-            
             outlineView.reloadData()
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    @IBAction func shufleButtonClicked(_ sender: Any) {
-//        if shuffleButton.state == .on {
-//            thumbnailsController?.shuffleContents()
-//        } else {
-//            thumbnailsController?.sortContents()
-//        }
-    }
-    
 }
 
 extension InfoViewController: NSOutlineViewDataSource {
@@ -60,20 +36,21 @@ extension InfoViewController: NSOutlineViewDataSource {
         if item == nil, let thumbnailsController = thumbnailsController {
             return thumbnailsController
         }
-        return "fuck"
+        return 0
     }
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        guard let thumbailsController = item as? ThumbnailsController else {
+        
+        guard
+            let thumbailsController = item as? ThumbnailsController,
+            case let id = NSUserInterfaceItemIdentifier (rawValue: "InfoCell"),
+            let rv = outlineView.makeView(withIdentifier: id, owner: self) as? InfoTableCellView
+        else {
             return nil
         }
         
-        if let rv = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "InfoCell" ), owner: self) as? InfoTableCellView {
-            rv.thumbnailsController = thumbailsController
-            return rv
-        }
-        
-        return nil
+        rv.thumbnailsController = thumbailsController
+        return rv
     }
 }
 
@@ -82,5 +59,4 @@ extension InfoViewController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
         return outlineView.frame.height
     }
-    
 }

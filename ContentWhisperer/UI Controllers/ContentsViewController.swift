@@ -41,11 +41,11 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         pausePlayButton.isHidden = true
     }
     
-    private func selectionChanged (idx: Int?) {
+    private func selectionChanged (idx: Int) {
         contentPlayer = nil
         stopTimer()
         
-        guard let playerController = playerController, let idx = idx, let contentPlayer = playerController.getContentPlayer(idx: idx) else {
+        guard let playerController = playerController, idx >= 0, let contentPlayer = playerController.getContentPlayer(idx: idx) else {
             contentsView.setContentLayer(contentLayer: nil)
             slider.isHidden = true
             return
@@ -102,4 +102,6 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
             contentPlayer.play()
         }
     }
+    
+ 
 }

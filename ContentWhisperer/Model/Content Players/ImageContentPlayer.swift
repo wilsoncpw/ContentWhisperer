@@ -85,5 +85,10 @@ class ImageContentPlayer: ContentPlayer {
     func nextPage() {}
     
     func prevPage () {}
+    
+    func takeSnaphot () -> CGImage? {
+        return CGImageSourceCreateImageAtIndex(source, 0, nil)
+    }
+
 }
 

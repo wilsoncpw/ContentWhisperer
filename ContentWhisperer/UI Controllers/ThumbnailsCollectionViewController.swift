@@ -39,7 +39,7 @@ class ThumbnailsCollectionViewController: NSViewController {
     var focusedIdx: Int? {
         didSet {
             if focusedIdx != oldValue {
-                selectionChangedNotify (idx: focusedIdx).post()
+                selectionChangedNotify (idx: focusedIdx ?? -1).post()
                 if let idx = focusedIdx, let statusMessage = thumbnailsController?.getThumbnailPathForDisplay(idx: idx) {
                     statusBarNotify (message: statusMessage).post()
                 } else {
@@ -142,7 +142,7 @@ extension ThumbnailsCollectionViewController : ThumbnailsControllerDelegate {
             setFocusedIdx (idx: newFocus == -1 ? nil : newFocus)
         } else {
             setFocusedIdx (idx: newFocus == -1 ? nil : newFocus)
-            selectionChangedNotify (idx: focusedIdx).post()
+            selectionChangedNotify (idx: focusedIdx ?? -1).post()
         }
     }
 }

@@ -31,4 +31,6 @@ protocol ContentPlayer: AnyObject {
     func stop ()
     func nextPage ()
     func prevPage ()
+    
+    func takeSnaphot () -> CGImage?
 }

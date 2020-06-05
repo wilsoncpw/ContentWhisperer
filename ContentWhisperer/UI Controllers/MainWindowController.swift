@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController, SectionControllerDelegate {
+class MainWindowController: NSWindowController, SectionControllerDelegate, NSMenuItemValidation {
     
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var titleLabelContainer: NSView!
@@ -110,7 +110,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
             statusBarNotify (message: "").post()
 
             switch result {
-            case .failure(let error) : print (error)
+            case .failure(let error) : Swift.print (error)
             case .success(let contents) : self.sectionController = SectionControllerFromContents (contents: contents)
             }
         }
@@ -135,5 +135,25 @@ class MainWindowController: NSWindowController, SectionControllerDelegate {
             contentsViewController.playerController = nil
             infoViewController.thumbnailsController = nil
         }
+    }
+    
+    @IBAction func printImage (_ sender: AnyObject) {
+        
+        guard let image = contentsViewController.contentPlayer?.takeSnaphot() else {
+            return
+        }
+        
+        let view = PrintView ()
+        view.setImages(images: [image])
+        view.print()
+    }
+    
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        
+        guard menuItem.tag == 100 else {
+            return true
+        }
+        
+        return contentsViewController.contentPlayer != nil
     }
 }

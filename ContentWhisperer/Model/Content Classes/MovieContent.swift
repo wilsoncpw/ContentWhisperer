@@ -10,7 +10,7 @@ import Foundation
 import AVKit
 
 final class MovieContent: ContentBase, Content {
-
+    
     static let contentType = ContentType (
         name: "Videos",
         fileTypes: Set<String> (["m4v", "mov", "mp4", "dv"]),

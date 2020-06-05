@@ -60,7 +60,7 @@ extension CGPDFDocument {
 }
 
 final class PDFContent: ContentBase, Content {
-    
+
     static let contentType = ContentType (
         name: "Documents",
         fileTypes: Set<String> (["pdf"]),

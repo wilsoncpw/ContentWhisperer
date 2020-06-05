@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var deleteMenuItem: NSMenuItem!
+    @IBOutlet weak var printMenuItem: NSMenuItem!
     
     var mainWindowController: MainWindowController?
 
