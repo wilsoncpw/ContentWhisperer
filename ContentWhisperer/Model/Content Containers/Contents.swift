@@ -44,8 +44,8 @@ class Contents {
         }
         var idx = 0
         
-        return contentSections.reduce(into: [Content] ()) {
-            accum, section in accum.append(contentsOf: section.removeContent(content))
+        return contentSections.reduce(into: [Content] ()) {accum, section in
+            accum.append(contentsOf: section.removeContent(content))
             if section.buckets.count == 0 {
                 deletedSections.append(idx)
             }

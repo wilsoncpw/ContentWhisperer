@@ -21,12 +21,12 @@
 		268AE8AC218BEADE008E7EE4 /* ContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268AE8AB218BEADE008E7EE4 /* ContentsView.swift */; };
 		268FD5EF2488137800DB5984 /* InfoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268FD5EE2488137800DB5984 /* InfoTableCellView.swift */; };
 		2690E7C323763E07003BF173 /* CollapsingProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7C223763E07003BF173 /* CollapsingProgressIndicator.swift */; };
+		26967477248A63C8005EA32F /* CGPDFDocumentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26967476248A63C8005EA32F /* CGPDFDocumentExtensions.swift */; };
 		26974C69219B2E9200134508 /* ThumbnailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C68219B2E9200134508 /* ThumbnailsController.swift */; };
 		26974C6C219B2EC900134508 /* SectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C6B219B2EC900134508 /* SectionController.swift */; };
 		26974C6E219B301700134508 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C6D219B301700134508 /* PlayerController.swift */; };
 		26AF855C21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF855B21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift */; };
 		26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5D2187C3D000FF4A67 /* Notifications.swift */; };
-		26C8626521D13CA100D25F92 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C8626421D13CA000D25F92 /* OrderedDictionary.swift */; };
 		26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */; };
 		26D92F05218A10660007A829 /* ThumbnailsCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */; };
 		26D92F06218A10660007A829 /* ThumbnailsCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */; };
@@ -81,12 +81,12 @@
 		268AE8AB218BEADE008E7EE4 /* ContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsView.swift; sourceTree = "<group>"; };
 		268FD5EE2488137800DB5984 /* InfoTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableCellView.swift; sourceTree = "<group>"; };
 		2690E7C223763E07003BF173 /* CollapsingProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsingProgressIndicator.swift; sourceTree = "<group>"; };
+		26967476248A63C8005EA32F /* CGPDFDocumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPDFDocumentExtensions.swift; sourceTree = "<group>"; };
 		26974C68219B2E9200134508 /* ThumbnailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsController.swift; sourceTree = "<group>"; };
 		26974C6B219B2EC900134508 /* SectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionController.swift; sourceTree = "<group>"; };
 		26974C6D219B301700134508 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		26AF855B21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCollectionView.swift; sourceTree = "<group>"; };
 		26B23F5D2187C3D000FF4A67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		26C8626421D13CA000D25F92 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewController.swift; sourceTree = "<group>"; };
 		26D92F03218A10660007A829 /* ThumbnailsCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewItem.swift; sourceTree = "<group>"; };
 		26D92F04218A10660007A829 /* ThumbnailsCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThumbnailsCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -207,6 +207,7 @@
 			children = (
 				26F0F28E216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift */,
 				26F0F290216CF7B50077DF97 /* BundleExtensions.swift */,
+				26967476248A63C8005EA32F /* CGPDFDocumentExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,7 +239,6 @@
 		26F0F294216D147E0077DF97 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26C8626421D13CA000D25F92 /* OrderedDictionary.swift */,
 				26F86AD2219A3D010045DD6B /* Content Containers */,
 				26F86AD3219A3D2F0045DD6B /* Content Classes */,
 				26F86AD4219A3D8B0045DD6B /* Content Players */,
@@ -366,6 +366,7 @@
 				26F86AD8219A3DD10045DD6B /* MovieContentPlayer.swift in Sources */,
 				26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */,
 				26F0F28F216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift in Sources */,
+				26967477248A63C8005EA32F /* CGPDFDocumentExtensions.swift in Sources */,
 				260DE9B3216EAF72002C673F /* ContentSection.swift in Sources */,
 				2632E60C218A9EBB00A6EEF6 /* CachedThumbnail.swift in Sources */,
 				26F48DA2218A7BBF00D905DF /* ContentBucket.swift in Sources */,
@@ -394,7 +395,6 @@
 				26D92F0A218A147A0007A829 /* ThumbnailsControllerFromContentBucket.swift in Sources */,
 				268AE8AC218BEADE008E7EE4 /* ContentsView.swift in Sources */,
 				26974C69219B2E9200134508 /* ThumbnailsController.swift in Sources */,
-				26C8626521D13CA100D25F92 /* OrderedDictionary.swift in Sources */,
 				26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */,
 				26F0F28A216CF0E90077DF97 /* MainWindowController.swift in Sources */,
 				261DAB8A216D724C00518EA2 /* SectionControllerFromContents.swift in Sources */,

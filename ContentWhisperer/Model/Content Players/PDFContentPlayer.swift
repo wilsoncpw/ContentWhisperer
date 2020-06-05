@@ -9,6 +9,8 @@
 import Cocoa
 
 class PDFContentPlayer: ContentPlayer {
+    var suggestedSize: NSSize?
+    
     let doc: CGPDFDocument
     var delegate: ContentPlayerDelegate?
     
@@ -24,12 +26,6 @@ class PDFContentPlayer: ContentPlayer {
     
     var currentPage = 1
     
-    var suggestedSize: NSSize? {
-        didSet {
-            _caLayer = nil
-        }
-    }
-    
     init (doc: CGPDFDocument) {
         self.doc = doc
     }
@@ -41,11 +37,13 @@ class PDFContentPlayer: ContentPlayer {
         return _caLayer
     }
     
+    private func getCGImage (page: Int) -> CGImage? {
+        return doc.getNSImage(page: page)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+    }
+    
     private func getCALayer () -> CALayer? {
-        guard let image = doc.getNSImage(suggestedSize: suggestedSize, page: currentPage) else { return nil }
-        
-        let cg = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
-        
+        guard let cg = getCGImage(page: currentPage) else { return nil }
+                
         let rv = CALayer ()
         
         rv.isOpaque =  true
@@ -77,10 +75,7 @@ class PDFContentPlayer: ContentPlayer {
     }
     
     func takeSnaphot () -> CGImage? {
-        guard let image = doc.getNSImage(suggestedSize: suggestedSize, page: currentPage) else { return nil }
-        
-        let cg = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
-        return cg
+        return getCGImage(page: currentPage)
     }
 }
 

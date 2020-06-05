@@ -22,11 +22,9 @@ class FastDirectoryEnumerator {
     private func count (from path: String, recurse: Bool, ignoringSubdirs: [String]?) -> Int {
         let p = path.cString(using: .utf8)
         var cx = 0
-        if let d = opendir(p) {
-            while true {
-                guard let ent = readdir(d) else {
-                    break
-                }
+        if p != nil, let d = opendir(p) {
+            defer { closedir(d) }
+            while let ent = readdir(d) {
                 if ent.pointee.d_type != DT_DIR {
                     cx += 1
                 } else if recurse, let subdir = String (bytesNoCopy: &ent.pointee.d_name, length: Int(ent.pointee.d_namlen), encoding: .utf8, freeWhenDone: false), !subdir.hasPrefix(".") {
@@ -61,15 +59,10 @@ class FastDirectoryEnumerator {
         let py = (subPath.count == 0 ? "" : subPath + "/")
         let pz = path + "/" + py
         let p = pz.cString(using: .utf8)
-        if let d = opendir(p) {
-            defer {
-                closedir(d)
-            }
-            print ("DIR \(py):\(d.pointee.__dd_len) \(d.pointee.__dd_size)")
-            while true {
-                guard let ent = readdir(d) else {
-                    break
-                }
+        if p != nil, let d = opendir(p) {
+            defer { closedir(d) }
+            while let ent = readdir(d) {
+                
                 guard let lastPathComponent = String (bytesNoCopy: &ent.pointee.d_name, length: Int(ent.pointee.d_namlen), encoding: .utf8, freeWhenDone: false), !lastPathComponent.hasPrefix(".") else {
                     continue
                 }

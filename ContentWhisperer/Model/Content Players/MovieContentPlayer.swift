@@ -112,21 +112,12 @@ class MovieContentPlayer: NSObject, ContentPlayer {
     }
     
     func takeSnaphot () -> CGImage? {
-        guard let player = player else {
-            return nil
-        }
+        guard let player = player else { return nil }
         
         let generator = AVAssetImageGenerator (asset: asset)
         generator.requestedTimeToleranceAfter = CMTime.zero
         generator.requestedTimeToleranceBefore = CMTime.zero
         
-        do {
-            return try generator.copyCGImage(at: player.currentTime(), actualTime: nil)
-            
-        } catch let e {
-            print (e.localizedDescription)
-            return nil
-        }
+        return try? generator.copyCGImage(at: player.currentTime(), actualTime: nil)
     }
-
 }
