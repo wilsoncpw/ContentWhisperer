@@ -31,6 +31,7 @@ protocol ContentBaseProtocol: AnyObject {
     init (fileName: String)
     var fileName: String { get }
     var displayName: String { get }
+    func getURL (folderURL: URL)-> URL
 }
 
 //=================================================================================
@@ -50,6 +51,10 @@ class ContentBase: ContentBaseProtocol {
         self.fileName = fileName
         self.isRelativePath = !fileName.starts(with: "/")
     }
+    func getURL (folderURL: URL)-> URL {
+        return (isRelativePath) ? folderURL.appendingPathComponent(fileName) : URL (fileURLWithPath: fileName)
+    }
+
 }
 
 

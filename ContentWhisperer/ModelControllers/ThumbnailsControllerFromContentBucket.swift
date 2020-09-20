@@ -15,6 +15,8 @@ class IntHolder {
 
 class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
+    
+    
     private let contents: Contents
     let bucket: ContentBucket
     let deleter: ContentDeleter
@@ -57,6 +59,10 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
     func getThumbnailPathForDisplay (idx: Int) -> String {
         return bucket.contents [idx].fileName
+    }
+    
+    func getThumbnailURL(idx: Int) -> URL {
+        return bucket.contents [idx].getURL(folderURL: contents.folderURL)
     }
     
     func itemRequired (idx: Int) {

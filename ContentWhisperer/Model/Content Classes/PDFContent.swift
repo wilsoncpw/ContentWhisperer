@@ -21,7 +21,7 @@ final class PDFContent: ContentBase, Content {
         contentClass: PDFContent.self)
     
     private func getDocument (folderURL: URL) -> CGPDFDocument? {
-        let url = (isRelativePath) ? folderURL.appendingPathComponent(fileName) : URL (fileURLWithPath: fileName)
+        let url = getURL (folderURL: folderURL)
         return CGPDFDocument (url as CFURL)
     }
     

@@ -13,8 +13,11 @@ import Cocoa
 class ThumbnailsCollectionViewController: NSViewController {
    
     @IBOutlet weak var collectionView: ThumbnailCollectionView!
+    @IBOutlet weak var openWithMenu: NSMenu!
     
     var contentCount : Int { return thumbnailsController?.contentCount ?? 0 }
+    var defaultApplicationURL: URL?
+    var applicationURLs: [URL]?
 
     //-----------------------------------------------------------------------
     /// The thumbnailsController
@@ -46,6 +49,7 @@ class ThumbnailsCollectionViewController: NSViewController {
                     statusBarNotify (message: "").post()
                 }
             }
+            populateThumbnailContextMenu ()
         }
     }
     
@@ -60,6 +64,59 @@ class ThumbnailsCollectionViewController: NSViewController {
             collectionView.selectionIndexes = []
         }
         focusedIdx = idx
+    }
+    
+    private func addURLToContextMenu (url: URL) {
+        let s = NSString (string: url.lastPathComponent).deletingPathExtension
+        
+        let item = NSMenuItem (title: s, action: #selector(contextItemSelected(_:)), keyEquivalent: "")
+        item.representedObject = url
+        
+        if let icon = NSWorkspace.shared.icon(forFile: url.path).bestRepresentation(for: NSRect (x: 0, y: 0, width: 16, height: 16), context: nil, hints: nil) {
+            let img = NSImage (size: icon.size)
+            img.addRepresentation(icon)
+            item.image = img
+        }
+        openWithMenu.addItem(item)
+    }
+    
+    private func populateThumbnailContextMenu () {
+        openWithMenu.items.removeAll();
+
+        guard let idx = focusedIdx, let url = thumbnailsController?.getThumbnailURL(idx: idx) else {
+            return
+        }
+        
+        defaultApplicationURL = NSWorkspace.shared.urlForApplication(toOpen: url)
+        if let appURLs = NSWorkspace.shared.urlsForApplication(toOpen: url)?.dropFirst() {
+            let urls = [URL] (appURLs)
+            applicationURLs = urls.sorted { url1, url2->Bool in return url1.lastPathComponent < url2.lastPathComponent }
+        } else {
+            applicationURLs = nil
+        }
+        
+        if let defaultApplicationURL = defaultApplicationURL {
+            addURLToContextMenu(url: defaultApplicationURL)
+            
+            if (applicationURLs?.count ?? 0) > 0 {
+                openWithMenu.addItem(NSMenuItem.separator())
+            }
+        }
+        
+        applicationURLs?.forEach { url in addURLToContextMenu(url: url) }
+    }
+    
+    @objc func contextItemSelected (_ sender: NSMenuItem) {
+        guard let appurl = sender.representedObject as? URL, let idx = focusedIdx, let url = thumbnailsController?.getThumbnailURL(idx: idx) else {
+            return
+        }
+        do {
+            try NSWorkspace.shared.open([url], withApplicationAt: appurl, configuration: [:])
+        } catch let e {
+            print (e.localizedDescription)
+            
+        }
+        
     }
     
     private func turnPage (direction: TurnPageDirection) {

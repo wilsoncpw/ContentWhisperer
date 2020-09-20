@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -293,11 +293,11 @@ CA
                                 <rect key="frame" x="0.0" y="24" width="480" height="246"/>
                                 <subviews>
                                     <customView id="YUI-4W-EYn">
-                                        <rect key="frame" x="0.0" y="0.0" width="236" height="246"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Xb3-ax-7SG">
-                                                <rect key="frame" x="0.0" y="0.0" width="236" height="246"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="246"/>
                                                 <connections>
                                                     <segue destination="Emh-hs-Iij" kind="embed" id="vwP-np-g4K"/>
                                                 </connections>
@@ -311,11 +311,11 @@ CA
                                         </constraints>
                                     </customView>
                                     <customView id="q5M-LV-VZk">
-                                        <rect key="frame" x="237" y="0.0" width="243" height="246"/>
+                                        <rect key="frame" x="241" y="0.0" width="239" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ebg-FO-Ce8">
-                                                <rect key="frame" x="0.0" y="0.0" width="243" height="246"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="239" height="246"/>
                                                 <connections>
                                                     <segue destination="BKw-Jq-9oM" kind="embed" id="eIq-fz-kGA"/>
                                                 </connections>
@@ -589,6 +589,7 @@ CA
                                             <connections>
                                                 <outlet property="dataSource" destination="olj-Ul-NSu" id="kJB-f3-8bL"/>
                                                 <outlet property="delegate" destination="olj-Ul-NSu" id="kGO-lE-FAU"/>
+                                                <outlet property="menu" destination="qtt-uM-uZb" id="g1m-4q-3Ww"/>
                                             </connections>
                                         </collectionView>
                                     </subviews>
@@ -612,9 +613,18 @@ CA
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="AMS-ut-7Zk" id="vjZ-Op-fQo"/>
+                        <outlet property="openWithMenu" destination="glH-b4-eSG" id="ADt-an-8US"/>
                     </connections>
                 </viewController>
                 <customObject id="3VC-2A-1np" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="qtt-uM-uZb">
+                    <items>
+                        <menuItem title="Open With" id="qg1-ew-goY">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Open With" id="glH-b4-eSG"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="725" y="1251"/>
         </scene>

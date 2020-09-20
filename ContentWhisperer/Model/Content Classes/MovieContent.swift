@@ -20,10 +20,9 @@ final class MovieContent: ContentBase, Content {
         contentClass: MovieContent.self)
       
     private func getAsset (folderURL: URL) -> AVAsset {
-        let url = (isRelativePath) ? folderURL.appendingPathComponent(fileName) : URL (fileURLWithPath: fileName)
+        let url = getURL (folderURL: folderURL)
         let rv = AVAsset(url: url)
         return rv
-
     }
     
     func getThumbnailCGImage (folderURL: URL) -> CGImage? {

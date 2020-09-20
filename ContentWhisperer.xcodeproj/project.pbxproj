@@ -25,6 +25,7 @@
 		26974C69219B2E9200134508 /* ThumbnailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C68219B2E9200134508 /* ThumbnailsController.swift */; };
 		26974C6C219B2EC900134508 /* SectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C6B219B2EC900134508 /* SectionController.swift */; };
 		26974C6E219B301700134508 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974C6D219B301700134508 /* PlayerController.swift */; };
+		26A0113D2516E79800738CF5 /* NSWorkspaceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0113C2516E79800738CF5 /* NSWorkspaceExtensions.swift */; };
 		26AF855C21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AF855B21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift */; };
 		26B23F5E2187C3D000FF4A67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B23F5D2187C3D000FF4A67 /* Notifications.swift */; };
 		26D92F01218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */; };
@@ -85,6 +86,7 @@
 		26974C68219B2E9200134508 /* ThumbnailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsController.swift; sourceTree = "<group>"; };
 		26974C6B219B2EC900134508 /* SectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionController.swift; sourceTree = "<group>"; };
 		26974C6D219B301700134508 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		26A0113C2516E79800738CF5 /* NSWorkspaceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWorkspaceExtensions.swift; sourceTree = "<group>"; };
 		26AF855B21CAA9E6009D7EF2 /* ThumbnailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCollectionView.swift; sourceTree = "<group>"; };
 		26B23F5D2187C3D000FF4A67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		26D92F00218A0CEA0007A829 /* ThumbnailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				26F0F28E216CF1A40077DF97 /* ContentWhispererSettingsExtension.swift */,
 				26F0F290216CF7B50077DF97 /* BundleExtensions.swift */,
 				26967476248A63C8005EA32F /* CGPDFDocumentExtensions.swift */,
+				26A0113C2516E79800738CF5 /* NSWorkspaceExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -312,7 +315,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Colin Wilson";
 				TargetAttributes = {
 					26F0F275216CF08D0077DF97 = {
@@ -384,6 +387,7 @@
 				26EDC4C22373B1EE006A4D34 /* FastDirectoryEnumerator.swift in Sources */,
 				2690E7C323763E07003BF173 /* CollapsingProgressIndicator.swift in Sources */,
 				26E80BB621D11CAC00DB5CA8 /* ContentDeleter.swift in Sources */,
+				26A0113D2516E79800738CF5 /* NSWorkspaceExtensions.swift in Sources */,
 				268AE8AA218BEA55008E7EE4 /* ContentsViewController.swift in Sources */,
 				26974C6E219B301700134508 /* PlayerController.swift in Sources */,
 				26F48DA0218A74CA00D905DF /* ThumbnailLoader.swift in Sources */,
@@ -446,6 +450,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -507,6 +512,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -12,14 +12,14 @@ final class ImageContent: ContentBase, Content {
     
     static let contentType = ContentType (
         name: "Images",
-        fileTypes: Set<String> (["jpg", "jpeg", "png", "tiff", "gif", "heic"]),
+        fileTypes: Set<String> (["jpg", "jpeg", "png", "tiff", "gif", "heic", "arw", "pef", "webp"]),
         bucketDefinitions: [
-            (name: "Photos", fileTypes: Set<String> (["jpg", "jpeg", "png", "heic"])),
+            (name: "Photos", fileTypes: Set<String> (["jpg", "jpeg", "png", "heic", "arw", "pef", "webp"])),
             (name: "Animated", fileTypes: Set<String> (["gif"]))],
         contentClass: ImageContent.self)
     
     private func getImageSource (folderURL: URL) -> CGImageSource? {
-        let url = (isRelativePath) ? folderURL.appendingPathComponent(fileName) : URL (fileURLWithPath: fileName)
+        let url = getURL(folderURL: folderURL)
         return CGImageSourceCreateWithURL(url as CFURL, nil)
     }
     
