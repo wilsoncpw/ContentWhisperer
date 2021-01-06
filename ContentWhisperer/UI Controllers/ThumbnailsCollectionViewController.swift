@@ -90,7 +90,7 @@ class ThumbnailsCollectionViewController: NSViewController {
         defaultApplicationURL = NSWorkspace.shared.urlForApplication(toOpen: url)
         if let appURLs = NSWorkspace.shared.urlsForApplication(toOpen: url)?.dropFirst() {
             let urls = [URL] (appURLs)
-            applicationURLs = urls.sorted { url1, url2->Bool in return url1.lastPathComponent < url2.lastPathComponent }
+            applicationURLs = urls.sorted { url1, url2->Bool in url1.lastPathComponent < url2.lastPathComponent }
         } else {
             applicationURLs = nil
         }

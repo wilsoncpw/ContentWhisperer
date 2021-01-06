@@ -92,13 +92,6 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
     
     private func setTitleLabel (value: String) {
         titleLabel.stringValue = value
-        
-            titleLabel.sizeToFit()
-            let size = titleLabel.frame.size
-            
-            let oldFrame = titleLabelContainer.frame
-            titleLabelContainer.frame = NSRect (origin: oldFrame.origin, size: CGSize (width: size.width, height: oldFrame.height))
-
     }
     
     func openFolderAtURL (_ url: URL)->Bool {
