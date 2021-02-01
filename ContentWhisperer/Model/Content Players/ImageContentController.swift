@@ -8,10 +8,10 @@
 
 import Cocoa
 
+//========================================================================================
+/// ImageContentController
 class ImageContentController: ContentController, ContentPagination {
-    
-    var suggestedSize: NSSize?
-    
+        
     private let source: CGImageSource
     
     init (source: CGImageSource) {
@@ -20,52 +20,80 @@ class ImageContentController: ContentController, ContentPagination {
     
     typealias CGImageProperties = NSDictionary
     
-    private lazy var _imageCount = CGImageSourceGetCount(source)
-    private var _properties: [CGImageProperties?]?
-    private var _metaData : [CGImageMetadata?]?
+    private var _primaryProperties: CGImageProperties?
+    private var _duration = Float (0)
+    private var _firstValidImageIndex: Int?
+    private var _isHeic = false
     
     private lazy var imageCount = getImageCount ()
     private lazy var images = getImages ()
-    private lazy var properties = getProperties ()
-    private lazy var metaData = getMetaData ()
     
     private var _caLayer: CALayer?
     private var currentImage = 0
+    
     var caLayer: CALayer? { getCachedCALayer() }
-    lazy var isHeic = getIsHeic()
+    lazy var isHeic = imageCount > 1 && _isHeic
+    lazy var animated = imageCount > 1 && !isHeic
     lazy var primaryImageMetadata = getPrimaryImageMetaData ()
+    lazy var primaryProperties = imageCount > 0 ? _primaryProperties : nil
     
     private func getImageCount () -> Int {
         return images.count
     }
     
+    private func getGifFrameDuration (props : CGImageProperties?) -> Float {
+        var frameDuration = Float (0.1)
+        if
+            let props = props,
+            let dict = props.value(forKey: kCGImagePropertyGIFDictionary as String) as? NSDictionary,
+            let val = dict.value(forKey: kCGImagePropertyGIFDelayTime as String) as? NSNumber {
+            frameDuration = val.floatValue
+        }
+        return frameDuration
+    }
+    
+    private func _getIsHeic () -> Bool {
+        guard let tp = CGImageSourceGetType(source) else {
+            return false
+        }
+        let type = String (tp)
+        return type == "public.heic"
+    }
+    
     private func getImages () -> [CGImage] {
         var cgImages = [CGImage] ()
-        _properties = [CGImageProperties?] ()
-        _metaData = [CGImageMetadata?] ()
+        _duration = 0
+        
+        var firstValidImage = true
+        let _imageCount = CGImageSourceGetCount(source)
+        _isHeic = _imageCount > 1 && _getIsHeic()
+        let _animated = !_isHeic && _imageCount > 1
+        
         for i in 0..<_imageCount {
             if let img = CGImageSourceCreateImageAtIndex(source, i, nil) {
-                let prop = CGImageSourceCopyPropertiesAtIndex(source, i, nil)
-                let meta = CGImageSourceCopyMetadataAtIndex(source, i, nil)
-
+                if firstValidImage {_firstValidImageIndex = i }
+                if _animated {
+                    let props = CGImageSourceCopyPropertiesAtIndex(source, i, nil) as CGImageProperties?
+                    if firstValidImage {_primaryProperties = props}
+                    _duration += getGifFrameDuration(props: props)
+                }
+                firstValidImage = false
                 cgImages.append(img)
-                _properties?.append(prop)
-                _metaData?.append(meta)
             }
         }
         return cgImages
     }
     
-    private func getProperties () -> [CGImageProperties?] {
-        return images.count > 0 ? _properties! : [CGImageProperties?]()
+    private func getPrimaryPropeties () -> CGImageProperties? {
+        guard imageCount > 0 else { return nil }
+        if let props = _primaryProperties { return props }
+        guard let idx = _firstValidImageIndex else { return nil }
+        return CGImageSourceCopyPropertiesAtIndex(source, idx, nil) as CGImageProperties?
     }
-    
-    private func getMetaData () -> [CGImageMetadata?] {
-        return images.count > 0 ? _metaData! : [CGImageMetadata?] ()
-    }
-    
+        
     private func getPrimaryImageMetaData () -> CGImageMetadata? {
-        return metaData.count > 0 ? metaData [0] : nil
+        guard imageCount > 0, let idx = _firstValidImageIndex else { return nil }
+        return CGImageSourceCopyMetadataAtIndex(source, idx, nil)
     }
     
     private func getCachedCALayer () -> CALayer? {
@@ -84,22 +112,11 @@ class ImageContentController: ContentController, ContentPagination {
         rv.shadowOpacity = 1
         rv.shadowRadius = 20
         
-        if !isHeic && imageCount > 1 {
-            var duration = Float (0)
-            for i in 0..<imageCount {
-                var frameDuration = Float (0.1)
-                if  let props = properties [i],
-                    let dict = props.value(forKey: kCGImagePropertyGIFDictionary as String) as? NSDictionary,
-                    let val = dict.value(forKey: kCGImagePropertyGIFDelayTime as String) as? NSNumber {
-                    frameDuration = val.floatValue
-                }
-                duration += frameDuration
-            }
-            
+        if animated {
             let animation = CAKeyframeAnimation (keyPath: "contents")
             animation.values = images
             animation.calculationMode = CAAnimationCalculationMode.discrete
-            animation.duration = CFTimeInterval (duration)
+            animation.duration = CFTimeInterval (_duration)
             animation.repeatCount = Float.infinity
             rv.add(animation, forKey: "contents")
             
@@ -110,13 +127,7 @@ class ImageContentController: ContentController, ContentPagination {
         return rv
     }
     
-    private func getIsHeic () -> Bool {
-        guard let tp = CGImageSourceGetType(source) else {
-            return false
-        }
-        let type = String (tp)
-        return type == "public.heic" && imageCount > 1
-    }
+
     
     func nextPage() {
         guard isHeic else { return }

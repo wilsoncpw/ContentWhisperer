@@ -12,9 +12,6 @@ import Cocoa
 
 protocol ContentController: AnyObject {
     var caLayer: CALayer? { get }
-    var suggestedSize: NSSize? { get set }
-    
-
     func takeSnaphot () throws -> CGImage?
 }
 

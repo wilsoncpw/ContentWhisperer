@@ -9,7 +9,6 @@
 import Cocoa
 
 class PDFContentController: ContentController, ContentPagination {
-    var suggestedSize: NSSize?
     
     let doc: CGPDFDocument
     var delegate: ContentPlayerDelegate?

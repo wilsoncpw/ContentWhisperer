@@ -26,8 +26,7 @@ enum MovieContentControllerError: LocalizedError {
 class MovieContentController: ContentController, ContentPlayer {
     weak var delegate: ContentPlayerDelegate?               // ContentPlayer protocol
     lazy var duration: Double = asset.duration.seconds      //      "           "
-    var suggestedSize: NSSize?                              // ContentController protocol
-    lazy var caLayer = getCALayer ()                        //      "           "
+    lazy var caLayer = getCALayer ()                        // ContentController protocol
     
     let asset: AVAsset  // The AVAsset
     

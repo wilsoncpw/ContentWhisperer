@@ -19,7 +19,6 @@ class ContentsViewController: NSViewController {
         didSet {
             stopTimer()
             slider.isHidden = true
-            contentController?.suggestedSize = view.frame.size
             contentsView.setContentLayer(contentLayer: contentController?.caLayer)
         }
     }
@@ -53,7 +52,6 @@ class ContentsViewController: NSViewController {
         case .prev: pagination.prevPage()
         }
         
-        contentController.suggestedSize = view.frame.size
         contentsView.setContentLayer(contentLayer: contentController.caLayer)
     }
     
