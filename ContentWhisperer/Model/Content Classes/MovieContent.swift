@@ -39,9 +39,9 @@ final class MovieContent: ContentBase, Content {
         return try? assetImgGenerate.copyCGImage(at: time, actualTime: nil)
     }
     
-    func getPlayer(folderURL: URL) -> ContentPlayer? {
+    func getController(folderURL: URL) -> ContentController? {
         let asset = getAsset(folderURL: folderURL)
-        return MovieContentPlayer (asset: asset)
+        return try? MovieContentController (asset: asset)
     }
 }
 

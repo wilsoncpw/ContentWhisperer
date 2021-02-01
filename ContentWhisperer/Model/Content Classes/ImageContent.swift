@@ -34,8 +34,8 @@ final class ImageContent: ContentBase, Content {
         return CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary)
     }
     
-    func getPlayer (folderURL: URL) -> ContentPlayer? {
+    func getController (folderURL: URL) -> ContentController? {
         guard let source = getImageSource(folderURL: folderURL) else { return nil }
-        return ImageContentPlayer (source: source)
+        return ImageContentController (source: source)
     }
 }

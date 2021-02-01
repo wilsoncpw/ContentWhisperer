@@ -8,27 +8,28 @@
 
 import Cocoa
 
-class ContentsViewController: NSViewController, ContentPlayerDelegate {
+class ContentsViewController: NSViewController {
     
 
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var contentsView: ContentsView!
     @IBOutlet weak var pausePlayButton: NSButton!
     
-    var contentPlayer: ContentPlayer?
-    var timer: Timer?
-    
-    var playerController: PlayerController? {
+    var contentController: ContentController? {
         didSet {
-            contentsView?.setContentLayer(contentLayer: nil)
             stopTimer()
+            slider.isHidden = true
+            contentController?.suggestedSize = view.frame.size
+            contentsView.setContentLayer(contentLayer: contentController?.caLayer)
         }
     }
-
+    
+    var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let _ = selectionChangedNotify.observe { idx in self.selectionChanged(idx: idx) }
         let _ = turnPageNotify.observe { direction in self.turnPage (direction: direction) }
+        let _ = contentStatusChangedNotify.observe { status in self.statusChanged(status: status)}
         
         pausePlayButton.isHidden = true
     }
@@ -41,40 +42,24 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
         pausePlayButton.isHidden = true
     }
     
-    private func selectionChanged (idx: Int) {
-        contentPlayer = nil
-        stopTimer()
-        
-        guard let playerController = playerController, idx >= 0, let contentPlayer = playerController.getContentPlayer(idx: idx) else {
-            contentsView.setContentLayer(contentLayer: nil)
-            slider.isHidden = true
-            return
-        }
-    
-        self.contentPlayer = contentPlayer
-        contentPlayer.delegate = self
-        contentPlayer.suggestedSize = view.frame.size
-        contentsView.setContentLayer(contentLayer: contentPlayer.caLayer)
-    }
-    
     private func turnPage (direction: TurnPageDirection) {
         
-        guard let contentPlayer = contentPlayer else {
+        guard let contentController = contentController, let pagination = contentController as? ContentPagination else {
             return
         }
         
         switch direction {
-        case .next: contentPlayer.nextPage()
-        case .prev: contentPlayer.prevPage()
+        case .next: pagination.nextPage()
+        case .prev: pagination.prevPage()
         }
         
-        contentPlayer.suggestedSize = view.frame.size
-        contentsView.setContentLayer(contentLayer: contentPlayer.caLayer)
+        contentController.suggestedSize = view.frame.size
+        contentsView.setContentLayer(contentLayer: contentController.caLayer)
     }
     
-    func statusChanged(sender: Any, status: ContentPlayerStatus) {
+    private func statusChanged(status: ContentPlayerStatus) {
         if status == .readyToPlay {
-            guard let contentPlayer = contentPlayer else { return }
+            guard let contentPlayer = contentController as? ContentPlayer else { return }
             
             slider.maxValue = contentPlayer.duration
             slider.doubleValue = 0
@@ -90,11 +75,12 @@ class ContentsViewController: NSViewController, ContentPlayerDelegate {
     }
     
     @IBAction func sliderSlid(_ sender: Any) {
-        contentPlayer?.currentPosition = slider.doubleValue
+        guard let contentPlayer = contentController as? ContentPlayer else { return }
+        contentPlayer.currentPosition = slider.doubleValue
     }
     
     @IBAction func pausePlayClicked(_ sender: Any) {
-        guard let contentPlayer = contentPlayer else { return }
+        guard let contentPlayer = contentController as? ContentPlayer else { return }
         
         if contentPlayer.isPlaying {
             contentPlayer.stop()

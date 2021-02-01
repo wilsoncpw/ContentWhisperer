@@ -32,8 +32,8 @@ final class PDFContent: ContentBase, Content {
         return rv
     }
     
-    func getPlayer (folderURL: URL) -> ContentPlayer? {
+    func getController (folderURL: URL) -> ContentController? {
         guard let doc = getDocument(folderURL: folderURL) else { return nil }
-        return PDFContentPlayer (doc: doc)
+        return PDFContentController (doc: doc)
     }
 }

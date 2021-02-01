@@ -1,5 +1,5 @@
 //
-//  PlayerController.swift
+//  ContentControllerFactory.swift
 //  ContentWhisperer
 //
 //  Created by Colin Wilson on 13/11/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PlayerController: AnyObject {
-    func getContentPlayer (idx: Int) -> ContentPlayer?
+protocol ContentControllerFactory: AnyObject {
+    func getContentController (idx: Int) -> ContentController?
 }
 

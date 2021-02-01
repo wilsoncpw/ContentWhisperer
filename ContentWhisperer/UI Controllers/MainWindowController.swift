@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController, SectionControllerDelegate, NSMenuItemValidation {
+class MainWindowController: NSWindowController, SectionControllerDelegate, NSMenuItemValidation, ContentPlayerDelegate {
+    
     
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var titleLabelContainer: NSView!
@@ -19,6 +20,8 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
     var thumbnailsCollectionViewController: ThumbnailsCollectionViewController!
     var contentsViewController: ContentsViewController!
     var infoViewController: InfoViewController!
+    var contentSplitViewController: ContentSplitViewController!
+    private var currentContentControllerFactory: ContentControllerFactory?
         
     let contentProvider = ContentProvider (registeredContentTypes: [
         ImageContent.contentType,
@@ -32,7 +35,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
             contentsSourceListViewController.sectionController = sectionController
             thumbnailsCollectionViewController.thumbnailsController = nil
             infoViewController.thumbnailsController = nil
-            contentsViewController.playerController = nil
+            thumbnailSelectionChanged(idx: -1)
             setTitleLabel (value: sectionController?.contents.folderURL.lastPathComponent ?? Bundle.main.displayName)
         }
     }
@@ -59,6 +62,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
         precondition (thumbnailsCollectionViewController != nil, failMsg)
         precondition (contentsViewController != nil, failMsg)
         precondition (infoViewController != nil, failMsg)
+        precondition (contentSplitViewController != nil, failMsg)
 
         UserDefaults.standard.registerImageWhispererDefaults ()
         
@@ -68,6 +72,8 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
             }
             UserDefaults.standard.firstRun = false
         }
+        
+        let _ = selectionChangedNotify.observe { idx in self.thumbnailSelectionChanged(idx: idx) }
     }
     
     private func linkViewControllers (from controller: NSViewController?) {
@@ -78,11 +84,26 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
             case let tv as ThumbnailsCollectionViewController: thumbnailsCollectionViewController = tv
             case let co as ContentsViewController: contentsViewController = co
             case let iv as InfoViewController: infoViewController = iv
+            case let sv as ContentSplitViewController: contentSplitViewController = sv
             default: break
             }
             
             controller.children.forEach { child in linkViewControllers(from: child) }
         }
+    }
+    
+    private func thumbnailSelectionChanged (idx: Int) {
+        let contentController: ContentController?
+        if let contentControllerFactory = currentContentControllerFactory, idx >= 0, let cp = contentControllerFactory.getContentController(idx: idx) {
+            contentController = cp
+        } else {
+            contentController = nil
+        }
+        
+        contentsViewController.contentController = contentController
+        contentSplitViewController.contentController = contentController
+        infoViewController.contentController = contentController
+        (contentController as? ContentPlayer)?.delegate = self
     }
     
     private func reset () -> Bool {
@@ -118,21 +139,28 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
         guard let contents = sectionController?.contents else { return }
         
         if let bucket = bucket {
-            contentsViewController.playerController = PlayerControllerFromContentBucket (contents: contents, bucket: bucket)
+            currentContentControllerFactory = ContentControllerFactoryFromContentBucket (contents: contents, bucket: bucket)
+
             let thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
             thumbnailsCollectionViewController.thumbnailsController = thumbnailsController
             infoViewController.thumbnailsController = thumbnailsController
             window?.makeFirstResponder(thumbnailsCollectionViewController.collectionView)
         } else {
+            currentContentControllerFactory = nil
             thumbnailsCollectionViewController.thumbnailsController = nil
-            contentsViewController.playerController = nil
             infoViewController.thumbnailsController = nil
+            thumbnailSelectionChanged(idx: -1)
         }
     }
     
+    func statusChanged(sender: Any, status: ContentPlayerStatus) {
+        contentStatusChangedNotify (status: status).post ()
+    }
+    
+    
     @IBAction func printImage (_ sender: AnyObject) {
         
-        guard let image = contentsViewController.contentPlayer?.takeSnaphot() else {
+        guard let image = try? contentsViewController.contentController?.takeSnaphot() else {
             return
         }
         
@@ -147,6 +175,6 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
             return true
         }
         
-        return contentsViewController.contentPlayer != nil
+        return contentsViewController.contentController != nil
     }
 }

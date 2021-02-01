@@ -1,5 +1,5 @@
 //
-//  CALayerControllerFromContentBucket.swift
+//  ContentControllerFactoryFromContentBucket.swift
 //  ContentWhisperer
 //
 //  Created by Colin Wilson on 02/11/2018.
@@ -9,8 +9,8 @@
 import Cocoa
 
 
-class PlayerControllerFromContentBucket: PlayerController {
-    let contents: Contents
+class ContentControllerFactoryFromContentBucket: ContentControllerFactory {
+    private let contents: Contents
     let bucket: ContentBucket
 
     init (contents: Contents, bucket: ContentBucket) {
@@ -22,9 +22,9 @@ class PlayerControllerFromContentBucket: PlayerController {
         return bucket.contents.count
     }
     
-    func getContentPlayer (idx: Int) -> ContentPlayer? {
+    func getContentController (idx: Int) -> ContentController? {
         let content = bucket.contents [idx]
 
-        return content.getPlayer(folderURL: contents.folderURL)
+        return content.getController(folderURL: contents.folderURL)
     }
 }

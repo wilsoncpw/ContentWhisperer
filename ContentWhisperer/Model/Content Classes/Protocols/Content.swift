@@ -1,5 +1,5 @@
 //
-//  ContentBase.swift
+//  Content.swift
 //  ContentWhisperer
 //
 //  Created by Colin Wilson on 09/10/2018.
@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import AVKit
 
 typealias BucketDefinition = (name: String, fileTypes: Set<String>)
 
@@ -36,10 +35,10 @@ protocol ContentBaseProtocol: AnyObject {
 
 //=================================================================================
 /// Content protocol
-protocol Content : ContentBaseProtocol {
+protocol Content: ContentBaseProtocol {
     static var contentType: ContentType { get }
     func getThumbnailCGImage (folderURL: URL) -> CGImage?
-    func getPlayer (folderURL: URL) -> ContentPlayer?
+    func getController (folderURL: URL) -> ContentController?
 }
 
 class ContentBase: ContentBaseProtocol {

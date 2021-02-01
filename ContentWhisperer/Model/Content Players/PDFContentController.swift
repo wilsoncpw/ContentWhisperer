@@ -1,5 +1,5 @@
 //
-//  PDFContentPlayer.swift
+//  PDFContentController.swift
 //  ContentWhisperer
 //
 //  Created by Colin Wilson on 21/11/2019.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PDFContentPlayer: ContentPlayer {
+class PDFContentController: ContentController, ContentPagination {
     var suggestedSize: NSSize?
     
     let doc: CGPDFDocument

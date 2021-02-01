@@ -85,3 +85,12 @@ struct turnPageNotify: Notifiable {
         payload = direction
     }
 }
+
+struct contentStatusChangedNotify: Notifiable {
+    static let name = Notification.Name ("contentStatusChanged")
+    typealias  T = ContentPlayerStatus
+    let payload: T
+    init (status: ContentPlayerStatus) {
+        payload = status
+    }
+}

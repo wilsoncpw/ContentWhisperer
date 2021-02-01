@@ -1,5 +1,5 @@
 //
-//  ContentPlayer.swift
+//  ContentController.swift
 //  ContentWhisperer
 //
 //  Created by Colin Wilson on 12/11/2018.
@@ -7,6 +7,16 @@
 //
 
 import Cocoa
+
+
+
+protocol ContentController: AnyObject {
+    var caLayer: CALayer? { get }
+    var suggestedSize: NSSize? { get set }
+    
+
+    func takeSnaphot () throws -> CGImage?
+}
 
 enum ContentPlayerStatus {
     case readyToPlay
@@ -21,16 +31,15 @@ protocol ContentPlayerDelegate : NSObjectProtocol {
 
 protocol ContentPlayer: AnyObject {
     var delegate: ContentPlayerDelegate? { get set }
-    var caLayer: CALayer? { get }
     var duration: Double { get }
     var currentPosition: Double { get set }
     var isPlaying: Bool { get }
-    var suggestedSize: NSSize? { get set }
-    
+
     func play ()
     func stop ()
+}
+
+protocol ContentPagination: AnyObject {
     func nextPage ()
     func prevPage ()
-    
-    func takeSnaphot () -> CGImage?
 }
