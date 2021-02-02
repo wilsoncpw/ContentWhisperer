@@ -605,6 +605,7 @@ CA
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="AMS-ut-7Zk" id="vjZ-Op-fQo"/>
+                        <outlet property="dynamicWallpaperMenuItem" destination="0PB-ol-Ccm" id="2Oy-RT-qs4"/>
                         <outlet property="openWithMenu" destination="glH-b4-eSG" id="ADt-an-8US"/>
                     </connections>
                 </viewController>
@@ -614,6 +615,13 @@ CA
                         <menuItem title="Open With" id="qg1-ew-goY">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Open With" id="glH-b4-eSG"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="nvX-mJ-iFM"/>
+                        <menuItem title="Create dynamic wallpaper image..." toolTip="Merge twi images to create dynamic wallpaper" id="0PB-ol-Ccm">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="dynamicWallpaperItemClicked:" target="olj-Ul-NSu" id="DNm-rq-7wN"/>
+                            </connections>
                         </menuItem>
                     </items>
                 </menu>

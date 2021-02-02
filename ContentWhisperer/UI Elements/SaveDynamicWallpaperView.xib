@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="SaveDynamicWallpaperView" customModule="ContentWhisperer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="460" height="182"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yPN-ZL-0x5">
+                    <rect key="frame" x="20" y="50" width="200" height="112"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="KvU-EV-Yor"/>
+                        <constraint firstAttribute="height" constant="112" id="VMe-UM-q41"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Placeholder" id="Uaa-Y7-PJO"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4EV-zO-zcV">
+                    <rect key="frame" x="240" y="50" width="200" height="112"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="Xeq-It-nc0"/>
+                        <constraint firstAttribute="height" constant="112" id="jdo-Xb-l4h"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Placeholder" id="fWj-IG-Hzq"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1K6-ju-pub">
+                    <rect key="frame" x="20" y="23" width="75" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Light image" id="CCd-Xb-cEP">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ghL-Z1-C2X">
+                    <rect key="frame" x="111" y="24" width="18" height="18"/>
+                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="xNA-Ta-Y17">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="lightImageRadioButtonClicked:" target="c22-O7-iKe" id="W5a-RI-Udh"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AuZ-eP-Nr3">
+                    <rect key="frame" x="331" y="24" width="18" height="18"/>
+                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ddk-XJ-oZ0">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="lightImageRadioButtonClicked:" target="c22-O7-iKe" id="f5Q-Vl-BBR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1K6-ju-pub" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="22" id="0sI-fC-Kn0"/>
+                <constraint firstItem="ghL-Z1-C2X" firstAttribute="firstBaseline" secondItem="1K6-ju-pub" secondAttribute="firstBaseline" id="790-Ta-nvg"/>
+                <constraint firstItem="ghL-Z1-C2X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1K6-ju-pub" secondAttribute="trailing" constant="10" id="AcS-n9-c9J"/>
+                <constraint firstItem="4EV-zO-zcV" firstAttribute="centerY" secondItem="yPN-ZL-0x5" secondAttribute="centerY" id="K7v-QZ-yjB"/>
+                <constraint firstItem="yPN-ZL-0x5" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="MqF-UX-QQS"/>
+                <constraint firstItem="yPN-ZL-0x5" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="Xdc-VS-Jlg"/>
+                <constraint firstItem="ghL-Z1-C2X" firstAttribute="centerX" secondItem="yPN-ZL-0x5" secondAttribute="centerX" id="Y9P-Mb-g1V"/>
+                <constraint firstAttribute="bottom" secondItem="yPN-ZL-0x5" secondAttribute="bottom" constant="50" id="ZAw-cc-QF5"/>
+                <constraint firstItem="1K6-ju-pub" firstAttribute="top" secondItem="yPN-ZL-0x5" secondAttribute="bottom" constant="11" id="knn-tg-2jA"/>
+                <constraint firstItem="AuZ-eP-Nr3" firstAttribute="firstBaseline" secondItem="1K6-ju-pub" secondAttribute="firstBaseline" id="m4z-gl-NoZ"/>
+                <constraint firstAttribute="trailing" secondItem="4EV-zO-zcV" secondAttribute="trailing" constant="20" symbolic="YES" id="sDq-5Y-xLQ"/>
+                <constraint firstItem="4EV-zO-zcV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yPN-ZL-0x5" secondAttribute="trailing" constant="20" id="tNj-dR-4Ts"/>
+                <constraint firstItem="AuZ-eP-Nr3" firstAttribute="centerX" secondItem="4EV-zO-zcV" secondAttribute="centerX" id="vNu-ET-9P3"/>
+            </constraints>
+            <connections>
+                <outlet property="radioButtonDark" destination="AuZ-eP-Nr3" id="xwp-mK-0SR"/>
+                <outlet property="radioButtonLight" destination="ghL-Z1-C2X" id="Vq4-PW-KlP"/>
+                <outlet property="viewDark" destination="4EV-zO-zcV" id="9Wn-OV-1cA"/>
+                <outlet property="viewLight" destination="yPN-ZL-0x5" id="65G-cA-7UM"/>
+            </connections>
+            <point key="canvasLocation" x="-207" y="105"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="Placeholder" width="128" height="128"/>
+    </resources>
+</document>

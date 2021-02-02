@@ -17,7 +17,7 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
     
     
-    private let contents: Contents
+    let contents: Contents
     let bucket: ContentBucket
     let deleter: ContentDeleter
     lazy var thumbnailLoader = ThumbnailLoader (controller: self)

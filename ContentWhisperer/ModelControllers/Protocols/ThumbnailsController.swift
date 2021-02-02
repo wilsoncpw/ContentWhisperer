@@ -28,5 +28,7 @@ protocol ThumbnailsController: AnyObject {
     func deleteItems (_ items: Set<Int>)
     func sortContents ()
     func shuffleContents ()
+    var bucket: ContentBucket { get }
+    var contents: Contents { get }
 }
 

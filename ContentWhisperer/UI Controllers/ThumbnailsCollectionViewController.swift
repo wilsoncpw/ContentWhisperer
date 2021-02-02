@@ -7,13 +7,16 @@
 //
 
 import Cocoa
+import AVFoundation
 
 //=============================================================================
 /// Controller for the NSCollectionView used to display thumbnails
-class ThumbnailsCollectionViewController: NSViewController {
+class ThumbnailsCollectionViewController: NSViewController, NSMenuItemValidation {
+
    
     @IBOutlet weak var collectionView: ThumbnailCollectionView!
     @IBOutlet weak var openWithMenu: NSMenu!
+    @IBOutlet weak var dynamicWallpaperMenuItem: NSMenuItem!
     
     var contentCount : Int { return thumbnailsController?.contentCount ?? 0 }
     var defaultApplicationURL: URL?
@@ -148,6 +151,102 @@ class ThumbnailsCollectionViewController: NSViewController {
             }
         } else {
             super.keyDown(with: event)
+        }
+    }
+    
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem === dynamicWallpaperMenuItem {
+            print ("Woo")
+            return collectionView.selectionIndexPaths.count == 2
+        }
+        return true
+    }
+    
+    private func loadViewFromNib (name: String) -> NSView? {
+        var topLevelObjects: NSArray?
+        if Bundle.main.loadNibNamed("SaveDynamicWallpaperView", owner: self, topLevelObjects: &topLevelObjects) {
+            return topLevelObjects?.first(where:) { obj in obj is NSView} as? NSView
+        }
+        return nil
+    }
+    
+    private func saveDynamicWallpaper (url: URL, lightImage: CGImage, darkImage: CGImage) throws {
+        guard let imageDestination = CGImageDestinationCreateWithURL(url as CFURL, AVFileType.heic as CFString, 2, nil) else {
+            return
+        }
+        
+        struct Metadata: Codable {
+            public let darkIdx: Int
+            public let lightIdx: Int
+            
+            private enum CodingKeys: String, CodingKey {
+                case darkIdx = "d"
+                case lightIdx = "l"
+            }
+        }
+        
+        let encoder = PropertyListEncoder ()
+        encoder.outputFormat = .binary
+        let dynamicMetadata = Metadata (darkIdx: 1, lightIdx: 0)
+        let imageMetadata = CGImageMetadataCreateMutable()
+        
+        guard
+            let metadata = try? encoder.encode(dynamicMetadata).base64EncodedString(),
+            let tag = CGImageMetadataTagCreate(
+                "http://ns.apple.com/namespace/1.0/" as CFString,        // xmlns
+                "apple_desktop" as CFString,                             // prefix
+                "apr" as CFString,                                       // name
+                .string,                                                 // type
+                metadata as CFString),                                    // value
+            CGImageMetadataSetTagWithPath(imageMetadata, nil, "xmp:apr" as CFString, tag) else {
+            return
+        }
+        
+        CGImageDestinationAddImageAndMetadata(imageDestination, lightImage, imageMetadata, nil)
+        CGImageDestinationAddImage(imageDestination, darkImage, nil)
+        
+        CGImageDestinationFinalize(imageDestination)
+    }
+    
+    @IBAction func dynamicWallpaperItemClicked(_ sender: Any) {
+        
+        guard collectionView.selectionIndexes.count == 2, let window = view.window, let thumbnailsController = thumbnailsController else { return }
+        guard let idx1 = collectionView.selectionIndexes.first else { return }
+        guard let idx2 = collectionView.selectionIndexes.last else { return }
+        guard let accessoryView = loadViewFromNib(name: "SaveDynamicWallpaperView") as? SaveDynamicWallpaperView else { return }
+        
+        let controllerFactory = ContentControllerFactoryFromContentBucket (contents: thumbnailsController.contents, bucket: thumbnailsController.bucket)
+        
+        guard let cg1 = try? controllerFactory.getContentController(idx: idx1)?.takeSnaphot(), let cg2 = try? controllerFactory.getContentController(idx: idx2)?.takeSnaphot() else { return }
+        
+        accessoryView.viewLight.image = NSImage (cgImage: cg1, size: .zero)
+        accessoryView.viewDark.image = NSImage (cgImage: cg2, size: .zero)
+        
+        let savePanel = NSSavePanel ()
+        savePanel.accessoryView = accessoryView
+        
+        savePanel.beginSheetModal(for: window) {
+            response in
+            
+            if response == .OK {
+                let lightImage: CGImage
+                let darkImage: CGImage
+                
+                if accessoryView.radioButtonLight.state == .on {
+                    lightImage = cg1
+                    darkImage = cg2
+                } else {
+                    lightImage = cg2
+                    darkImage = cg1
+                }
+                if let url = savePanel.url {
+                    do {
+                        try DynamicWallpaperSaver (lightImage: lightImage, darkImage: darkImage).saveTo(url: url)
+                    } catch let e {
+                        print (e.localizedDescription)
+                    }
+                }
+            }
         }
     }
 }
