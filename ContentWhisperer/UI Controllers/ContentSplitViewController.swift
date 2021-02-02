@@ -25,6 +25,7 @@ class ContentSplitViewController: NSViewController, NSSplitViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showHeicSection(show: false)
     }
     
     private func showHeicSection (show: Bool) {
