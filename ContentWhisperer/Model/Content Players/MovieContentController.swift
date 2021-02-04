@@ -55,7 +55,7 @@ class MovieContentController: ContentController, ContentPlayer {
             case .failed: cps = .failed
             case.readyToPlay: cps = .readyToPlay
             case .unknown: cps = .unknown
-            @unknown default: fatalError()
+            @unknown default: cps = .unknown
             }
             
             // Call the delegate when they occur

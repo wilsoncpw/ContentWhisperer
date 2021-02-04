@@ -539,8 +539,8 @@ CA
                                     </customView>
                                 </subviews>
                                 <holdingPriorities>
-                                    <real value="249"/>
-                                    <real value="250"/>
+                                    <real value="153"/>
+                                    <real value="345"/>
                                 </holdingPriorities>
                             </splitView>
                         </subviews>

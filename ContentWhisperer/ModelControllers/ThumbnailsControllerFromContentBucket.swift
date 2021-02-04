@@ -19,16 +19,16 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
     let contents: Contents
     let bucket: ContentBucket
-    let deleter: ContentDeleter
-    lazy var thumbnailLoader = ThumbnailLoader (controller: self)
     weak var delegate: ThumbnailsControllerDelegate?
-    var requiredItems = [String:IntHolder] ()
+
+    private lazy var deleter = ContentDeleter (contentFolderURL: contents.folderURL)
+    private lazy var thumbnailLoader = ThumbnailLoader (controller: self)
+    private var requiredItems = [String:IntHolder] ()
 
     
     init (contents: Contents, bucket: ContentBucket) {
         self.contents = contents
         self.bucket = bucket
-        self.deleter = ContentDeleter (contentFolderURL: contents.folderURL)
     }
     
     var contentCount: Int {

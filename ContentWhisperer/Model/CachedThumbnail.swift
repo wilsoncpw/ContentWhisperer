@@ -8,6 +8,10 @@
 
 import Foundation
 
+// nb. We don't maintain the cache ourselves.  Instead, we rely on the thumbnails content view to create/free & cache CachedThumbnails when it needs to.
+//
+//
+
 class CachedThumbnail {
     let folderURL: URL
     let content: Content
@@ -19,11 +23,11 @@ class CachedThumbnail {
     }
     
     deinit {
-        //        print (fileName, " deinit")
+        //      print (folderURL, " deinit")
     }
     
     //-----------------------------------------------------------------------------------
-    // load - called by the ThumbnailDownloaderOperation
+    // load - called in the background by the ThumbnailDownloaderOperation
     func load () {
         if (cgImage != nil) {
             return
