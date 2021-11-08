@@ -13,9 +13,9 @@ final class MovieContent: ContentBase, Content {
     
     static let contentType = ContentType (
         name: "Videos",
-        fileTypes: Set<String> (["m4v", "mov", "mp4", "dv"]),
+        fileTypes: Set<String> (["m4v", "mov", "mp4", "dv", "avi"]),
         bucketDefinitions: [
-            (name: "Movies", fileTypes: Set<String> (["m4v"])),
+            (name: "Movies", fileTypes: Set<String> (["m4v", "avi"])),
             (name: "Clips", fileTypes: Set<String> (["mov", "mp4", "dv"]))],
         contentClass: MovieContent.self)
       

@@ -203,19 +203,11 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		26E80BB821D139BF00DB5CA8 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		26F0F26D216CF08D0077DF97 = {
 			isa = PBXGroup;
 			children = (
 				26F0F278216CF08D0077DF97 /* ContentWhisperer */,
 				26F0F277216CF08D0077DF97 /* Products */,
-				26E80BB821D139BF00DB5CA8 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
