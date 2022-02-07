@@ -16,7 +16,7 @@ class ThumbnailsCollectionViewItem: NSCollectionViewItem {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
+        view.layer?.borderColor = NSColor.selectedContentBackgroundColor.cgColor
         view.layer?.cornerRadius = 0
     }
     

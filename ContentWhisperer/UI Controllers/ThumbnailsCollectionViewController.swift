@@ -113,12 +113,12 @@ class ThumbnailsCollectionViewController: NSViewController, NSMenuItemValidation
         guard let appurl = sender.representedObject as? URL, let idx = focusedIdx, let url = thumbnailsController?.getThumbnailURL(idx: idx) else {
             return
         }
-        do {
-            try NSWorkspace.shared.open([url], withApplicationAt: appurl, configuration: [:])
-        } catch let e {
-            print (e.localizedDescription)
-            
-        }
+//        do {
+//            try NSWorkspace.shared.open([url], withApplicationAt: appurl, configuration: [:])
+            NSWorkspace.shared.open([url], withApplicationAt: appurl, configuration: NSWorkspace.OpenConfiguration())
+//        } catch let e {
+//            print (e.localizedDescription)
+//        }
         
     }
     

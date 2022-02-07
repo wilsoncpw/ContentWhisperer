@@ -1,61 +1,61 @@
 {
   "images" : [
     {
-      "filename" : "CWX16.png",
+      "filename" : "petal16.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
-      "filename" : "CWX32-1.png",
+      "filename" : "petal32-1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
-      "filename" : "CWX32.png",
+      "filename" : "petal32.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
-      "filename" : "CWX64.png",
+      "filename" : "petal64.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
-      "filename" : "CWX128.png",
+      "filename" : "petal.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "CWX256-1.png",
+      "filename" : "petal256-1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "CWX256.png",
+      "filename" : "petal256.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "CWX512-1.png",
+      "filename" : "petal512.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "CWX512.png",
+      "filename" : "petal512-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "CWX1024.png",
+      "filename" : "petal1024.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
