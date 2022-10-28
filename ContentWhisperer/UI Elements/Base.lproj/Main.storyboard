@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -411,7 +411,7 @@ CA
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VaL-fM-sWn">
-                                                                    <rect key="frame" x="3" y="-3" width="17" height="23"/>
+                                                                    <rect key="frame" x="3" y="-5" width="17" height="28"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="Sbz-4g-ant"/>
                                                                         <constraint firstAttribute="width" constant="17" id="pwm-Nc-V1n"/>
@@ -695,31 +695,31 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <slider hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dk1-A6-HbU" customClass="CollapsingSLider" customModule="ContentWhisperer" customModuleProvider="target">
-                                <rect key="frame" x="30" y="-12" width="414" height="28"/>
+                                <rect key="frame" x="34" y="-4" width="410" height="28"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="DFJ-Xr-VfW"/>
                                 <connections>
                                     <action selector="sliderSlid:" target="nR7-fz-JII" id="HO8-tZ-HWe"/>
                                 </connections>
                             </slider>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="xH2-Qm-aRe" customClass="CollapsingButton" customModule="ContentWhisperer" customModuleProvider="target">
-                                <rect key="frame" x="8" y="-1" width="16.5" height="9.5"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayPauseTemplate" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="GFB-NS-2sk">
+                                <rect key="frame" x="8" y="6.5" width="20.5" height="11"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayPauseTemplate" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyUpOrDown" inset="2" id="GFB-NS-2sk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="9"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="pausePlayClicked:" target="nR7-fz-JII" id="bb9-5B-Qkw"/>
                                 </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="9ad-je-reo" customClass="ContentsView" customModule="ContentWhisperer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="7" width="450" height="293"/>
+                                <rect key="frame" x="0.0" y="18" width="450" height="282"/>
                             </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="dk1-A6-HbU" firstAttribute="leading" secondItem="xH2-Qm-aRe" secondAttribute="trailing" constant="8" id="4ai-nX-dRJ"/>
-                            <constraint firstAttribute="bottom" secondItem="xH2-Qm-aRe" secondAttribute="bottom" id="5hV-41-sgS"/>
+                            <constraint firstAttribute="bottom" secondItem="xH2-Qm-aRe" secondAttribute="bottom" constant="8" id="5hV-41-sgS"/>
                             <constraint firstAttribute="trailing" secondItem="dk1-A6-HbU" secondAttribute="trailing" constant="8" id="Gsk-PM-iSe"/>
-                            <constraint firstItem="xH2-Qm-aRe" firstAttribute="top" secondItem="9ad-je-reo" secondAttribute="bottom" id="RmS-ni-Ia5"/>
+                            <constraint firstItem="xH2-Qm-aRe" firstAttribute="top" secondItem="9ad-je-reo" secondAttribute="bottom" constant="2" id="RmS-ni-Ia5"/>
                             <constraint firstItem="dk1-A6-HbU" firstAttribute="centerY" secondItem="xH2-Qm-aRe" secondAttribute="centerY" id="UAL-y5-fah"/>
                             <constraint firstAttribute="trailing" secondItem="9ad-je-reo" secondAttribute="trailing" id="XHI-Oq-ab9"/>
                             <constraint firstItem="9ad-je-reo" firstAttribute="top" secondItem="1Je-1n-Erq" secondAttribute="top" id="cL1-me-mZa"/>
@@ -870,7 +870,7 @@ CA
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" width="15" height="15"/>
-        <image name="NSTouchBarPlayPauseTemplate" width="23" height="13"/>
+        <image name="NSActionTemplate" width="20" height="20"/>
+        <image name="NSTouchBarPlayPauseTemplate" width="28" height="17"/>
     </resources>
 </document>

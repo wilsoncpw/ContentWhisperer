@@ -224,6 +224,7 @@ class ThumbnailsCollectionViewController: NSViewController, NSMenuItemValidation
         
         let savePanel = NSSavePanel ()
         savePanel.accessoryView = accessoryView
+        savePanel.allowedContentTypes = [.heic]
         
         savePanel.beginSheetModal(for: window) {
             response in
