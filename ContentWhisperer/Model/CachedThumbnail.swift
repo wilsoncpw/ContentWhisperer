@@ -6,7 +6,7 @@
 //  Copyright © 2018 Colin Wilson. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 // nb. We don't maintain the cache ourselves.  Instead, we rely on the thumbnails content view to create/free & cache CachedThumbnails when it needs to.
 //
