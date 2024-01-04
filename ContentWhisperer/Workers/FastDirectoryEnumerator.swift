@@ -76,17 +76,46 @@ class FastDirectoryEnumerator {
         return rv
     }
     
+    private func getDeletedFiles (subPath: String, recurse: Bool, inDeletedSection: Bool) -> [String] {
+        var rv = [String] ()
+    
+        rv.reserveCapacity(10000)
+        
+        let py = (subPath.count == 0 ? "" : subPath + "/")
+        let pz = path + "/" + py
+        let p = pz.cString(using: .utf8)
+        if p != nil, let d = opendir(p) {
+            defer { closedir(d) }
+            while let ent = readdir(d) {
+                
+                guard let lastPathComponent = String (bytesNoCopy: &ent.pointee.d_name, length: Int(ent.pointee.d_namlen), encoding: .utf8, freeWhenDone: false), !lastPathComponent.hasPrefix(".") else {
+                    continue
+                }
+                if ent.pointee.d_type != DT_DIR {
+                    if inDeletedSection { rv.append(py + lastPathComponent) }
+                } else if recurse {
+                    rv.append(contentsOf: getDeletedFiles(subPath: py + lastPathComponent, recurse: true, inDeletedSection: inDeletedSection || lastPathComponent.lowercased() == "deleted"))
+                }
+            }
+        }
+        return rv
+    }
+    
     func getFiles(recurse: Bool, ignoringSubdirs: [String]) -> [String] {
         return getFiles(subPath:"", recurse: recurse, ignoringSubdirs: ignoringSubdirs)
     }
     
-    
-    func getURLs (recurse: Bool, ignoringSubdirs: [String]) -> [URL] {
-        let rootURL = URL (fileURLWithPath: path, isDirectory: true)
-        return getFiles(subPath:"", recurse: recurse, ignoringSubdirs: ignoringSubdirs).map {st in
-            
-            let rv = URL (fileURLWithPath: String (st.dropFirst()), relativeTo: rootURL)
-            return rv
-        }
+    func getDeletedFiles(recurse: Bool) -> [String]{
+        return getDeletedFiles(subPath: "", recurse: recurse, inDeletedSection: false)
     }
+    
+    
+//    func getURLs (recurse: Bool, ignoringSubdirs: [String]) -> [URL] {
+//        let rootURL = URL (fileURLWithPath: path, isDirectory: true)
+//        return getFiles(subPath:"", recurse: recurse, ignoringSubdirs: ignoringSubdirs).map {st in
+//            
+//            let rv = URL (fileURLWithPath: String (st.dropFirst()), relativeTo: rootURL)
+//            return rv
+//        }
+//    }
 }

@@ -12,8 +12,9 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var printMenuItem: NSMenuItem!
+    @IBOutlet weak var showDeletedContentsMenuItem: NSMenuItem!
     
-    var mainWindowController: MainWindowController?
+    var mainWindowController: MainWindowController!
 
     //----------------------------------------------------------------------
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -43,7 +44,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     //----------------------------------------------------------------------
     func openFolderAtURL (_ url: URL) -> Bool {
-        return mainWindowController?.openFolderAtURL(url) ?? false
+        return mainWindowController.openFolderAtURL(url)
+    }
+    
+    @IBAction func toggleShowDeletedContents(_ sender: Any) {
+        mainWindowController.toggleShowDeletedContents()
+        showDeletedContentsMenuItem.state = mainWindowController.showDeletedContents ? .on : .off
     }
 }
 

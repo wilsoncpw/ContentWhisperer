@@ -22,6 +22,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
     var infoViewController: InfoViewController!
     var contentSplitViewController: ContentSplitViewController!
     private var currentContentControllerFactory: ContentControllerFactory?
+    private var contentsURL: URL?
         
     let contentProvider = ContentProvider (registeredContentTypes: [
         ImageContent.contentType,
@@ -39,6 +40,8 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
             setTitleLabel (value: sectionController?.contents.folderURL.lastPathComponent ?? Bundle.main.displayName)
         }
     }
+    
+    var showDeletedContents = false
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -118,9 +121,10 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
     func openFolderAtURL (_ url: URL)->Bool {
         if !reset () { return false }
                 
+        contentsURL = url
         statusBarNotify (message: "Loading...").post()
         let loader = ContentLoader (folderURL: url, contentProvider: contentProvider)
-        loader.load { result in
+        loader.load (deleted: showDeletedContents) { result in
             statusBarNotify (message: "").post()
 
             switch result {
@@ -132,6 +136,22 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
         NSDocumentController.shared.noteNewRecentDocumentURL(url)
         
         return true
+    }
+    
+    func toggleShowDeletedContents () {
+        showDeletedContents = !showDeletedContents
+        guard let contentsURL else { return }
+        
+        statusBarNotify (message: "Loading...").post()
+        let loader = ContentLoader (folderURL: contentsURL, contentProvider: contentProvider)
+        loader.load (deleted: showDeletedContents) { result in
+            statusBarNotify (message: "").post()
+
+            switch result {
+            case .failure(let error) : Swift.print (error)
+            case .success(let contents) : self.sectionController = SectionControllerFromContents (contents: contents)
+            }
+        }
     }
     
     func selectedSectionChanged (sender: Any, section: ContentSection?, bucket: ContentBucket?) {

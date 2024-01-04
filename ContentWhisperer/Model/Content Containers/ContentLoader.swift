@@ -19,11 +19,11 @@ class ContentLoader {
         self.contentProvider = contentProvider
     }
     
-    func load (callback: @escaping (_ result: Result<Contents, Error>) -> Void) {
+    func load (deleted: Bool, callback: @escaping (_ result: Result<Contents, Error>) -> Void) {
         
         DispatchQueue.global().async {
             do {
-                let contents = try self.asyncLoad ()
+                let contents = try self.asyncLoad (deleted: deleted)
                 DispatchQueue.main.async {
                     callback (.success(contents))
                 }
@@ -35,8 +35,8 @@ class ContentLoader {
         }
     }
     
-    private func asyncLoad () throws -> Contents {
+    private func asyncLoad (deleted: Bool) throws -> Contents {
 //        contentProvider.countFiles(url: folderURL)
-        return try Contents (contentProvider: contentProvider, folderURL: folderURL)
+        return try Contents (contentProvider: contentProvider, folderURL: folderURL, deleted: deleted)
     }
 }

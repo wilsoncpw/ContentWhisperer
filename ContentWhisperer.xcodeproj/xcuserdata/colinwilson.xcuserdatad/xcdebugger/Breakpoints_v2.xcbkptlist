@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8B5AEF56-48D2-491C-B99E-E07549E6B130"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "347453E3-5572-46D6-8323-B697060D43D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Workers/FastDirectoryEnumerator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "getDeletedFiles(subPath:recurse:inDeletedSection:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "347453E3-5572-46D6-8323-B697060D43D0 - 9fedaec185051468"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContentWhisperer.FastDirectoryEnumerator.getDeletedFiles(subPath: Swift.String, recurse: Swift.Bool) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/colinwilson/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Workers/FastDirectoryEnumerator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  uuid = "347453E3-5572-46D6-8323-B697060D43D0 - 700598a2e08ad5c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContentWhisperer.FastDirectoryEnumerator.getDeletedFiles(subPath: Swift.String, recurse: Swift.Bool, inDeletedSection: inout Swift.Bool) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/colinwilson/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Workers/FastDirectoryEnumerator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "376">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFA5D533-74EE-4C69-840B-A583E672B643"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Workers/FastDirectoryEnumerator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "getDeletedFiles(subPath:recurse:inDeletedSection:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EFA5D533-74EE-4C69-840B-A583E672B643 - 700598a2e08ad71a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContentWhisperer.FastDirectoryEnumerator.getDeletedFiles(subPath: Swift.String, recurse: Swift.Bool, inDeletedSection: inout Swift.Bool) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/colinwilson/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Workers/FastDirectoryEnumerator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "3404">
+               </Location>
+               <Location
+                  uuid = "EFA5D533-74EE-4C69-840B-A583E672B643 - 76569ed0a31687e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContentWhisperer.FastDirectoryEnumerator.getDeletedFiles(subPath: Swift.String, recurse: Swift.Bool, inDeletedSection: Swift.Bool) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/colinwilson/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Workers/FastDirectoryEnumerator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "3368">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

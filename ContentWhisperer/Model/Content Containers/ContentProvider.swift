@@ -34,8 +34,10 @@ class ContentProvider {
     /// - Parameter folderUrl: The URL to load contents from
     /// - Returns: An array of content sections with buckets of supported content.
     /// - Throws: Propagates errors from File Manager
-    func loadContentsIntoSections (folderUrl: URL) throws -> [ContentSection] {
-        let files = FastDirectoryEnumerator (path: folderUrl.path).getFiles(recurse: true, ignoringSubdirs: ["deleted", "originals"])
+    func loadContentsIntoSections (folderUrl: URL, deleted: Bool) throws -> [ContentSection] {
+        let files = deleted 
+        ? FastDirectoryEnumerator (path: folderUrl.path).getDeletedFiles(recurse: true)
+        : FastDirectoryEnumerator (path: folderUrl.path).getFiles(recurse: true, ignoringSubdirs: ["deleted", "originals"])
  
         // Create a content section for each registered content type where at least one content url exists for it.
         return registeredContentTypes.reduce(into: [ContentSection]()) {sectionSum, contentType in

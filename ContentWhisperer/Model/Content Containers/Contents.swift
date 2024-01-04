@@ -21,9 +21,9 @@ class Contents {
     ///   - contentProvider: The content provider loads the contents into content sections
     ///   - folderURL: The folder URL we want the provider load
     /// - Throws: Propagated from the content provider
-    init (contentProvider: ContentProvider, folderURL: URL) throws {
+    init (contentProvider: ContentProvider, folderURL: URL, deleted: Bool) throws {
         self.folderURL = folderURL
-        self.contentSections = try contentProvider.loadContentsIntoSections(folderUrl: folderURL)
+        self.contentSections = try contentProvider.loadContentsIntoSections(folderUrl: folderURL, deleted: deleted)
     }
     
     //----------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -152,12 +152,13 @@ CA
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
-                                        <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
-                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                        <menuItem title="Show Deleted Contents" id="qIA-7k-7VU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleShowDeletedContents:" target="Voe-Tx-rLC" id="q3w-Zi-Ijh"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Y2I-CT-bEx"/>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
@@ -213,6 +214,7 @@ CA
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ContentWhisperer" customModuleProvider="target">
                     <connections>
                         <outlet property="printMenuItem" destination="aTl-1u-JFS" id="RO4-2P-9OD"/>
+                        <outlet property="showDeletedContentsMenuItem" destination="qIA-7k-7VU" id="IeJ-Qn-t68"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -238,7 +240,7 @@ CA
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="FQ9-m1-SrJ"/>
                                 <toolbarItem implicitItemIdentifier="C8B2BE08-C621-418D-9466-6EBDCFFCA98D" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="SHL-7J-M40">
                                     <nil key="toolTip"/>
-                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sBk-aU-xve">
+                                    <textField key="view" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sBk-aU-xve">
                                         <rect key="frame" x="20" y="14" width="37" height="16"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="OAv-qU-6AT">
@@ -323,7 +325,7 @@ CA
                                     <real value="249"/>
                                 </holdingPriorities>
                             </splitView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0p1-Pm-ijI">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0p1-Pm-ijI">
                                 <rect key="frame" x="8" y="4" width="37" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Mt0-ex-nvd">
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -388,7 +390,7 @@ CA
                                                             <rect key="frame" x="11" y="1" width="305" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8QB-EX-e8q">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8QB-EX-e8q">
                                                                     <rect key="frame" x="0.0" y="1" width="305" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="0D7-9T-I0E">
                                                                         <font key="font" metaFont="smallSystemBold"/>
@@ -418,7 +420,7 @@ CA
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSActionTemplate" id="6Zx-t0-79v"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kvy-vA-Uf2">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kvy-vA-Uf2">
                                                                     <rect key="frame" x="25" y="1" width="280" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wbP-mk-Lna">
                                                                         <font key="font" metaFont="system"/>
@@ -774,7 +776,7 @@ CA
                                                             <rect key="frame" x="11" y="0.0" width="369" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eeh-jO-uPP">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eeh-jO-uPP">
                                                                     <rect key="frame" x="-2" y="64" width="96" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="yvQ-Vi-wXO"/>
@@ -813,7 +815,7 @@ CA
                                                             <rect key="frame" x="11" y="100" width="369" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eKm-wh-tdN">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eKm-wh-tdN">
                                                                     <rect key="frame" x="-2" y="1" width="96" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="oC8-eS-soo">
                                                                         <font key="font" usesAppearanceFont="YES"/>
