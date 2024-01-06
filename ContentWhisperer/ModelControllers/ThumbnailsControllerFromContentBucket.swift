@@ -19,6 +19,7 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     
     let contents: Contents
     let bucket: ContentBucket
+    let showingDeletedContents: Bool
     weak var delegate: ThumbnailsControllerDelegate?
 
     private lazy var deleter = ContentDeleter (contentFolderURL: contents.folderURL)
@@ -26,9 +27,10 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
     private var requiredItems = [String:IntHolder] ()
 
     
-    init (contents: Contents, bucket: ContentBucket) {
+    init (contents: Contents, bucket: ContentBucket, showingDeletedContents: Bool) {
         self.contents = contents
         self.bucket = bucket
+        self.showingDeletedContents = showingDeletedContents
     }
     
     var contentCount: Int {
@@ -103,7 +105,7 @@ class ThumbnailsControllerFromContentBucket: ThumbnailsController {
         
         let deletedContents = contents.deleteContent(contentToDelete)
         delegate?.removeThumbnails (sender: self, idxs: items)
-        deleter.deleteContents(deletedContents) { error in
+        deleter.deleteContents(deletedContents, showingDeletedContents: showingDeletedContents) { error in
             
         }
     }

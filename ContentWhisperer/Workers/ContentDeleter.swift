@@ -35,8 +35,14 @@ class ContentDeleter {
     /// - Parameters:
     ///   - contents: Array of Content to delete
     ///   - callback: Callback called when the background processing has finished
-    func deleteContents (_ contents: [Content], callback: @escaping (Error?) -> Void) {
-        contents.forEach { content in deletedQueue.addOperation { try? self.deleteContent(content) } }
+    func deleteContents (_ contents: [Content], showingDeletedContents: Bool, callback: @escaping (Error?) -> Void) {
+        contents.forEach { content in
+            if showingDeletedContents {
+                deletedQueue.addOperation { try? self.reallyDeleteContent(content)}
+            } else {
+                deletedQueue.addOperation { try? self.deleteContent(content) }
+            }
+        }
         
         let finishedOp = Operation ()
         finishedOp.completionBlock = {
@@ -64,5 +70,15 @@ class ContentDeleter {
         }
         
         try FileManager.default.moveItem(at: contentFolderURL.appendingPathComponent(content.fileName), to: deletedContentURL)
+    }
+    
+    private func reallyDeleteContent (_ content: Content) throws {
+        let deletedContentURL = contentFolderURL.appendingPathComponent(content.fileName)
+        let deletedPathURL = deletedContentURL.deletingLastPathComponent()
+        
+        try FileManager.default.removeItem(at: deletedContentURL)
+        if try FileManager.default.contentsOfDirectory(at: deletedPathURL, includingPropertiesForKeys: []).isEmpty {
+            try FileManager.default.removeItem(at: deletedPathURL)
+        }
     }
 }

@@ -100,5 +100,85 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12BFB405-26AF-4F81-BFB3-495D205CF1E9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Workers/ContentDeleter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "reallyDeleteContent(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "12BFB405-26AF-4F81-BFB3-495D205CF1E9 - b8e7806edae7cf8f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContentWhisperer.ContentDeleter.reallyDeleteContent(ContentWhisperer.Content) throws -&gt; ()"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/colinwilson/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Workers/ContentDeleter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "1220">
+               </Location>
+               <Location
+                  uuid = "12BFB405-26AF-4F81-BFB3-495D205CF1E9 - b8e7806edae7cf4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContentWhisperer.ContentDeleter.reallyDeleteContent(ContentWhisperer.Content) throws -&gt; ()"
+                  moduleName = "ContentWhisperer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/colinwilson/Documents/XCode%20Projects/ContentWhisperer/ContentWhisperer/Workers/ContentDeleter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "1308">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF9C16D2-68D7-46E1-841C-7B655E2E2AB4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Workers/ContentDeleter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "deleteContents(_:showingDeletedContents:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8BE6BEFE-288E-48D0-8588-D0E298787266"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContentWhisperer/Workers/ContentDeleter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "reallyDeleteContent(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

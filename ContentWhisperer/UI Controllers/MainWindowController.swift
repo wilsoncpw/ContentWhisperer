@@ -161,7 +161,7 @@ class MainWindowController: NSWindowController, SectionControllerDelegate, NSMen
         if let bucket = bucket {
             currentContentControllerFactory = ContentControllerFactoryFromContentBucket (contents: contents, bucket: bucket)
 
-            let thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket)
+            let thumbnailsController = ThumbnailsControllerFromContentBucket (contents: contents, bucket: bucket, showingDeletedContents: showDeletedContents)
             thumbnailsCollectionViewController.thumbnailsController = thumbnailsController
             infoViewController.thumbnailsController = thumbnailsController
             window?.makeFirstResponder(thumbnailsCollectionViewController.collectionView)
